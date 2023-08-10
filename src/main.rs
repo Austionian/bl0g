@@ -8,6 +8,8 @@ use axum::{
 use lazy_static::lazy_static;
 use serde::{Deserialize, Serialize};
 use std::net::SocketAddr;
+use tower::ServiceBuilder;
+use tower_http::compression::CompressionLayer;
 
 lazy_static! {
     pub static ref TEMPLATES: tera::Tera = {
@@ -40,6 +42,7 @@ async fn main() {
         .route("/robots.txt", any(robots))
         // `POST /users` goes to `create_user`
         .route("/users", post(create_user))
+        .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
         .with_state(state);
 
     // run our app with hyper
