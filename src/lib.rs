@@ -4,6 +4,7 @@ use axum::{
     Router,
 };
 use lazy_static::lazy_static;
+use std::sync::Arc;
 use tower::ServiceBuilder;
 use tower_http::compression::CompressionLayer;
 
@@ -22,14 +23,18 @@ lazy_static! {
 }
 
 #[derive(Clone)]
-struct AppState {}
+pub struct AppState {
+    text: String,
+}
 
 pub fn startup() -> Router {
-    let state = AppState {};
+    let state = AppState {
+        text: "Austin!".to_string(),
+    };
 
     Router::new()
         .route("/", get(routes::root))
         .route("/robots.txt", any(routes::robots))
         .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
-        .with_state(state)
+        .with_state(Arc::new(state))
 }
