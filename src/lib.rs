@@ -1,12 +1,10 @@
 mod routes;
-use axum::{
-    routing::{any, get},
-    Router,
-};
+use axum::{routing::get, Router};
 use lazy_static::lazy_static;
 use std::sync::Arc;
 use tower::ServiceBuilder;
 use tower_http::compression::CompressionLayer;
+use tower_http::services::{ServeDir, ServeFile};
 
 lazy_static! {
     pub static ref TEMPLATES: tera::Tera = {
@@ -34,7 +32,8 @@ pub fn startup() -> Router {
 
     Router::new()
         .route("/", get(routes::root))
-        .route("/robots.txt", any(routes::robots))
+        .nest_service("/assets", ServeDir::new("assets"))
+        .nest_service("/robots.txt", ServeFile::new("assets/robots.txt"))
         .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
         .with_state(Arc::new(state))
 }
