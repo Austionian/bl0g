@@ -10,6 +10,6 @@ Coming soon to https://blog.r00ks.io
 ## Building the Tailwind CSS
 - [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.
 - Run:
-```bash
+```shell
 ./tailwindcss -i ./src/templates/styles/input.css -o ./assets/output.css
 ```
