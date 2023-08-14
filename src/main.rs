@@ -1,17 +1,21 @@
-use bl0g::startup;
+use bl0g::{get_configuration, startup};
 use std::net::SocketAddr;
 
 #[tokio::main]
 async fn main() {
-    // initialize tracing
-    tracing_subscriber::fmt::init();
+    tracing_subscriber::fmt()
+        .with_max_level(tracing::Level::DEBUG)
+        .init();
 
-    // build our application with a route
+    let config = get_configuration().expect("Failed to read configuration.");
+
     let app = startup();
 
-    // run our app with hyper
-    // `axum::Server` is a re-export of `hyper::Server`
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    let address = format!("{}:{}", config.application.host, config.application.port)
+        .parse::<SocketAddr>()
+        .unwrap();
+
+    let addr = SocketAddr::from(address);
     tracing::debug!("listening on {}", addr);
     axum::Server::bind(&addr)
         .serve(app.into_make_service())

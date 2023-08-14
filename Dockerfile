@@ -21,5 +21,6 @@ RUN apt-get update -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 COPY --from=builder /app/target/release/bl0g bl0g
+COPY config config
 ENV APP_ENVIRONMENT production 
 ENTRYPOINT ["./bl0g"]
