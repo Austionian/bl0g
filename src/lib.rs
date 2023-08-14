@@ -64,4 +64,5 @@ pub fn startup() -> Router {
                 ),
         )
         .with_state(Arc::new(state))
+        .route("/health_check", get(routes::health_check))
 }
