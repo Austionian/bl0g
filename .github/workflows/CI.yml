@@ -1,4 +1,4 @@
-name: General
+name: CI
 
 on:
   push:
@@ -13,8 +13,22 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: taiki-e/install-action@protoc
+    - uses: dtolnay/rust-toolchain@beta
+      with:
+        components: clippy, rustfmt
+    - uses: Swatinem/rust-cache@v2
+    - name: Check
+      run: cargo clippy --workspace --all-targets --all-features -- -D warnings
+    - name: rustfmt
+      run: cargo fmt --all --check
+
   test:
-    name: Test
+    needs: check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -23,31 +37,8 @@ jobs:
       - name: Run tests
         run: cargo test
 
-  fmt:
-    name: Rustfmt
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          components: rustfmt
-      - name: Enforce formatting
-        run: cargo fmt --check
-
-  clippy:
-    name: Clippy
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          components: clippy
-      - uses: Swatinem/rust-cache@v2
-      - name: Linting
-        run: cargo clippy -- -D warnings
-
   coverage:
-    name: Code coverage
+    needs: check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
