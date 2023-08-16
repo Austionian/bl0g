@@ -15,9 +15,8 @@ async fn main() {
         .parse::<SocketAddr>()
         .unwrap();
 
-    let addr = SocketAddr::from(address);
-    tracing::debug!("listening on {}", addr);
-    axum::Server::bind(&addr)
+    tracing::debug!("listening on {}", address);
+    axum::Server::bind(&address)
         .serve(app.into_make_service())
         .await
         .unwrap();
