@@ -11,5 +11,5 @@ Coming soon to https://blog.r00ks.io
 - [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.
 - Run:
 ```shell
-./tailwindcss -i ./src/templates/styles/input.css -o ./assets/output.css
+./tailwindcss -i ./templates/styles/input.css -o ./assets/output.css
 ```
