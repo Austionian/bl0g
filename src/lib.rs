@@ -1,5 +1,7 @@
 mod configuration;
+mod helpers;
 mod routes;
+
 use axum::body::BoxBody;
 use axum::{routing::get, Router};
 use hyper::{Body, Request, Response};
@@ -44,6 +46,7 @@ pub fn startup() -> Router {
         .nest_service("/assets", ServeDir::new("assets"))
         .nest_service("/robots.txt", ServeFile::new("assets/robots.txt"))
         .route("/", get(routes::root))
+        .route("/blog", get(routes::blog))
         .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
         .layer(
             TraceLayer::new_for_http()
