@@ -4,7 +4,7 @@ use comrak::{markdown_to_html, ComrakOptions};
 use std::{fs, io};
 
 fn extract_md(post_name: String) -> Result<String, io::Error> {
-    fs::read_to_string(format!("./src/posts/{post_name}.md"))
+    fs::read_to_string(format!("./posts/{post_name}.md"))
 }
 
 pub async fn post(headers: HeaderMap, Path(post_name): Path<String>) -> Html<String> {
