@@ -7,6 +7,12 @@ Coming soon to https://blog.r00ks.io
 - [Twailwind CSS](https://tailwindcss.com/)
 - [htmx](https://htmx.org)
 
+## Creating a new blog post
+- To create a new post in the posts directory run:
+```shell
+cargo run --bin post-maker <post-title-here>
+```
+
 ## Building the Tailwind CSS
 - [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.
 - Run:

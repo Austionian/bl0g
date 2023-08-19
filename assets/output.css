@@ -644,10 +644,6 @@ video {
   height: 1.5rem;
 }
 
-.h-8 {
-  height: 2rem;
-}
-
 .h-\[100px\] {
   height: 100px;
 }
@@ -658,10 +654,6 @@ video {
 
 .w-\[36\.125rem\] {
   width: 36.125rem;
-}
-
-.w-auto {
-  width: auto;
 }
 
 .max-w-2xl {
@@ -694,20 +686,16 @@ video {
   justify-content: space-between;
 }
 
-.justify-self-center {
-  justify-self: center;
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
 
-.rounded-md {
-  border-radius: 0.375rem;
-}
-
 .rounded-full {
   border-radius: 9999px;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
 }
 
 .bg-white {
@@ -773,10 +761,6 @@ video {
 
 .text-right {
   text-align: right;
-}
-
-.align-middle {
-  vertical-align: middle;
 }
 
 .font-mono {

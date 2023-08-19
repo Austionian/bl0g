@@ -8,6 +8,7 @@ default-run = "bl0g"
 
 [dependencies]
 axum = "0.6"
+chrono = "0.4.26"
 comrak = "0.18.0"
 config = { version = "0.13", default-features = false, features = ["yaml"] }
 hyper = { version = "0.14", features = ["full"] }
