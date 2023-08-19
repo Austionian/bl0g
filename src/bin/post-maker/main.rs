@@ -13,19 +13,18 @@ fn main() {
         Err(_) => {
             let mut file = fs::File::create(format!("./posts/{file_name}"))
                 .expect("Unable to create new file.");
-            let _ = file
-                .write_all(
-                    format!(
-                        r#"---
+            file.write_all(
+                format!(
+                    r#"---
 title: {}
 date: {}
 ---"#,
-                        title,
-                        Local::now()
-                    )
-                    .as_bytes(),
+                    title,
+                    Local::now()
                 )
-                .expect("Unable to write to new file.");
+                .as_bytes(),
+            )
+            .expect("Unable to write to new file.");
 
             println!("{title}.md successfully created!");
         }
