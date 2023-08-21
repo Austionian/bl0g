@@ -1,4 +1,5 @@
 mod configuration;
+mod frontmatter;
 mod helpers;
 mod routes;
 
@@ -17,6 +18,7 @@ use tracing::field::display;
 use tracing::Span;
 
 pub use configuration::get_configuration;
+pub use frontmatter::deserialize_frontmatter;
 
 lazy_static! {
     pub static ref TEMPLATES: tera::Tera = {
