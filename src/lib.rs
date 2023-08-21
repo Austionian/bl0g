@@ -19,6 +19,7 @@ use tracing::Span;
 
 pub use configuration::get_configuration;
 pub use frontmatter::deserialize_frontmatter;
+pub use routes::FrontMatter;
 
 lazy_static! {
     pub static ref TEMPLATES: tera::Tera = {
@@ -48,7 +49,7 @@ pub fn startup() -> Router {
         .nest_service("/assets", ServeDir::new("assets"))
         .nest_service("/robots.txt", ServeFile::new("assets/robots.txt"))
         .route("/", get(routes::root))
-        .route("/post/:post_name", get(routes::post))
+        .route("/post/:post_name", get(routes::get_post))
         .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
         .layer(
             TraceLayer::new_for_http()

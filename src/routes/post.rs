@@ -13,7 +13,7 @@ pub struct FrontMatter {
     date: String,
 }
 
-pub async fn post(headers: HeaderMap, Path(post_name): Path<String>) -> Html<String> {
+pub async fn get_post(headers: HeaderMap, Path(post_name): Path<String>) -> Html<String> {
     // Create the context that will be passed to the template.
     let mut context = tera::Context::new();
 
@@ -44,5 +44,26 @@ pub async fn post(headers: HeaderMap, Path(post_name): Path<String>) -> Html<Str
     match TEMPLATES.render(&template, &context) {
         Ok(s) => Html(s),
         Err(_) => Html("<html><body>Error</body></html>".to_string()),
+    }
+}
+
+impl FrontMatter {
+    pub fn new(title: String) -> Self {
+        Self {
+            title,
+            date: chrono::Local::now().to_string(),
+        }
+    }
+}
+
+impl ToString for FrontMatter {
+    fn to_string(&self) -> String {
+        format!(
+            r#"---
+title: {}
+date: {}
+---"#,
+            self.title, self.date
+        )
     }
 }
