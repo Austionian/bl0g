@@ -5,3 +5,4 @@ Dockerfile
 scripts/
 migrations/
 src/bin
+tailwindcss
