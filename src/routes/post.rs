@@ -11,6 +11,7 @@ fn extract_md(post_name: String) -> Result<String, io::Error> {
 pub struct FrontMatter {
     title: String,
     date: String,
+    description: String,
 }
 
 pub async fn get_post(headers: HeaderMap, Path(post_name): Path<String>) -> Html<String> {
@@ -24,7 +25,8 @@ pub async fn get_post(headers: HeaderMap, Path(post_name): Path<String>) -> Html
     let (frontmatter, body) = deserialize_frontmatter::<FrontMatter>(&md).unwrap_or((
         FrontMatter {
             title: "Error".to_string(),
-            date: "Today".to_string(),
+            date: String::default(),
+            description: String::default(),
         },
         "Unable to load the post.".to_string(),
     ));
@@ -52,6 +54,7 @@ impl FrontMatter {
         Self {
             title,
             date: chrono::Local::now().to_string(),
+            description: String::default(),
         }
     }
 }
@@ -62,8 +65,9 @@ impl ToString for FrontMatter {
             r#"---
 title: {}
 date: {}
+description: {}
 ---"#,
-            self.title, self.date
+            self.title, self.date, self.description
         )
     }
 }
