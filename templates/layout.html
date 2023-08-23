@@ -17,7 +17,7 @@
     <link href="/assets/output.css" rel="stylesheet" />
   </head>
   <body class="bg-white dark:bg-slate-900 dark:text-gray-100">
-    <div>
+    <div class="absolute inset-x-0 top-0 z-50" x-data="{ atTop: false }">
       {% include "includes/header.html" %}
 
       <div class="relative isolate px-6 pt-14 lg:px-8">
@@ -112,6 +112,7 @@
       </div>
     </div>
 
-    <script src="/assets/js/htmx.min.js"></script>
+    <script src="/assets/js/htmx.min.js" defer></script>
+    <script src="/assets/js/alpine.min.js" defer></script>
   </body>
 </html>
