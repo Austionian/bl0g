@@ -17,12 +17,12 @@ cargo run --bin post-maker <post-title-here>
 - [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.
 - Run:
 ```shell
-./tailwindcss -i base.css -o ./assets/output.css --minify
+./tailwindcss -i tailwind.css -o ./assets/output.css --minify
 ```
 
 - Or as developing, in another tab run:
 ```shell
-./tailwindcss -i base.css -o ./assets/output.css --watch
+./tailwindcss -i tailwind.css -o ./assets/output.css --watch
 ```
 to automatically compile the tailwind as you're making changes.
 

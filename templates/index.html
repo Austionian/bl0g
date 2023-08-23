@@ -2,16 +2,18 @@
 <div>
   <div>
     <div class="text-center">
-        <div class="flex justify-center items-center">
-            <img
-            src="/assets/images/selfportrait.jpg"
-            alt="Black cat in black and white."
-            class="rounded-full h-[100px]"
-            />
-      <h1 class="text-4xl font-mono font-bold tracking-tight text-gray-900 dark:text-gray-300 sm:text-6xl">
+      <div class="flex justify-center items-center">
+        <img
+          src="/assets/images/selfportrait.jpg"
+          alt="Black cat in black and white."
+          class="rounded-full h-[100px]"
+        />
+        <h1
+          class="text-4xl font-mono font-bold tracking-tight text-gray-900 dark:text-gray-300 sm:text-6xl"
+        >
           austin r00ks
-      </h1>
-        </div>
+        </h1>
+      </div>
       <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
         Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
         cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
@@ -19,7 +21,9 @@
     </div>
   </div>
   <div class="pt-10">
-    <a hx-get="/post/test" hx-swap="outerHTML" class="underline">blog title</a>
+    {% for post in posts %}
+    <a hx-get="/post/{{post}}" hx-swap="outerHTML" class="underline">{{ post }}</a>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
