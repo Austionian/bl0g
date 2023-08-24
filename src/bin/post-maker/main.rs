@@ -7,7 +7,7 @@ fn main() {
     let args = env::args().collect::<Vec<_>>();
     let title = args.get(1).expect("Please provide a title for the post.");
 
-    if title.contains("-") {
+    if title.contains('-') {
         panic!("Please use _ (underscores) for naming posts instead of - (dashes).");
     }
 
