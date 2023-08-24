@@ -7,6 +7,7 @@ use axum::body::BoxBody;
 use axum::{routing::get, Router};
 use hyper::{Body, Request, Response};
 use lazy_static::lazy_static;
+use std::fs;
 use std::sync::Arc;
 use std::time::Duration;
 use tower::ServiceBuilder;
@@ -18,8 +19,7 @@ use tracing::field::display;
 use tracing::Span;
 
 pub use configuration::get_configuration;
-pub use frontmatter::deserialize_frontmatter;
-pub use routes::FrontMatter;
+pub use frontmatter::{deserialize_frontmatter, FrontMatter};
 
 lazy_static! {
     pub static ref TEMPLATES: tera::Tera = {
@@ -37,13 +37,33 @@ lazy_static! {
 
 #[derive(Clone)]
 pub struct AppState {
-    text: String,
+    posts: Vec<FrontMatter>,
 }
 
+const MAX_RECENT: u8 = 5;
+
 pub fn startup() -> Router {
-    let state = AppState {
-        text: "Austin!".to_string(),
+    // Get the posts at startup since they'll never change for the life
+    // of the program.
+    let posts = match fs::read_dir("posts") {
+        Ok(files) => {
+            let mut posts = files
+                .into_iter()
+                .filter_map(|file| file.ok())
+                .filter_map(|file| fs::read_to_string(file.path()).ok())
+                .filter_map(|file| FrontMatter::from_file(file).ok())
+                .collect::<Vec<_>>();
+            posts.sort_by(|a, b| b.date.cmp(&a.date));
+            posts.truncate(MAX_RECENT.into());
+            posts
+        }
+        Err(e) => {
+            println!("Unable to read files in posts directory, {}", e);
+            Vec::new()
+        }
     };
+
+    let state = AppState { posts };
 
     Router::new()
         .nest_service("/assets", ServeDir::new("assets"))

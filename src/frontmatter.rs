@@ -1,4 +1,12 @@
+use chrono::{DateTime, Utc};
 use serde::de::DeserializeOwned;
+
+#[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
+pub struct FrontMatter {
+    title: String,
+    pub date: DateTime<Utc>,
+    description: String,
+}
 
 #[derive(Debug)]
 pub enum FrontmatterError {
@@ -9,6 +17,43 @@ pub enum FrontmatterError {
 impl From<serde_yaml::Error> for FrontmatterError {
     fn from(value: serde_yaml::Error) -> Self {
         Self::ParseError(value)
+    }
+}
+
+impl FrontMatter {
+    pub fn new(title: String) -> Self {
+        Self {
+            title,
+            date: chrono::Utc::now(),
+            description: String::default(),
+        }
+    }
+
+    pub fn from_file(file: String) -> Result<Self, FrontmatterError> {
+        Ok(deserialize_frontmatter::<Self>(&file)?.0)
+    }
+}
+
+impl ToString for FrontMatter {
+    fn to_string(&self) -> String {
+        format!(
+            r#"---
+title: {}
+date: {}
+description: {}
+---"#,
+            self.title, self.date, self.description
+        )
+    }
+}
+
+impl Default for FrontMatter {
+    fn default() -> Self {
+        Self {
+            title: String::default(),
+            date: chrono::Utc::now(),
+            description: String::default(),
+        }
     }
 }
 

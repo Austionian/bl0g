@@ -22,7 +22,22 @@
   </div>
   <div class="pt-10">
     {% for post in posts %}
-    <a hx-get="/post/{{post}}" hx-swap="outerHTML" class="underline">{{ post }}</a>
+    <div class="group cursor-pointer">
+      <a
+        hx-get="/post/{{ post.title }}"
+        hx-swap="outerHTML"
+      >
+        <div>
+          <span class="font-light text-sm text-gray-600 dark:text-gray-300"
+            >{{ post.date | date(format="%B %d, %Y") }}</span
+          >
+          <span class="group-hover:text-pink-500"
+            >{{ post.title | replace(from="_", to=" ") | title }}</span
+          >
+        </div>
+        <div class="italic text-sm">{{ post.description }}</div>
+      </a>
+    </div>
     {% endfor %}
   </div>
 </div>
