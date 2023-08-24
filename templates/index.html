@@ -1,15 +1,15 @@
 {% extends "layout.html" %} {% block body %}
 <div>
   <div>
-    <div class="text-center">
+    <div class="text-center mb-4">
       <div class="flex justify-center items-center">
         <img
           src="/assets/images/selfportrait.jpg"
           alt="Black cat in black and white."
-          class="rounded-full h-[100px]"
+          class="rounded-full h-[100px] mr-5"
         />
         <h1
-          class="text-4xl font-mono font-bold tracking-tight text-gray-900 dark:text-gray-300 sm:text-6xl"
+          class="text-4xl font-puddle font-bold tracking-tight text-gray-900 dark:text-gray-300 sm:text-6xl"
         >
           austin r00ks
         </h1>
@@ -20,11 +20,11 @@
       </p>
     </div>
   </div>
-  <div class="pt-10">
+  <div class="pt-10" id="posts">
     {% for post in posts %}
-    <a hx-get="/post/{{ post.title }}" hx-swap="outerHTML">
+    <a hx-get="/post/{{ post.title }}" hx-target="#posts" hx-swap="outerHTML">
       <div
-        class="group cursor-pointer space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline"
+        class="group cursor-pointer space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline mb-10"
       >
         <dl>
           <dt class="sr-only">Published on</dt>
