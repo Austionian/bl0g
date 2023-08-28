@@ -10,13 +10,28 @@
       name="description"
       content="A personal blog about tech and literature."
     />
+    <style>
+      [x-cloak] {
+        display: none !important;
+      }
+    </style>
+    <link href="/assets/output.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Puddles&display=swap" rel="stylesheet">
-    <link href="/assets/output.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Puddles&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      /*to prevent Firefox FOUC, this must be here*/
+      let FF_FOUC_FIX;
+    </script>
   </head>
   <body class="bg-white dark:bg-slate-900 dark:text-gray-100">
-    <div class="absolute inset-x-0 top-0 z-50" x-data="{ atTop: false, open: false }">
+    <div
+      class="absolute inset-x-0 top-0 z-50"
+      x-data="{ atTop: false, open: false }"
+    >
       {% include "includes/header.html" %}
 
       <div class="relative isolate px-6 pt-14 lg:px-8">
