@@ -69,6 +69,7 @@ pub fn startup() -> Router {
         .nest_service("/assets", ServeDir::new("assets"))
         .nest_service("/robots.txt", ServeFile::new("assets/robots.txt"))
         .route("/", get(routes::root))
+        .route("/blog", get(routes::blog))
         .route("/post/:post_name", get(routes::get_post))
         .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
         .layer(

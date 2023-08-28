@@ -1,0 +1,48 @@
+{% extends "layout.html" %} {% block body %}
+<div>
+  <div class="pt-10" id="posts">
+    {% for post in posts %}
+    <a hx-get="/post/{{ post.title }}" hx-target="#posts" hx-swap="outerHTML">
+      <div
+        class="group cursor-pointer space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline mb-10"
+      >
+        <dl>
+          <dt class="sr-only">Published on</dt>
+          <dd
+            class="font-light text-sm text-gray-600 dark:text-gray-300 leading-6"
+          >
+            <time datetime="{{post.date}}">
+              {{ post.date | date(format="%B %d, %Y") }}</time
+            >
+          </dd>
+        </dl>
+        <div class="space-y-5 xl:col-span-3">
+          <div class="space-y-6">
+            <div>
+              <h2
+                class="group-hover:text-pink-500 text-2xl font-bold leading-8 tracking-tight"
+              >
+                {{ post.title | replace(from="_", to=" ") | title }}
+              </h2>
+              <!-- <div class="flex flex-wrap"> -->
+              <!--   <a -->
+              <!--     class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" -->
+              <!--     href="/tags/rust" -->
+              <!--     >rust</a -->
+              <!--   > -->
+              <!-- </div> -->
+            </div>
+            <div class="prose text-gray-500 max-w-none dark:text-gray-400">
+              {{ post.description }}
+            </div>
+          </div>
+          <div class="text-base font-medium leading-6">
+            Read more →
+          </div>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
