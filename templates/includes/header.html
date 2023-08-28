@@ -1,10 +1,37 @@
+<div>
+  <div
+    class="h-screen w-screen z-10 fixed bg-white/20 dark:bg-black/20 backdrop-blur md:hidden mt-[72px]"
+    x-show="open"
+  >
+    <div class="space-y-1 px-2 pb-3 pt-2">
+      <a
+        href="/"
+        class="hover:bg-zinc-900/5 hover:font-bold dark:hover:bg-black/5 text-gray-700 dark:text-gray-300 hover:text-pink-500 block rounded-md px-3 py-2 font-medium"
+        >ab0ut</a
+      >
+      <a
+        href="/blog"
+        class="hover:bg-zinc-900/5 hover:font-bold dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-pink-500 block rounded-md px-3 py-2 font-medium"
+        >bl0g</a
+      >
+      <a
+        href="/photos"
+        class="hover:bg-zinc-900/5 hover:font-bold dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-pink-500 block rounded-md px-3 py-2 font-medium"
+        >ph0t0s</a
+      >
+    </div>
+  </div>
+</div>
 <nav
   class="flex items-center justify-between z-10 p-6 lg:px-8 sticky top-0 left-0 right-0 font-lg transition duration-300 ease-in-out"
-  :class="{ 'shadow-lg dark:shadow-white/10 backdrop-blur': atTop, 'bg-white/5': atTop }"
+  :class="{ 'shadow-lg': atTop && !open, 'dark:shadow-white/10 backdrop-blur': atTop, 'bg-white/5': atTop }"
   @scroll.window="atTop = (window.pageYOffset > 50)"
 >
   <div class="flex lg:flex-1">
-    <a href="/" class="-m-1.5 font-puddle font-bold text-lg hover:text-pink-500">
+    <a
+      href="/"
+      class="-m-1.5 font-puddle font-bold text-lg hover:text-pink-500"
+    >
       <div class="group relative cursor-pointer rounded">
         <div class="flex items-center relative">
           <div
@@ -73,19 +100,21 @@
       </div>
     </a>
   </div>
-  <div class="flex lg:hidden">
+  <div class="flex md:hidden">
     <button
       type="button"
-      class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-100"
+      class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-100 hover:text-pink-500"
+      @click="open = !open"
     >
       <span class="sr-only">Open main menu</span>
       <svg
-        class="h-6 w-6"
+        class="h-6 w-6 hover:scale-110 transition duration-150"
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
         aria-hidden="true"
+        x-show="!open"
       >
         <path
           stroke-linecap="round"
@@ -93,9 +122,24 @@
           d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
         />
       </svg>
+      <svg
+        class="h-6 w-6 hover:scale-110 transition duration-150"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
+        x-show="open"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
     </button>
   </div>
-  <div class="hidden lg:flex lg:gap-x-12">
+  <div class="hidden md:flex md:gap-x-12">
     <a
       href="/"
       class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-pink-500"
