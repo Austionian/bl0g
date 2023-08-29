@@ -1,8 +1,9 @@
 {% extends "layout.html" %} {% block body %}
-<div>
+<div id="blog">
+  <h1 class="text-5xl">rand0m writings</h1>
   <div class="pt-10" id="posts">
     {% for post in posts %}
-    <a hx-get="/post/{{ post.title }}" hx-target="#posts" hx-swap="outerHTML">
+    <a hx-get="/post/{{ post.title }}" hx-target="#blog" hx-swap="outerHTML">
       <div
         class="group cursor-pointer space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline mb-10"
       >
@@ -36,9 +37,7 @@
               {{ post.description }}
             </div>
           </div>
-          <div class="text-base font-medium leading-6">
-            Read more →
-          </div>
+          <div class="text-base font-medium leading-6">Read more →</div>
         </div>
       </div>
     </a>

@@ -1,5 +1,5 @@
 {% extends "layout.html" %} {% block body %}
-<div>
+<div id="index">
   <div>
     <div class="text-center mb-4">
       <div class="flex justify-center items-center">
@@ -9,20 +9,19 @@
           class="rounded-full h-[100px] mr-5"
         />
         <h1
-          class="text-4xl font-puddle font-bold tracking-tight text-gray-900 dark:text-gray-300 sm:text-6xl"
+          class="text-4xl font-mono font-bold tracking-tight text-gray-900 dark:text-white md:text-7xl"
         >
           austin r00ks
         </h1>
       </div>
-      <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
-        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
-        cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+      <p class="mt-3 mb-12 text-lg leading-8 font-mono">
+        Software Engineer & Hypermedia Enthusiast
       </p>
     </div>
   </div>
-  <div class="pt-10" id="posts">
+  <div class="pt-10">
     {% for post in posts %}
-    <a hx-get="/post/{{ post.title }}" hx-target="#posts" hx-swap="outerHTML">
+    <a hx-get="/post/{{ post.title }}" hx-target="#index" hx-swap="outerHTML">
       <div
         class="group cursor-pointer space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline mb-10"
       >
@@ -40,7 +39,7 @@
           <div class="space-y-6">
             <div>
               <h2
-                class="group-hover:text-pink-500 text-2xl font-bold leading-8 tracking-tight"
+                class="group-hover:text-primary-500 group-hover:dark:text-primary-400 text-2xl font-bold leading-8 tracking-tight"
               >
                 {{ post.title | replace(from="_", to=" ") | title }}
               </h2>
@@ -56,9 +55,7 @@
               {{ post.description }}
             </div>
           </div>
-          <div class="text-base font-medium leading-6">
-            Read more →
-          </div>
+          <div class="text-base font-medium leading-6">Read more →</div>
         </div>
       </div>
     </a>

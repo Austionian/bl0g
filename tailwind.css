@@ -3,7 +3,24 @@
 @tailwind utilities;
 
 @layer base {
-    html {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  html {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-bottom: 2rem;
+  }
+
+  @media screen and (min-width: 480px) {
+    h1 {
+      font-size: 4rem;
     }
+  }
+
+  h3 {
+    margin-bottom: 0.5rem;
+  }
 }

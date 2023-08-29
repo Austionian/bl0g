@@ -2,7 +2,7 @@ use crate::{AppState, TEMPLATES};
 use axum::{extract::State, response::Html};
 use std::sync::Arc;
 
-// basic handler that responds with a static string
+// Handler to return a page with blog posts.
 pub async fn blog(State(state): State<Arc<AppState>>) -> Html<String> {
     let mut context = tera::Context::new();
     context.insert("posts", &state.posts);
