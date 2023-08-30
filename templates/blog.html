@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block body %}
 <div id="blog">
-  <h1 class="text-5xl">rand0m writings</h1>
+  <h1 class="font-puddle text-5xl">selected writings</h1>
   <div class="pt-10" id="posts">
     {% for post in posts %}
     <a hx-get="/post/{{ post.title }}" hx-target="#blog" hx-swap="outerHTML">

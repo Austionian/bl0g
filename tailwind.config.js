@@ -8,9 +8,9 @@ module.exports = {
       colors: {
         primary: colors.pink,
       },
-      // fontFamily: {
-      //   puddle: ["'Rubik Puddles'", "monospace"],
-      // },
+      fontFamily: {
+        puddle: ["'Rubik Puddles'", "monospace"],
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
