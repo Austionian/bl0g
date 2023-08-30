@@ -12,7 +12,7 @@ The solution to the day's part two problem came down to implementing a stack of 
 
 My initial solution read through the input and created a Line struct which really just was a wrapping to the line so that I could functionally filter out the content I didn't want:
 
-```rust
+``` rust
 // sniped conent
 impl Line {
     fn remove_invalid(&self) -> Option<Vec<char>> {

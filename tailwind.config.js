@@ -6,10 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.pink,
-      },
-      fontFamily: {
-        puddle: ["'Rubik Puddles'", "monospace"],
+        primary: colors.emerald,
       },
     },
   },
