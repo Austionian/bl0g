@@ -3,20 +3,24 @@ use crate::{
     helpers::get_template,
     TEMPLATES,
 };
-use axum::{extract::Path, http::HeaderMap, response::Html};
+use axum::response::{Html, IntoResponse};
+use axum::{extract::Path, http::HeaderMap};
 use comrak::{markdown_to_html, ComrakOptions};
 use std::{fs, io};
 
-pub fn read_post_to_string(post_name: String) -> Result<String, io::Error> {
+pub fn read_post_to_string(post_name: &str) -> Result<String, io::Error> {
     fs::read_to_string(format!("posts/{post_name}.md"))
 }
 
-pub async fn get_post(headers: HeaderMap, Path(post_name): Path<String>) -> Html<String> {
+/// A handler function that will load a post, convert it to HTML, and
+/// either return just the post, or an entire page containing the post depending
+/// from where the post was requested.
+pub async fn get_post(headers: HeaderMap, Path(post_name): Path<String>) -> impl IntoResponse {
     // Create the context that will be passed to the template.
     let mut context = tera::Context::new();
 
     // Load the markdown file to a string.
-    let md = read_post_to_string(post_name).unwrap_or("Unable to load post.".to_string());
+    let md = read_post_to_string(&post_name).unwrap_or("Unable to load post.".to_string());
 
     // Parse the frontmatter and post body from the markdown string.
     let (frontmatter, body) = deserialize_frontmatter::<FrontMatter>(&md).unwrap_or((
@@ -34,9 +38,13 @@ pub async fn get_post(headers: HeaderMap, Path(post_name): Path<String>) -> Html
     // Determine which template to use.
     let template = get_template(headers, "post");
 
+    let mut headers = HeaderMap::new();
+    let path = format!("/post/{post_name}");
+    headers.insert("HX-PUSH-Url", path.parse().unwrap());
+
     // Return the response.
     match TEMPLATES.render(&template, &context) {
-        Ok(s) => Html(s),
-        Err(_) => Html("<html><body>Error</body></html>".to_string()),
+        Ok(s) => (headers, Html(s)),
+        Err(_) => (headers, Html("<html><body>Error</body></html>".to_string())),
     }
 }
