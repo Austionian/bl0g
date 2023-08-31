@@ -7,7 +7,7 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
     let mut context = tera::Context::new();
     const NUMBER_OF_POSTS: usize = 4;
 
-    if &state.posts.len() > &NUMBER_OF_POSTS {
+    if state.posts.len() > NUMBER_OF_POSTS {
         context.insert("posts", &state.posts[..NUMBER_OF_POSTS]);
     } else {
         context.insert("posts", &state.posts);
