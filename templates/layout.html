@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>00</title>
+    <title>r00ks</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <meta name="robots" content="noindex" />
@@ -10,6 +10,10 @@
       name="description"
       content="A personal blog about tech and literature."
     />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
     <style>
       [x-cloak] {
         display: none !important;
@@ -82,9 +86,10 @@
             "
           ></div>
         </div>
-        <div class="mx-auto max-w-3xl py-32 bg-white/20 dark:bg-black/20 p-5 rounded-lg">
-          {% block body %} {% endblock %}
-          {% include "includes/footer.html" %}
+        <div
+          class="mx-auto max-w-3xl py-32 bg-white/20 dark:bg-black/20 p-5 rounded-lg"
+        >
+          {% block body %} {% endblock %} {% include "includes/footer.html" %}
         </div>
       </div>
     </div>
