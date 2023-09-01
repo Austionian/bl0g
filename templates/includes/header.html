@@ -4,27 +4,19 @@
     x-show="open"
   >
     <div class="space-y-1 px-2 pb-3 pt-2">
+      {% for link in nav_links %}
       <a
-        href="/"
+        href="/{{ link }}"
         class="transition hover:bg-zinc-900/5 hover:font-bold dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 block rounded-md px-3 py-2 font-medium"
-        >ab0ut</a
+        >{{ link }}</a
       >
-      <a
-        href="/blog"
-        class="transition hover:bg-zinc-900/5 hover:font-bold dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 block rounded-md px-3 py-2 font-medium"
-        >bl0g</a
-      >
-      <a
-        href="/photos"
-        class="transition hover:bg-zinc-900/5 hover:font-bold dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 block rounded-md px-3 py-2 font-medium"
-        >ph0t0s</a
-      >
+      {% endfor %}
     </div>
   </div>
 </div>
 <nav
   class="flex items-center justify-between z-10 p-6 lg:px-8 sticky top-0 left-0 right-0 font-lg transition duration-300 ease-in-out"
-  :class="{ 'shadow-lg': atTop && !open, 'dark:shadow-white/10 backdrop-blur': atTop, 'bg-white/5': atTop }"
+  :class="{ 'shadow-lg': atTop && !open, 'dark:shadow-white/10 backdrop-blur bg-white/5': atTop }"
   @scroll.window="atTop = (window.pageYOffset > 50)"
 >
   <div class="flex lg:flex-1">
@@ -141,23 +133,13 @@
     </button>
   </div>
   <div class="hidden md:flex md:gap-x-12">
+    {% for link in nav_links %}
     <a
-      href="/"
+      href="/{{ link }}"
       class="transition text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
       :class="{ 'hidden': atTop }"
-      >ab0ut</a
+      >{{ link }}</a
     >
-    <a
-      href="/blog"
-      class="transition text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
-      :class="{ 'hidden': atTop }"
-      >bl0g</a
-    >
-    <a
-      href="/photos"
-      class="transition text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
-      :class="{ 'hidden': atTop }"
-      >ph0t0s</a
-    >
+    {% endfor %}
   </div>
 </nav>

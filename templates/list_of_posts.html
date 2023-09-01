@@ -1,8 +1,12 @@
-<div class="pt-10">
+<div class="mt-10">
   {% for post in posts %}
-  <a hx-get="/post/{{ post.title }}" hx-target="#outerReach" hx-swap="outerHTML">
+  <a
+    hx-get="/bl0g/{{ post.title }}"
+    hx-target="#outerReach"
+    hx-swap="outerHTML"
+  >
     <div
-      class="group cursor-pointer space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline mb-10"
+      class="group cursor-pointer space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline -ml-2 mb-4 transition hover:bg-gray-500/5 hover:dark:bg-gray-50/5 px-2 py-6 rounded-lg"
     >
       <dl>
         <dt class="sr-only">Published on</dt>
@@ -18,7 +22,7 @@
         <div class="space-y-6">
           <div>
             <h2
-              class="transition group-hover:text-primary-500 group-hover:dark:text-primary-400 text-xl sm:text-2xl font-bold leading-8 tracking-tight"
+              class="transition text-xl sm:text-2xl font-bold leading-8 tracking-tight"
             >
               {{ post.title | replace(from="_", to=" ") | title }}
             </h2>
@@ -34,7 +38,14 @@
             {{ post.description }}
           </div>
         </div>
-        <div class="text-base font-medium leading-6">Read more →</div>
+        <div class="flex">
+          <div class="text-base font-medium leading-6">Read more</div>
+          <div
+            class="ml-2 group-hover:text-primary-400 group-hover:scale-150 transition"
+          >
+            →
+          </div>
+        </div>
       </div>
     </div>
   </a>

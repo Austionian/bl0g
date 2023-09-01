@@ -38,6 +38,7 @@ lazy_static! {
 #[derive(Clone)]
 pub struct AppState {
     posts: Vec<FrontMatter>,
+    nav_links: [&'static str; 3],
 }
 
 const MAX_RECENT: u8 = 5;
@@ -63,14 +64,17 @@ pub fn startup() -> Router {
         }
     };
 
-    let state = AppState { posts };
+    let state = AppState {
+        posts,
+        nav_links: ["ab0ut", "bl0g", "ph0t0s"],
+    };
 
     Router::new()
         .nest_service("/assets", ServeDir::new("assets"))
         .nest_service("/robots.txt", ServeFile::new("assets/robots.txt"))
         .route("/", get(routes::root))
-        .route("/blog", get(routes::blog))
-        .route("/post/:post_name", get(routes::get_post))
+        .route("/bl0g", get(routes::blog))
+        .route("/bl0g/:post_name", get(routes::get_blog_post))
         .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
         .layer(
             TraceLayer::new_for_http()

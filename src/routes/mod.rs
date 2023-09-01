@@ -5,5 +5,5 @@ mod root;
 
 pub use blog::blog;
 pub use health_check::health_check;
-pub use post::get_post;
+pub use post::get_blog_post;
 pub use root::root;
