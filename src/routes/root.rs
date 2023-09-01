@@ -35,7 +35,7 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             title: "Software Developer/ Administrator",
             start_year: "2017",
             end_year: "2022",
-            image: "ccspm.jpg",
+            image: "ccspm.webp",
         },
     ];
 
