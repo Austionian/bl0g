@@ -1,7 +1,7 @@
 <div class="mt-10">
   {% for post in posts %}
   <a
-    hx-get="/bl0g/{{ post.title }}"
+    hx-get="/bl0g/{{ post.title }}?htmx=true"
     hx-target="#outerReach"
     hx-swap="outerHTML"
   >
