@@ -28,7 +28,7 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             title: "Software Engineer (contract)",
             start_year: "2021",
             end_year: "Present",
-            image: "",
+            image: "st.webp",
         },
         Job {
             company: "Catholic Charities of St. Paul and Minneapolis",
