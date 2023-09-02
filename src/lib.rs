@@ -1,6 +1,6 @@
 mod configuration;
 mod frontmatter;
-pub mod helpers;
+mod helpers;
 mod routes;
 
 use axum::body::BoxBody;

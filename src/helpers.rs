@@ -7,9 +7,10 @@ use axum::http::HeaderMap;
 /// Allows for returning templates in an SPA
 /// or MPA method.
 ///
+/// **Requires that _full_ templates end with '_full.html'**
+///
 /// # Examples
 ///
-/// ```
 /// use axum::http::HeaderMap;
 /// use bl0g::helpers::get_template;
 ///
@@ -21,11 +22,31 @@ use axum::http::HeaderMap;
 /// let mut value = headers.entry("HX-Request").or_insert("false".parse().unwrap());
 /// *value = "false".parse().unwrap();
 /// assert_eq!(get_template(&headers, "test"), "test_full.html".to_string());
-/// ```
 pub fn get_template(headers: &HeaderMap, template_name: &str) -> String {
     if headers.get("HX-Request").is_some_and(|v| v == "true") {
         format!("{template_name}.html")
     } else {
         format!("{template_name}_full.html")
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use axum::http::HeaderMap;
+
+    #[test]
+    fn get_fragment() {
+        let mut headers = HeaderMap::new();
+        headers.insert("HX-Request", "true".parse().unwrap());
+
+        assert_eq!(get_template(&headers, "test"), "test.html".to_string());
+    }
+
+    #[test]
+    fn get_full() {
+        let mut headers = HeaderMap::new();
+        headers.insert("HX-Request", "false".parse().unwrap());
+        assert_eq!(get_template(&headers, "test"), "test_full.html".to_string());
     }
 }
