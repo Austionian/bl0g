@@ -43,13 +43,7 @@ pub async fn blog(
     }
     context.insert("nav_links", &state.nav_links);
 
-    let previous;
-
-    if page == 0 {
-        previous = 0;
-    } else {
-        previous = page - 1;
-    }
+    let previous = if page == 0 { 0 } else { page - 1 };
 
     let next = page + 1;
 
