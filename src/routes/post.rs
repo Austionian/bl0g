@@ -42,7 +42,7 @@ pub async fn get_blog_post(
     context.insert("post_html", &post_html);
 
     // Determine which template to use.
-    let template = get_template(headers, "post");
+    let template = get_template(&headers, "post");
     context.insert("nav_links", &state.nav_links);
 
     let mut headers = HeaderMap::new();
