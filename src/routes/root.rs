@@ -39,7 +39,7 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
         },
     ];
 
-    const NUMBER_OF_POSTS: usize = 4;
+    const NUMBER_OF_POSTS: usize = 3;
 
     if state.posts.len() > NUMBER_OF_POSTS {
         context.insert("posts", &state.posts[..NUMBER_OF_POSTS]);

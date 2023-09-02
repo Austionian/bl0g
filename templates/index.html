@@ -82,6 +82,19 @@
     </div>
   </div>
   <h2 class="text-2xl sm:text-3xl">Recent P0sts</h2>
-  {% include "list_of_posts.html" %} {% include "work.html" %}
+  {% include "list_of_posts.html" %}
+  <div class="flex justify-end">
+  <a href="/bl0g" class="group-hover:text-primary-400">
+    <div class="group flex flex-row">
+      <div class="group-hover:text-primary-400">see m0re p0sts</div>
+      <div
+        class="ml-2 group-hover:text-primary-400 group-hover:scale-150 transition"
+      >
+        →
+      </div>
+    </div>
+  </a>
+  </div>
+  {% include "work.html" %}
 </div>
 {% endblock %}

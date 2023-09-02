@@ -41,8 +41,6 @@ pub struct AppState {
     nav_links: [&'static str; 3],
 }
 
-const MAX_RECENT: u8 = 5;
-
 pub fn startup() -> Router {
     // Get the posts at startup since they'll never change for the life
     // of the program.
@@ -55,7 +53,6 @@ pub fn startup() -> Router {
                 .filter_map(|file| FrontMatter::from_file(file).ok())
                 .collect::<Vec<_>>();
             posts.sort_by(|a, b| b.date.cmp(&a.date));
-            posts.truncate(MAX_RECENT.into());
             posts
         }
         Err(e) => {
