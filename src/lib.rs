@@ -75,6 +75,7 @@ pub fn startup() -> Router {
         .route("/", get(routes::root))
         .route("/bl0g", get(routes::blog))
         .route("/bl0g/:post_name", get(routes::get_blog_post))
+        .fallback(routes::handle_404)
         .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
         .layer(
             TraceLayer::new_for_http()
