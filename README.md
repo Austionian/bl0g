@@ -1,11 +1,11 @@
 # Bl0g
-A simple blog with an MVC architecture and new-school tech flavors.
-Coming soon to https://blog.r00ks.io
+A simple blog/personal site with an MVC architecture and new-school tech flavors.
 
 ## Stack
 - [Axum](https://docs.rs/axum/latest/axum/)
 - [Twailwind CSS](https://tailwindcss.com/)
 - [htmx](https://htmx.org)
+- [AlpineJS](https://alpinejs.dev)
 
 ## Creating a new blog post
 - To create a new post in the posts directory run:
