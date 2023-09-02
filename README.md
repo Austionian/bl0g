@@ -5,7 +5,7 @@ A simple blog/personal site with an MVC architecture and new-school tech flavors
 - [Axum](https://docs.rs/axum/latest/axum/)
 - [Twailwind CSS](https://tailwindcss.com/)
 - [htmx](https://htmx.org)
-- [AlpineJS](https://alpinejs.dev)
+- [Alpine.js](https://alpinejs.dev)
 
 ## Creating a new blog post
 - To create a new post in the posts directory run:
