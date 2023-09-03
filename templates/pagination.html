@@ -1,10 +1,10 @@
 <nav
-  class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0"
+  class="flex items-center justify-between border-t border-gray-200 dark:border-gray-700 px-4 sm:px-0"
 >
   <div class="-mt-px flex w-0 flex-1">
     {% if pagination.current == 0 %}{% else %}
     <a
-      class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+      class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 dark:hover:border-gray-600 hover:text-primary-500 cursor-pointer"
       hx-get="{{ pagination.previous }}&htmx=true"
       hx-target="#pagination_outerReach"
       hx-swap="innerHTML"
@@ -28,7 +28,7 @@
   <div class="hidden md:-mt-px md:flex">
     {% for page in pagination.pages %}
     <a
-      class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-primary-500 dark:hover:text-primary-400"
+      class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 dark:hover:border-gray-600 hover:text-primary-500 dark:hover:text-primary-400 {% if pagination.current == page %} text-primary-400{% endif %} cursor-pointer"
       hx-get="/bl0g?page={{ page }}&htmx=true"
       hx-target="#pagination_outerReach"
       hx-swap="innerHTML"
@@ -39,7 +39,7 @@
   <div class="-mt-px flex w-0 flex-1 justify-end">
     {% if pagination.current == pagination.pages_len %}{% else %}
     <a
-      class="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-primary-500 dark:hover:text-primary-400"
+      class="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 dark:hover:border-gray-600 hover:text-primary-500 dark:hover:text-primary-400 cursor-pointer"
       hx-get="{{ pagination.next }}&htmx=true"
       hx-target="#pagination_outerReach"
       hx-swap="innerHTML"
