@@ -4,8 +4,6 @@
     <title>r00ks</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
-    <meta name="robots" content="noindex" />
-    <meta name="googlebot" content="noindex" />
     <meta
       name="description"
       content="A personal blog about tech and literature."
@@ -90,6 +88,7 @@
         </div>
         <div
           class="mx-auto max-w-4xl py-32 bg-white/20 dark:bg-black/20 p-4 sm:p-16 rounded-xl"
+          hx-boost="true"
         >
           {% block body %} {% endblock %} {% include "includes/footer.html" %}
         </div>
