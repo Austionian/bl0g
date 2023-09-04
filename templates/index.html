@@ -81,7 +81,7 @@
   <h2 class="text-2xl sm:text-3xl">Recent P0sts</h2>
   {% include "list_of_posts.html" %}
   <div class="flex justify-end">
-  <a hx-get="/bl0g" hx-target="#outerReach" hx-swap="outerHTML transition:true" class="group-hover:text-primary-400">
+  <a hx-get="/bl0g?htmx=true" hx-target="#outerReach" hx-swap="outerHTML transition:true" class="group-hover:text-primary-400">
     <div class="group flex flex-row">
       <div class="group-hover:text-primary-400">see m0re p0sts</div>
       <div
