@@ -2,6 +2,7 @@
   <div
     class="h-screen w-screen z-10 fixed bg-white/20 dark:bg-black/20 backdrop-blur md:hidden mt-[72px]"
     x-show="open"
+    x-transition.scale.origin.left
   >
     <div class="space-y-1 px-2 pb-3 pt-2">
       {% for link in nav_links %}
