@@ -40,13 +40,16 @@ mod test {
         let mut headers = HeaderMap::new();
         headers.insert("HX-Request", "true".parse().unwrap());
 
-        assert_eq!(get_template(&headers, "test"), "test.html".to_string());
+        assert_eq!(
+            get_template(&headers, "test"),
+            "partials/test.html".to_string()
+        );
     }
 
     #[test]
     fn get_full() {
         let mut headers = HeaderMap::new();
         headers.insert("HX-Request", "false".parse().unwrap());
-        assert_eq!(get_template(&headers, "test"), "test_full.html".to_string());
+        assert_eq!(get_template(&headers, "test"), "test.html".to_string());
     }
 }
