@@ -24,9 +24,9 @@ use axum::http::HeaderMap;
 /// assert_eq!(get_template(&headers, "test"), "test_full.html".to_string());
 pub fn get_template(headers: &HeaderMap, template_name: &str) -> String {
     if headers.get("HX-Request").is_some_and(|v| v == "true") {
-        format!("{template_name}.html")
+        format!("partials/{template_name}.html")
     } else {
-        format!("{template_name}_full.html")
+        format!("{template_name}.html")
     }
 }
 

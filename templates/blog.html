@@ -1,5 +1,2 @@
-<div id="outerReach">
-  <h1 class="text-4xl">selected writings</h1>
-    <div class="min-h-[50vh]">{% include "list_of_posts.html" %}</div>
-    {% include "pagination.html" %}
-</div>
+{% extends "layout.html" %} {% block body %} {% include "partials/blog.html" %}
+{% endblock %}

@@ -1,0 +1,5 @@
+<h1>{{ frontmatter.title | replace(from="_", to=" ") | title }}</h1>
+<h3>{{ frontmatter.date | date(format="%B %d, %Y") }}</h3>
+<div class="prose dark:prose-invert">
+{{ post_html }}
+</div>
