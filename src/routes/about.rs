@@ -1,4 +1,4 @@
-use crate::{helpers::get_template, AppState, TEMPLATES};
+use crate::{AppState, TEMPLATES};
 use axum::http::HeaderMap;
 use axum::response::IntoResponse;
 use axum::{extract::State, response::Html};
