@@ -38,7 +38,6 @@ lazy_static! {
 #[derive(Clone)]
 pub struct AppState {
     posts: Vec<FrontMatter>,
-    nav_links: [&'static str; 3],
 }
 
 pub fn startup() -> Router {
@@ -61,10 +60,7 @@ pub fn startup() -> Router {
         }
     };
 
-    let state = AppState {
-        posts,
-        nav_links: ["ab0ut", "bl0g", "ph0t0s"],
-    };
+    let state = AppState { posts };
 
     Router::new()
         .nest_service("/assets", ServeDir::new("assets"))

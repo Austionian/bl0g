@@ -46,7 +46,6 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
     } else {
         context.insert("posts", &state.posts);
     }
-    context.insert("nav_links", &state.nav_links);
 
     context.insert("jobs", &jobs);
 

@@ -1,13 +1,12 @@
 use crate::{
     frontmatter::{deserialize_frontmatter, FrontMatter},
     helpers::get_template,
-    AppState, TEMPLATES,
+    TEMPLATES,
 };
-use axum::extract::{Path, State};
+use axum::extract::Path;
 use axum::http::HeaderMap;
 use axum::response::{Html, IntoResponse};
 use comrak::{markdown_to_html, ComrakOptions};
-use std::sync::Arc;
 use std::{fs, io};
 
 pub fn read_post_to_string(post_name: &str) -> Result<String, io::Error> {
@@ -17,11 +16,7 @@ pub fn read_post_to_string(post_name: &str) -> Result<String, io::Error> {
 /// A handler function that will load a post, convert it to HTML, and
 /// either return just the post, or an entire page containing the post depending
 /// from where the post was requested.
-pub async fn get_blog_post(
-    State(state): State<Arc<AppState>>,
-    headers: HeaderMap,
-    Path(post_name): Path<String>,
-) -> impl IntoResponse {
+pub async fn get_blog_post(headers: HeaderMap, Path(post_name): Path<String>) -> impl IntoResponse {
     // Create the context that will be passed to the template.
     let mut context = tera::Context::new();
 
@@ -43,7 +38,6 @@ pub async fn get_blog_post(
 
     // Determine which template to use.
     let template = get_template(&headers, "post");
-    context.insert("nav_links", &state.nav_links);
 
     let mut headers = HeaderMap::new();
     let path = format!("/bl0g/{post_name}");

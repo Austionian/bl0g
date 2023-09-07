@@ -5,7 +5,7 @@
     x-transition.scale.origin.left
   >
     <div class="space-y-1 px-2 pb-3 pt-2">
-      {% for link in nav_links %}
+      {% for link in links %}
       <a
         href="/{{ link }}"
         class="transition hover:bg-zinc-900/5 hover:font-bold dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 block rounded-md px-3 py-2 font-medium"
@@ -134,7 +134,7 @@
     </button>
   </div>
   <div class="hidden md:flex md:gap-x-12">
-    {% for link in nav_links %}
+    {% for link in links %}
     <a
       href="/{{ link }}"
       class="transition text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"

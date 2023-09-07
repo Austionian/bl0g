@@ -10,13 +10,18 @@
         />
         <h1
           class="text-3xl font-bold mb-6 sm:mb-0 tracking-tight text-gray-900 dark:text-white sm:text-5xl"
+          aria-labelledby="austin rooks"
         >
           austin r00ks
         </h1>
       </div>
       <p class="mt-3 text-lg leading-8 tracking-tight font-mono">
         Curious Software Engineer &
-        <img src="/assets/images/ferris.svg" class="inline h-6 -mt-1" alt="ferris the Rust crab mascot" />
+        <img
+          src="/assets/images/ferris.svg"
+          class="inline h-6 -mt-1"
+          alt="ferris the Rust crab mascot"
+        />
         Enthusiast
       </p>
       <div class="mt-6 flex gap-6 mb-12">
@@ -81,16 +86,21 @@
   <h2 class="text-2xl sm:text-3xl">Recent P0sts</h2>
   {% include "includes/list_of_posts.html" %}
   <div class="flex justify-end">
-  <a href="/bl0g?htmx=true#" hx-target="#outerReach" hx-swap="outerHTML transition:true" class="group-hover:text-primary-400">
-    <div class="group flex flex-row">
-      <div class="group-hover:text-primary-400">see m0re p0sts</div>
-      <div
-        class="ml-2 group-hover:text-primary-400 group-hover:scale-150 transition"
-      >
-        →
+    <a
+      href="/bl0g?htmx=true#"
+      hx-target="#outerReach"
+      hx-swap="outerHTML transition:true"
+      class="group-hover:text-primary-400"
+    >
+      <div class="group flex flex-row">
+        <div class="group-hover:text-primary-400">see m0re p0sts</div>
+        <div
+          class="ml-2 group-hover:text-primary-400 group-hover:scale-150 transition"
+        >
+          →
+        </div>
       </div>
-    </div>
-  </a>
+    </a>
   </div>
   {% include "includes/work.html" %}
 </div>

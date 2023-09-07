@@ -6,13 +6,35 @@
     <meta charset="utf-8" />
     <meta
       name="description"
-      content="A personal blog about tech and literature."
+      content="A personal blog about software engineering, rust programming, rust web development and philosophy. r00ks. austin rooks."
     />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFF" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020617" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#FFF"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#020617"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon-16x16.png"
+    />
     <link rel="manifest" href="/assets/site.webmanifest" />
     <style>
       [x-cloak] {
@@ -20,17 +42,14 @@
       }
     </style>
     <link href="/assets/output.css" rel="stylesheet" type="text/css" />
-    <script>
-      /*to prevent Firefox FOUC, this must be here*/
-      let FF_FOUC_FIX;
-    </script>
   </head>
   <body class="bg-white dark:bg-[#100725] dark:text-gray-100">
     <div
       class="absolute inset-x-0 top-0 z-50"
       x-data="{ atTop: false, open: false }"
     >
-      {% include "includes/header.html" %}
+      {% set links = ["ab0ut", "bl0g", "ph0t0s"] %} {% include
+      "includes/header.html" %}
 
       <div class="relative isolate px-2 sm:px-6 pt-14 lg:px-8">
         <div

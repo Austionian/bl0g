@@ -41,7 +41,6 @@ pub async fn blog(
     } else {
         context.insert("posts", &state.posts[start..end]);
     }
-    context.insert("nav_links", &state.nav_links);
 
     let previous = if page == 0 { 0 } else { page - 1 };
 
