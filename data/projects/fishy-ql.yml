@@ -1,0 +1,5 @@
+title: Fishy QL
+description: A GraphQL wrapper of Fishy Edge. Built with Rust (Axum).
+href: https://github.com/austionian/fishy-ql
+display_link: github.com
+image: ferris.svg

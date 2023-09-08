@@ -1,6 +1,7 @@
 mod configuration;
 mod frontmatter;
 mod helpers;
+mod project;
 mod routes;
 
 use axum::body::BoxBody;
@@ -19,7 +20,8 @@ use tracing::field::display;
 use tracing::Span;
 
 pub use configuration::get_configuration;
-pub use frontmatter::{deserialize_frontmatter, FrontMatter};
+pub use frontmatter::FrontMatter;
+pub use project::Project;
 
 lazy_static! {
     pub static ref TEMPLATES: tera::Tera = {
@@ -38,12 +40,13 @@ lazy_static! {
 #[derive(Clone)]
 pub struct AppState {
     posts: Vec<FrontMatter>,
+    projects: Vec<Project>,
 }
 
 pub fn startup() -> Router {
     // Get the posts at startup since they'll never change for the life
     // of the program.
-    let posts = match fs::read_dir("posts") {
+    let posts = match fs::read_dir("data/posts") {
         Ok(files) => {
             let mut posts = files
                 .into_iter()
@@ -60,7 +63,22 @@ pub fn startup() -> Router {
         }
     };
 
-    let state = AppState { posts };
+    // Get the projects details at startup since they'll never change for the life
+    // of the program.
+    let projects = match fs::read_dir("data/projects") {
+        Ok(files) => files
+            .into_iter()
+            .filter_map(|file| file.ok())
+            .filter_map(|file| fs::read_to_string(file.path()).ok())
+            .filter_map(|file| Project::from_file(file).ok())
+            .collect::<Vec<_>>(),
+        Err(e) => {
+            println!("Unable to read files in projects directory, {}", e);
+            Vec::new()
+        }
+    };
+
+    let state = AppState { posts, projects };
 
     Router::new()
         .nest_service("/assets", ServeDir::new("assets"))
@@ -69,7 +87,7 @@ pub fn startup() -> Router {
         .route("/bl0g", get(routes::blog))
         .route("/bl0g/:post_name", get(routes::get_blog_post))
         .route("/ab0ut", get(routes::about))
-        .route("/ph0t0s", get(routes::photos))
+        .route("/pr0jects", get(routes::projects))
         .fallback(routes::handle_404)
         .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
         .layer(

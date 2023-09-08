@@ -21,7 +21,7 @@ async fn it_returns_the_blog_page_with_full_template() {
     let (parts, body) = client
         .request(
             Request::builder()
-                .uri(format!("http://{}/ph0t0s", &addr))
+                .uri(format!("http://{}/pr0jects", &addr))
                 .body(Body::empty())
                 .unwrap(),
         )

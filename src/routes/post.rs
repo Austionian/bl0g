@@ -10,7 +10,7 @@ use comrak::{markdown_to_html, ComrakOptions};
 use std::{fs, io};
 
 pub fn read_post_to_string(post_name: &str) -> Result<String, io::Error> {
-    fs::read_to_string(format!("posts/{post_name}.md"))
+    fs::read_to_string(format!("data/posts/{post_name}.md"))
 }
 
 /// A handler function that will load a post, convert it to HTML, and

@@ -1,0 +1,5 @@
+title: Kopps
+description: A simple CLI web scraper to get the flavors of the day and tomorrow. Built with Rust.
+href: https://github.com/austionian/kopps
+display_link: github.com
+image: ferris.svg
