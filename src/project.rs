@@ -22,10 +22,10 @@ impl From<serde_yaml::Error> for ProjectError {
 
 impl Project {
     pub fn from_file(file: String) -> Result<Self, ProjectError> {
-        Ok(deserialize_project::<Self>(&file)?)
+        deserialize_project::<Self>(&file)
     }
 }
 
 pub fn deserialize_project<T: DeserializeOwned>(file_string: &str) -> Result<T, ProjectError> {
-    Ok(serde_yaml::from_str(file_string.as_ref())?)
+    Ok(serde_yaml::from_str(file_string)?)
 }
