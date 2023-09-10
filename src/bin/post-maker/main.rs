@@ -14,10 +14,10 @@ fn main() {
     let file_name = format!("{title}.md");
     let frontmatter = FrontMatter::new(title.to_string()).to_string();
 
-    match fs::metadata(format!("./posts/{file_name}")) {
+    match fs::metadata(format!("./data/posts/{file_name}")) {
         Ok(_) => panic!("{file_name} already exsists!"),
         Err(_) => {
-            let mut file = fs::File::create(format!("./posts/{file_name}"))
+            let mut file = fs::File::create(format!("./data/posts/{file_name}"))
                 .expect("Unable to create new file.");
             file.write_all(frontmatter.as_bytes())
                 .expect("Unable to write to new file.");

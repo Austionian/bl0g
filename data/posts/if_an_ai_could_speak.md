@@ -4,16 +4,16 @@ date: 2023-09-07 14:57:05.922839 UTC
 description: 'The power of language, statistics and just how far we still are from something meaningful coming from ai'
 ---
 
-## Where we are
+## Whereof one cannot speak
 
 Like everyone else I've been thinking a lot about AI, LLMs, and the like. I've always been fascinated with the idea that if AGI comes 
-how will we really tell and when do they become an animal equal? This isn't a new 21st Centurary thought. The 1920 play _R.U.R._ shows when a 
+how will we really tell and when do they become an animal equal? This isn't a new 21st Centurary thought. The 1920 play _R.U.R._ asks when a 
 robot reaches AGI, where's the difference between human soul and freedom, and a robot's? Extending that thought further it really comes down
 to Plato and souls, and Wittgenstein's idea of the unsayable.
 
 I'll posit two _beliefs_:
-    * **To believe AGI is possible is to deny the existence of free will.**
-    * **If an AI could speak we would not understand it.**  
+- **To believe AGI is possible is to deny the existence of free will.**
+- **If an AI could speak we would not understand it.**  
 
 What's incredible and factual in this moment is an LLM's ability to appear life like with just statistics and communicating with words. We don't really
 think of language on a daily level being a powerful system, but that's exactly what it is. And just by modeling language in an LLM we have a chat bot that
