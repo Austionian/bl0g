@@ -17,16 +17,21 @@ use axum::http::HeaderMap;
 /// let mut headers = HeaderMap::new();
 /// headers.insert("HX-Request", "true".parse().unwrap());
 ///
-/// assert_eq!(get_template(&headers, "test"), "test.html".to_string());
+/// let mut output_headers = HeaderMap::new();
+/// output_headers.insert("Vary", "HX-Request".parse().unwrap());
+///
+/// assert_eq!(get_headers_and_template(&headers, "test"), (output_headers, "test.html".to_string());
 ///
 /// let mut value = headers.entry("HX-Request").or_insert("false".parse().unwrap());
 /// *value = "false".parse().unwrap();
-/// assert_eq!(get_template(&headers, "test"), "test_full.html".to_string());
-pub fn get_template(headers: &HeaderMap, template_name: &str) -> String {
+/// assert_eq!(get_headers_and_template(&headers, "test"), (HeaderMap::default(), "test_full.html".to_string()));
+pub fn get_headers_and_template(headers: &HeaderMap, template_name: &str) -> (HeaderMap, String) {
     if headers.get("HX-Request").is_some_and(|v| v == "true") {
-        format!("partials/{template_name}.html")
+        let mut headers = HeaderMap::new();
+        headers.insert("Vary", "HX-Request".parse().unwrap());
+        (headers, format!("partials/{template_name}.html"))
     } else {
-        format!("{template_name}.html")
+        (HeaderMap::default(), format!("{template_name}.html"))
     }
 }
 
@@ -40,9 +45,12 @@ mod test {
         let mut headers = HeaderMap::new();
         headers.insert("HX-Request", "true".parse().unwrap());
 
+        let mut output_headers = HeaderMap::new();
+        output_headers.insert("Vary", "HX-Request".parse().unwrap());
+
         assert_eq!(
-            get_template(&headers, "test"),
-            "partials/test.html".to_string()
+            get_headers_and_template(&headers, "test"),
+            (output_headers, "partials/test.html".to_string())
         );
     }
 
@@ -50,6 +58,10 @@ mod test {
     fn get_full() {
         let mut headers = HeaderMap::new();
         headers.insert("HX-Request", "false".parse().unwrap());
-        assert_eq!(get_template(&headers, "test"), "test.html".to_string());
+
+        assert_eq!(
+            get_headers_and_template(&headers, "test"),
+            (HeaderMap::default(), "test.html".to_string())
+        );
     }
 }
