@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" style="overflow-x: hidden">
+<html lang="en">
   <head>
     <title>r00ks</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark" />
     <meta charset="utf-8" />
     <meta
       name="description"
@@ -44,9 +44,9 @@
     </style>
     <link href="/assets/output.css" rel="stylesheet" type="text/css" />
   </head>
-  <body class="bg-white dark:bg-[#100725] dark:text-gray-100 overflow-x-hidden">
+  <body class="bg-white dark:bg-[#100725] dark:text-gray-100">
     <div
-      class="absolute inset-x-0 top-0 z-50"
+      class="relative inset-x-0 top-0 z-50"
       x-data="{ atTop: false, open: false }"
     >
       {% set links = ["ab0ut", "bl0g", "pr0jects"] %} {% include
@@ -58,16 +58,16 @@
           aria-hidden="true"
         >
           <div
-            class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-purple-600 to-pink-400 dark:from-amber-700 dark:to-purple-900 opacity-70 sm:opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-purple-600 to-pink-400 dark:from-amber-700 dark:to-purple-900 opacity-70 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             style="clip-path: circle()"
           ></div>
         </div>
         <div
-          class="absolute -z-10 left-[20%] transform-gpu -top-40 sm:-top-80 blur-lg"
+          class="block absolute w-full left-0 -top-40 sm:left-[-20rem] sm:top-[-23rem] -z-10 mt-2 blur-lg overflow-hidden"
           aria-hidden="true"
         >
           <div
-            class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-pink-50 to-cyan-600 dark:from-pink-800 dark:to-purple-500 opacity-70 sm:opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-5 bg-gradient-to-tr from-pink-50 to-cyan-600 dark:from-pink-800 dark:to-purple-500 opacity-70 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             style="clip-path: circle()"
           ></div>
         </div>

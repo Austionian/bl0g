@@ -23,14 +23,14 @@
   }
 
   @media (prefers-color-scheme: dark) {
-      .prose a {
-          color: theme("colors.primary.400");
-      }
+    .prose a {
+      color: theme("colors.primary.400");
+    }
 
-      .prose a:hover {
-          color: theme("colors.primary.300");
-          font-weight: 600;
-      }
+    .prose a:hover {
+      color: theme("colors.primary.300");
+      font-weight: 600;
+    }
   }
 
   @media screen and (min-width: 640px) {
