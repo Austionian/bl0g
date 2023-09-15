@@ -1,20 +1,11 @@
-use bl0g::startup;
+use crate::helpers::start_test_app;
 use hyper::{Body, Request};
-use std::net::{SocketAddr, TcpListener};
 
 #[tokio::test]
 async fn it_returns_the_index() {
-    let app = startup();
-    let listener = TcpListener::bind("127.0.0.1:0".parse::<SocketAddr>().unwrap()).unwrap();
-    let addr = listener.local_addr().unwrap();
-
-    let _ = tokio::spawn(async move {
-        axum::Server::from_tcp(listener)
-            .unwrap()
-            .serve(app.into_make_service())
-            .await
-            .unwrap();
-    });
+    let addr = start_test_app()
+        .await
+        .expect("Unable to start test server.");
 
     let client = hyper::Client::new();
 

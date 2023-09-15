@@ -9,7 +9,7 @@ async fn main() {
 
     let config = get_configuration().expect("Failed to read configuration.");
 
-    let app = startup().expect("Unable to start the router.");
+    let app = startup().expect("Unable to start the server.");
 
     let address = format!("{}:{}", config.application.host, config.application.port)
         .parse::<SocketAddr>()

@@ -1,22 +1,13 @@
-use bl0g::startup;
+use crate::helpers::start_test_app;
 use hyper::{Body, Request};
-use std::net::{SocketAddr, TcpListener};
 
 // TODO: Write a test like this one that isn't relying on the
 // local filesystem.
 #[tokio::test]
 async fn it_return_the_full_post_template() {
-    let app = startup();
-    let listener = TcpListener::bind("127.0.0.1:0".parse::<SocketAddr>().unwrap()).unwrap();
-    let addr = listener.local_addr().unwrap();
-
-    let _ = tokio::spawn(async move {
-        axum::Server::from_tcp(listener)
-            .unwrap()
-            .serve(app.into_make_service())
-            .await
-            .unwrap();
-    });
+    let addr = start_test_app()
+        .await
+        .expect("Unable to start test server.");
 
     let client = hyper::Client::new();
 
@@ -46,17 +37,9 @@ async fn it_return_the_full_post_template() {
 
 #[tokio::test]
 async fn it_return_the_just_the_post_text() {
-    let app = startup();
-    let listener = TcpListener::bind("127.0.0.1:0".parse::<SocketAddr>().unwrap()).unwrap();
-    let addr = listener.local_addr().unwrap();
-
-    let _ = tokio::spawn(async move {
-        axum::Server::from_tcp(listener)
-            .unwrap()
-            .serve(app.into_make_service())
-            .await
-            .unwrap();
-    });
+    let addr = start_test_app()
+        .await
+        .expect("Unable to start test server.");
 
     let client = hyper::Client::new();
 
