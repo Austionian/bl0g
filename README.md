@@ -8,10 +8,14 @@ A simple blog/personal site with an MVC architecture and new-school tech flavors
 - [Alpine.js](https://alpinejs.dev)
 
 ## Creating a new blog post
-- To create a new post in the posts directory run:
+- To create a new post run:
 ```shell
 cargo run --bin post-maker <post-title-here>
 ```
+
+This will create a markdown file in the `data/posts/` directory. The file's frontmatter 
+contains a `draft` key which defaults to true. For the post to appar on the website,
+that must be changed to false.
 
 ## Building the Tailwind CSS
 - [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.

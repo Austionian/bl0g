@@ -43,7 +43,7 @@ pub struct AppState {
     projects: Vec<Project>,
 }
 
-pub fn startup() -> Router {
+pub fn startup() -> Result<Router, String> {
     // Get the posts at startup since they'll never change for the life
     // of the program.
     let posts = match fs::read_dir("data/posts") {
@@ -53,34 +53,29 @@ pub fn startup() -> Router {
                 .filter_map(|file| file.ok())
                 .filter_map(|file| fs::read_to_string(file.path()).ok())
                 .filter_map(|file| FrontMatter::from_file(file).ok())
+                .filter(|frontmatter| !frontmatter.draft.unwrap_or(false))
                 .collect::<Vec<_>>();
             posts.sort_by(|a, b| b.date.cmp(&a.date));
-            posts
+            Ok(posts)
         }
-        Err(e) => {
-            println!("Unable to read files in posts directory, {}", e);
-            Vec::new()
-        }
-    };
+        Err(e) => Err(format!("Unable to read files in posts directory, {}", e)),
+    }?;
 
     // Get the projects details at startup since they'll never change for the life
     // of the program.
     let projects = match fs::read_dir("data/projects") {
-        Ok(files) => files
+        Ok(files) => Ok(files
             .into_iter()
             .filter_map(|file| file.ok())
             .filter_map(|file| fs::read_to_string(file.path()).ok())
             .filter_map(|file| Project::from_file(file).ok())
-            .collect::<Vec<_>>(),
-        Err(e) => {
-            println!("Unable to read files in projects directory, {}", e);
-            Vec::new()
-        }
-    };
+            .collect::<Vec<_>>()),
+        Err(e) => Err(format!("Unable to read files in projects directory, {}", e)),
+    }?;
 
     let state = AppState { posts, projects };
 
-    Router::new()
+    Ok(Router::new()
         .nest_service("/assets", ServeDir::new("assets"))
         .nest_service("/robots.txt", ServeFile::new("assets/robots.txt"))
         .route("/", get(routes::root))
@@ -109,5 +104,5 @@ pub fn startup() -> Router {
                 ),
         )
         .with_state(Arc::new(state))
-        .route("/health_check", get(routes::health_check))
+        .route("/health_check", get(routes::health_check)))
 }

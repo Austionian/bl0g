@@ -6,6 +6,7 @@ pub struct FrontMatter {
     title: String,
     pub date: DateTime<Utc>,
     description: String,
+    pub draft: Option<bool>,
 }
 
 #[derive(Debug)]
@@ -26,6 +27,7 @@ impl FrontMatter {
             title,
             date: chrono::Utc::now(),
             description: String::default(),
+            draft: Some(true),
         }
     }
 
@@ -41,8 +43,12 @@ impl ToString for FrontMatter {
 title: {}
 date: {}
 description: {}
+draft: {}
 ---"#,
-            self.title, self.date, self.description
+            self.title,
+            self.date,
+            self.description,
+            self.draft.unwrap_or(true)
         )
     }
 }
@@ -53,6 +59,7 @@ impl Default for FrontMatter {
             title: String::default(),
             date: chrono::Utc::now(),
             description: String::default(),
+            draft: Some(true),
         }
     }
 }
