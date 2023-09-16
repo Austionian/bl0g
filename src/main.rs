@@ -1,10 +1,23 @@
 use bl0g::{get_configuration, startup};
 use std::net::SocketAddr;
+use tracing::Level;
+use tracing_subscriber::prelude::__tracing_subscriber_SubscriberExt;
+use tracing_subscriber::util::SubscriberInitExt;
+use tracing_subscriber::{filter, fmt};
 
 #[tokio::main]
 async fn main() {
-    tracing_subscriber::fmt()
-        .with_max_level(tracing::Level::DEBUG)
+    let filter = filter::Targets::new()
+        .with_target("tower_http::trace::on_repsonse", Level::TRACE)
+        .with_target("tower_http::trace::on_request", Level::TRACE)
+        .with_target("tower_http::trace::make_span", Level::DEBUG)
+        .with_default(Level::INFO);
+
+    let tracing_layer = fmt::layer();
+
+    tracing_subscriber::registry()
+        .with(tracing_layer)
+        .with(filter)
         .init();
 
     let config = get_configuration().expect("Failed to read configuration.");
@@ -21,33 +34,3 @@ async fn main() {
         .await
         .unwrap();
 }
-
-// async fn create_user(
-//     // this argument tells axum to parse the request body
-//     // as JSON into a `CreateUser` type
-//     State(_state): State<AppState>,
-//     Json(payload): Json<CreateUser>,
-// ) -> (StatusCode, Json<User>) {
-//     // insert your application logic here
-//     let user = User {
-//         id: 1337,
-//         username: payload.username,
-//     };
-//
-//     // this will be converted into a JSON response
-//     // with a status code of `201 Created`
-//     (StatusCode::CREATED, Json(user))
-// }
-//
-// // the input to our `create_user` handler
-// #[derive(Deserialize)]
-// struct CreateUser {
-//     username: String,
-// }
-//
-// // the output to our `create_user` handler
-// #[derive(Serialize)]
-// struct User {
-//     id: u64,
-//     username: String,
-// }

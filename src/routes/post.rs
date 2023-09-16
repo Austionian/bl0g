@@ -24,10 +24,20 @@ pub async fn get_blog_post(headers: HeaderMap, Path(post_name): Path<String>) ->
     let md = read_post_to_string(&post_name).unwrap_or("Unable to load post.".to_string());
 
     // Parse the frontmatter and post body from the markdown string.
-    let (frontmatter, body) = deserialize_frontmatter::<FrontMatter>(&md).unwrap_or((
-        FrontMatter::default(),
-        "Unable to load the post.".to_string(),
-    ));
+    let (frontmatter, body) = match deserialize_frontmatter::<FrontMatter>(&md) {
+        Ok((frontmatter, body)) => (frontmatter, body),
+        Err(e) => {
+            tracing::error!(
+                "Failed to deseriale the requested post -> {}: {:?}",
+                &post_name,
+                e
+            );
+            (
+                FrontMatter::default(),
+                "Unable to load the post.".to_string(),
+            )
+        }
+    };
 
     // Parse the post's markdown into an html string.
     let post_html = markdown_to_html(&body, &ComrakOptions::default());
@@ -46,6 +56,9 @@ pub async fn get_blog_post(headers: HeaderMap, Path(post_name): Path<String>) ->
     // Return the response.
     match TEMPLATES.render(&template, &context) {
         Ok(s) => (headers, Html(s)),
-        Err(_) => (headers, Html("<html><body>Error</body></html>".to_string())),
+        Err(e) => {
+            tracing::error!("Unable to load the post: {}", e);
+            (headers, Html("<html><body>Error</body></html>".to_string()))
+        }
     }
 }

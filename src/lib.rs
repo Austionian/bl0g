@@ -4,20 +4,14 @@ mod helpers;
 mod project;
 mod routes;
 
-use axum::body::BoxBody;
 use axum::{routing::get, Router};
-use hyper::{Body, Request, Response};
 use lazy_static::lazy_static;
 use std::fs;
 use std::sync::Arc;
-use std::time::Duration;
 use tower::ServiceBuilder;
-use tower_http::classify::ServerErrorsFailureClass;
 use tower_http::compression::CompressionLayer;
 use tower_http::services::{ServeDir, ServeFile};
 use tower_http::trace::TraceLayer;
-use tracing::field::display;
-use tracing::Span;
 
 pub use configuration::get_configuration;
 pub use frontmatter::FrontMatter;
@@ -85,24 +79,7 @@ pub fn startup() -> Result<Router, String> {
         .route("/pr0jects", get(routes::projects))
         .fallback(routes::handle_404)
         .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
-        .layer(
-            TraceLayer::new_for_http()
-                .make_span_with(|_request: &Request<Body>| {
-                    tracing::info!("http request");
-                    tracing::info_span!("http-request")
-                })
-                .on_response(
-                    |response: &Response<BoxBody>, _latency: Duration, span: &Span| {
-                        span.record("http.status_code", &display(response.status()));
-                        tracing::info!("http response");
-                    },
-                )
-                .on_failure(
-                    |error: ServerErrorsFailureClass, _latency: Duration, _span: &Span| {
-                        tracing::error!("http error, {}", error);
-                    },
-                ),
-        )
+        .layer(TraceLayer::new_for_http())
         .with_state(Arc::new(state))
         .route("/health_check", get(routes::health_check)))
 }

@@ -67,6 +67,9 @@ pub async fn blog(
     // Return the response.
     match TEMPLATES.render(&template, &context) {
         Ok(s) => (headers, Html(s)),
-        Err(_) => (headers, Html("<html><body>Error</body></html>".to_string())),
+        Err(e) => {
+            tracing::error!("Unable to load blog: {}", e);
+            (headers, Html("<html><body>Error</body></html>".to_string()))
+        }
     }
 }
