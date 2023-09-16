@@ -57,7 +57,7 @@ pub async fn get_blog_post(headers: HeaderMap, Path(post_name): Path<String>) ->
     match TEMPLATES.render(&template, &context) {
         Ok(s) => (headers, Html(s)),
         Err(e) => {
-            tracing::error!("Unable to load the post: {}", e);
+            tracing::error!("Failed rendering the template: {}", e);
             (headers, Html("<html><body>Error</body></html>".to_string()))
         }
     }

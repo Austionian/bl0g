@@ -8,8 +8,8 @@ use tracing_subscriber::{filter, fmt};
 #[tokio::main]
 async fn main() {
     let filter = filter::Targets::new()
-        .with_target("tower_http::trace::on_repsonse", Level::TRACE)
         .with_target("tower_http::trace::on_request", Level::TRACE)
+        .with_target("tower_http::trace::on_response", Level::TRACE)
         .with_target("tower_http::trace::make_span", Level::DEBUG)
         .with_default(Level::INFO);
 
