@@ -17,6 +17,21 @@ This will create a markdown file in the `data/posts/` directory. The file's fron
 contains a `draft` key which defaults to true. For the post to appar on the website,
 that must be changed to false.
 
+## Developing
+Included is a bash script `dev.sh` in the `scripts/` directory. Make it executable:
+```shell
+chmod +x scripts/dev.sh
+```
+
+Then run it:
+```shell
+scripts/dev.sh
+```
+
+This will start Axum server and Tailwind binary in watch modes so that saves
+will trigger rebuilds while you're developing. On exiting this process, the Tailwind
+binary will minify its outputted css.
+
 ## Building the Tailwind CSS
 - [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.
 - Run:
