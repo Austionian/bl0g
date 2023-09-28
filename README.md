@@ -18,6 +18,8 @@ contains a `draft` key which defaults to true. For the post to appar on the webs
 that must be changed to false.
 
 ## Developing
+- [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.
+
 Included is a bash script `dev.sh` in the `scripts/` directory. Make it executable:
 ```shell
 chmod +x scripts/dev.sh
@@ -32,8 +34,7 @@ This will start the Axum server and Tailwind binary in watch modes so that saves
 will trigger rebuilds while you're developing. On exiting this process, the Tailwind
 binary will minify its outputted css.
 
-### Building the Tailwind CSS separately
-- [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.
+### Building the Tailwind CSS separately 
 - Run:
 ```shell
 ./tailwindcss -i tailwind.css -o ./assets/output.css --minify
