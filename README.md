@@ -28,11 +28,11 @@ Then run it:
 scripts/dev.sh
 ```
 
-This will start Axum server and Tailwind binary in watch modes so that saves
+This will start the Axum server and Tailwind binary in watch modes so that saves
 will trigger rebuilds while you're developing. On exiting this process, the Tailwind
 binary will minify its outputted css.
 
-## Building the Tailwind CSS
+### Building the Tailwind CSS outside of the dev script
 - [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.
 - Run:
 ```shell
