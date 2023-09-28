@@ -28,7 +28,7 @@
         class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
       >
         <img
-        alt="logo for {{ job.company }}"
+          alt="logo for {{ job.company }}"
           loading="lazy"
           width="32"
           height="32"
@@ -64,8 +64,10 @@
     {% endfor %}
   </ol>
   <a
-      class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-50 font-medium text-zinc-900 hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-violet-950/20 dark:text-zinc-300 dark:hover:bg-violet-950/70 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70 group mt-6 w-full"
-    href="#"
+    class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-50 font-medium text-zinc-900 hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-violet-950/20 dark:text-zinc-300 dark:hover:bg-violet-950/70 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70 group mt-6 w-full"
+    href="/assets/cv.pdf"
+    hx-boost="false"
+    download
     >D0wnl0ad CV<svg
       viewBox="0 0 16 16"
       fill="none"
