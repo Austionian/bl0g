@@ -19,6 +19,8 @@ that must be changed to false.
 
 ## Developing
 - [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.
+- Install [cargo-watch](https://crates.io/crates/cargo-watch): 
+`cargo install cargo-watch`
 
 Included is a bash script `dev.sh` in the `scripts/` directory. Make it executable:
 ```shell
