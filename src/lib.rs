@@ -26,7 +26,8 @@ lazy_static! {
                 ::std::process::exit(1);
             }
         };
-        tera.autoescape_on(vec![]);
+        // Do not escape files ending in .content (the generated html from md posts)
+        tera.autoescape_on(vec![".content"]);
         tera
     };
 }
