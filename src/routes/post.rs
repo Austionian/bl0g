@@ -1,7 +1,6 @@
 use crate::{
     frontmatter::{deserialize_frontmatter, FrontMatter},
-    helpers::get_template,
-    TEMPLATES,
+    helpers, TEMPLATES,
 };
 use axum::extract::Path;
 use axum::http::HeaderMap;
@@ -46,12 +45,8 @@ pub async fn get_blog_post(headers: HeaderMap, Path(post_name): Path<String>) ->
     context.insert("frontmatter", &frontmatter);
     context.insert("post_html", &post_html);
 
-    // Determine which template to use.
-    let template = get_template(&headers, "post");
-
-    let mut headers = HeaderMap::new();
-    let path = format!("/bl0g/{post_name}");
-    headers.insert("HX-PUSH-Url", path.parse().unwrap());
+    let (headers, template) =
+        helpers::get_headers_and_template(&headers, "post", &format!("/bl0g/{post_name}"));
 
     // Return the response.
     match TEMPLATES.render(&template, &context) {

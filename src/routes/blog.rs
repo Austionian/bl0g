@@ -1,4 +1,5 @@
-use crate::{helpers::get_template, AppState, TEMPLATES};
+use crate::helpers;
+use crate::{AppState, TEMPLATES};
 use axum::http::HeaderMap;
 use axum::response::IntoResponse;
 use axum::{
@@ -58,11 +59,8 @@ pub async fn blog(
 
     context.insert("pagination", &pagination_data);
 
-    let template = get_template(&headers, "blog");
-
-    let mut headers = HeaderMap::new();
-    let path = format!("/bl0g?page={page}");
-    headers.insert("HX-PUSH-Url", path.parse().unwrap());
+    let (headers, template) =
+        helpers::get_headers_and_template(&headers, "blog", &format!("/bl0g?page={page}"));
 
     // Return the response.
     match TEMPLATES.render(&template, &context) {
