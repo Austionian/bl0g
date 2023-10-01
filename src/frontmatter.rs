@@ -1,7 +1,7 @@
 use chrono::{DateTime, Utc};
 use serde::de::DeserializeOwned;
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
+#[derive(serde::Deserialize, serde::Serialize, Clone, Debug, Default)]
 pub struct FrontMatter {
     title: String,
     pub date: DateTime<Utc>,
@@ -50,17 +50,6 @@ draft: {}
             self.description,
             self.draft.unwrap_or(true)
         )
-    }
-}
-
-impl Default for FrontMatter {
-    fn default() -> Self {
-        Self {
-            title: String::default(),
-            date: chrono::Utc::now(),
-            description: String::default(),
-            draft: Some(true),
-        }
     }
 }
 
