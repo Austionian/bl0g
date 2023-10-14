@@ -6,6 +6,7 @@ use axum::extract::Path;
 use axum::http::HeaderMap;
 use axum::response::{Html, IntoResponse};
 use comrak::{markdown_to_html, ComrakOptions};
+use reqwest::Client;
 use std::{fs, io};
 
 pub fn read_post_to_string(post_name: &str) -> Result<String, io::Error> {
@@ -37,6 +38,18 @@ pub async fn get_blog_post(headers: HeaderMap, Path(post_name): Path<String>) ->
             )
         }
     };
+
+    // Update the read count of the post in a different thread.
+    tokio::spawn(async move {
+        let client = Client::new();
+        let _ = client
+            .post(format!(
+                "https://worker-rust.austin-e33.workers.dev/{}",
+                frontmatter.id
+            ))
+            .send()
+            .await;
+    });
 
     // Parse the post's markdown into an html string.
     let post_html = markdown_to_html(&body, &ComrakOptions::default());
