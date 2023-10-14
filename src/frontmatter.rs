@@ -3,6 +3,7 @@ use serde::de::DeserializeOwned;
 
 #[derive(serde::Deserialize, serde::Serialize, Clone, Debug, Default)]
 pub struct FrontMatter {
+    pub id: uuid::Uuid,
     title: String,
     pub date: DateTime<Utc>,
     description: String,
@@ -24,6 +25,7 @@ impl From<serde_yaml::Error> for FrontmatterError {
 impl FrontMatter {
     pub fn new(title: String) -> Self {
         Self {
+            id: uuid::Uuid::new_v4(),
             title,
             date: chrono::Utc::now(),
             description: String::default(),
@@ -40,11 +42,13 @@ impl ToString for FrontMatter {
     fn to_string(&self) -> String {
         format!(
             r#"---
+id: {}
 title: {}
 date: {}
 description: {}
 draft: {}
 ---"#,
+            self.id,
             self.title,
             self.date,
             self.description,

@@ -1,4 +1,5 @@
 ---
+id: a3c478bd-0ef3-4fb0-98e3-0bc9e6ba53b7
 title: concurrent_rust
 date: 2023-03-22 01:59:02.067798 UTC
 description: "Using threads in Rust and comparing performance to a single thread."

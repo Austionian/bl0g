@@ -1,4 +1,5 @@
 ---
+id: 118f5cd6-e083-4a41-a8be-aa0e2b9c52b3
 title: to_the_ships,_philosophers!
 date: 2021-12-22 17:43:35.089227 UTC
 description: Living in a world that requires a new faith. How Nietszche saw it and what he thought about it. 

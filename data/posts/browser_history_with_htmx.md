@@ -1,4 +1,5 @@
 ---
+id: cd425b57-f2bc-434b-8601-ace43551968b
 title: browser_history_with_htmx
 date: 2022-02-06 17:38:52.688046 UTC
 description: Managing browser history in a single page application built with Djano and htmx.

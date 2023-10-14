@@ -1,4 +1,5 @@
 ---
+id: 727e1e7a-5840-4d7f-a2e4-d31d7db0aa68
 title: a_rust_blog_with_axum_htmx_and_cloudflare
 date: 2023-09-14 19:13:30.666072 UTC
 description: Building a blog site in Rust with Axum and HTMX and hosting it on Fly.io and Cloudflare.

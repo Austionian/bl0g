@@ -1,4 +1,5 @@
 ---
+id: 26f7961b-4809-4858-8108-9292a4446121
 title: if_an_ai_could_speak
 date: 2023-09-07 14:57:05.922839 UTC
 description: 'The power of language, statistics and just how far we still are from something meaningful coming from ai'

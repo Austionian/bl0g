@@ -1,4 +1,5 @@
 ---
+id: d4516c82-d9d6-4175-af3a-9b8f1d5b7934
 title: a_solo_engineer_dreams_an_mvc
 date: 2022-02-02 17:41:12.351955 UTC
 description: A match made in heaven for applications created by a single developer, taking full advantage of Django's templating and organization.

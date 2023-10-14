@@ -1,4 +1,5 @@
 ---
+id: 396b9be6-1adb-4db2-9472-09e193c08baa
 title: rereading_rust
 date: 2022-12-31 17:47:14.229079 UTC
 description: Re-reading the Rust Book and second takes.
