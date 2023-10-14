@@ -58,15 +58,14 @@ pub async fn get_blog_post(headers: HeaderMap, Path(post_name): Path<String>) ->
     context.insert("frontmatter", &frontmatter);
     context.insert("post_html", &post_html);
 
-    let (headers, template) =
-        helpers::get_headers_and_template(&headers, "post", &format!("/bl0g/{post_name}"));
+    let template = helpers::get_template(&headers, "post");
 
     // Return the response.
     match TEMPLATES.render(&template, &context) {
-        Ok(s) => (headers, Html(s)),
+        Ok(s) => Html(s),
         Err(e) => {
             tracing::error!("Failed rendering the template: {}", e);
-            (headers, Html("<html><body>Error</body></html>".to_string()))
+            Html("<html><body>Error</body></html>".to_string())
         }
     }
 }

@@ -59,15 +59,14 @@ pub async fn blog(
 
     context.insert("pagination", &pagination_data);
 
-    let (headers, template) =
-        helpers::get_headers_and_template(&headers, "blog", &format!("/bl0g?page={page}"));
+    let template = helpers::get_template(&headers, "blog");
 
     // Return the response.
     match TEMPLATES.render(&template, &context) {
-        Ok(s) => (headers, Html(s)),
+        Ok(s) => Html(s),
         Err(e) => {
             tracing::error!("Unable to load blog: {}", e);
-            (headers, Html("<html><body>Error</body></html>".to_string()))
+            Html("<html><body>Error</body></html>".to_string())
         }
     }
 }

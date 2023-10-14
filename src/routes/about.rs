@@ -9,11 +9,11 @@ use axum::response::IntoResponse;
 pub async fn about(headers: HeaderMap) -> impl IntoResponse {
     let context = tera::Context::new();
 
-    let (headers, template) = helpers::get_headers_and_template(&headers, "about", "/ab0ut");
+    let template = helpers::get_template(&headers, "about");
 
     // Return the response.
     match TEMPLATES.render(&template, &context) {
-        Ok(s) => (headers, Html(s)),
-        Err(_) => (headers, Html("<html><body>Error</body></html>".to_string())),
+        Ok(s) => Html(s),
+        Err(_) => Html("<html><body>Error</body></html>".to_string()),
     }
 }
