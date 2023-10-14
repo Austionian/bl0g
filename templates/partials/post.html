@@ -3,3 +3,6 @@
 <div class="prose dark:prose-invert">
 {% include "partials/post.content" %}
 </div>
+<span hx-get="/read_c0unt/{{ frontmatter.id }}" hx-trigger="load">
+    <img id="spinner" class="htmx-indicator" src="/assets/images/spinner.gif" alt="loading spinner" />
+</span>
