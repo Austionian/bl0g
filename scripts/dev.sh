@@ -9,6 +9,8 @@ minify() {
 
 echo "Starting the Axum server."
 
+export API_TOKEN=$(cat ".env")
+
 # Start cargo watch in the background
 sh -c 'cargo watch -x run &'
 

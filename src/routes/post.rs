@@ -39,7 +39,8 @@ pub async fn get_blog_post(headers: HeaderMap, Path(post_name): Path<String>) ->
         }
     };
 
-    // Update the read count of the post in a different thread.
+    // Update the read count of the post in a different thread so the response
+    // from the worker isn't blocking request to get the post.
     tokio::spawn(async move {
         let api_token = std::env::var("API_TOKEN").unwrap();
         let client = Client::new();
