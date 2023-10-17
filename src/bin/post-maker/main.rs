@@ -15,22 +15,19 @@ async fn main() {
     let file_name = format!("{title}.md");
     let frontmatter = FrontMatter::new(title.to_string());
 
+    let api_token = fs::read_to_string(".env").unwrap();
+
     match fs::metadata(format!("./data/posts/{file_name}")) {
         Ok(_) => panic!("{file_name} already exsists!"),
         Err(_) => {
-            let mut file = fs::File::create(format!("./data/posts/{file_name}"))
-                .expect("Unable to create new file.");
-            file.write_all(frontmatter.to_string().as_bytes())
-                .expect("Unable to write to new file.");
-
-            println!("{title}.md successfully created!");
-
+            // Create the post in D1.
             let client = reqwest::Client::new();
             let res = client
                 .post(format!(
                     "https://worker-rust.austin-e33.workers.dev/new/{}",
                     frontmatter.id
                 ))
+                .header("API_TOKEN", api_token.trim())
                 .send()
                 .await
                 .expect("Unable to send request to create new post in d1.");
@@ -40,6 +37,13 @@ async fn main() {
             } else {
                 println!("Post was not added to d1.");
             }
+
+            let mut file = fs::File::create(format!("./data/posts/{file_name}"))
+                .expect("Unable to create new file.");
+            file.write_all(frontmatter.to_string().as_bytes())
+                .expect("Unable to write to new file.");
+
+            println!("{title}.md successfully created!");
         }
     };
 }
