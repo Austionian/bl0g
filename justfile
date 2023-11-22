@@ -2,13 +2,13 @@ set dotenv-load
 
 # Script to run the Tailwind binary in watch mode
 run-tailwind:
+    #!/bin/bash
     echo "Starting the Tailwind binary."
-
-    # Start tailwindcss in watch mode
     ./tailwindcss -i tailwind.css -o ./assets/output.css --watch
 
 # Script to build and minify the Tailwind binary
 build-tailwind:
+    #!/bin/bash
     echo -e "\nMinifying css"
     sh -c './tailwindcss -i tailwind.css -o ./assets/output.css --minify'
 
@@ -41,3 +41,4 @@ dev:
     TAILWIND_PID=$!
 
     wait $TAILWIND_PID
+
