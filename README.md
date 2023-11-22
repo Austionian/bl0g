@@ -23,15 +23,11 @@ that must be changed to false.
 - [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.
 - Install [cargo-watch](https://crates.io/crates/cargo-watch): 
 `cargo install cargo-watch`
+- Install [just](https://github.com/casey/just#packages)
 
-Included is a bash script `dev.sh` in the `scripts/` directory. Make it executable:
+Included is a bash script in a `justfile` that can be run with:
 ```shell
-chmod +x scripts/dev.sh
-```
-
-Then run it:
-```shell
-scripts/dev.sh
+just dev
 ```
 
 This will start the Axum server and Tailwind binary in watch modes so that saves
@@ -41,12 +37,12 @@ binary will minify its outputted css.
 ### Building the Tailwind CSS separately 
 - Run:
 ```shell
-./tailwindcss -i tailwind.css -o ./assets/output.css --minify
+just build-tailwind
 ```
 
 - Or as developing, in another tab run:
 ```shell
-./tailwindcss -i tailwind.css -o ./assets/output.css --watch
+just run-tailwind
 ```
 to automatically compile the tailwind as you're making changes.
 
