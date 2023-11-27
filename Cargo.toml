@@ -7,7 +7,7 @@ default-run = "bl0g"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-axum = "0.6"
+axum = "0.7"
 chrono = { version = "0.4", default-features = false, features = ["serde"] }
 comrak = "0.18"
 config = { version = "0.13", default-features = false, features = ["yaml"] }
