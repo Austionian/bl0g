@@ -9,6 +9,8 @@ struct Job {
     start_year: &'static str,
     end_year: &'static str,
     image: &'static str,
+    tech: Vec<&'static str>,
+    description: &'static str,
 }
 
 /// Handler to return the website's index and display
@@ -22,6 +24,8 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             start_year: "2022",
             end_year: "Present",
             image: "nm.webp",
+            tech: vec!["React", "Redux", "TypeScript", "Graphql"],
+            description: "Description about the job and what I did there. ",
         },
         Job {
             company: "Shorewood Tech",
@@ -29,6 +33,8 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             start_year: "2021",
             end_year: "Present",
             image: "st.webp",
+            tech: vec!["Rust", "Actix", "TypeScript", "Qwik", "Postgres"],
+            description: "Description about the job and what I did there. ",
         },
         Job {
             company: "Catholic Charities of St. Paul and Minneapolis",
@@ -36,6 +42,8 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             start_year: "2017",
             end_year: "2022",
             image: "ccspm.webp",
+            tech: vec!["Python", "Django", "Flask", "Postgres"],
+            description: "Description about the job and what I did there. ",
         },
     ];
 

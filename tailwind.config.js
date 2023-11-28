@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.purple,
+        primary: colors.emerald,
       },
       textShadow: {
         sm: "0 1px 2px var(--tw-shadow-color)",
