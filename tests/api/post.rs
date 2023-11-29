@@ -30,7 +30,7 @@ async fn it_return_the_full_post_template() {
     assert!(body.contains("Hello!"));
 
     // Text from the header
-    assert!(body.contains("ab0ut"));
+    assert!(body.contains("bl0g"));
     // Text from the footer
     assert!(body.contains("Austin Rooks. All rights reserved."));
 }
@@ -63,7 +63,7 @@ async fn it_return_the_just_the_post_text() {
     assert!(body.contains("Hello!"));
 
     // Text from the header
-    assert!(!body.contains("ab0ut"));
+    assert!(!body.contains("bl0g"));
     // Text from the footer
     assert!(!body.contains("Austin Rooks. All rights reserved."));
 }
