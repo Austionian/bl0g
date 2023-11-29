@@ -8,7 +8,7 @@
       {% for link in links %}
       <a
         href="/{{ link }}"
-        class="text-shadow-lg shadow-white transition hover:bg-zinc-900/5 hover:font-bold dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 block rounded-md px-3 py-2 font-medium"
+        class="transition hover:bg-zinc-900/5 hover:font-bold dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 block rounded-md px-3 py-2 font-medium"
         >{{ link }}</a
       >
       {% endfor %}
@@ -16,82 +16,49 @@
   </div>
 </div>
 <nav
-  class="flex items-center justify-between z-10 p-6 lg:px-8 sticky top-0 left-0 right-0 font-lg transition duration-150 ease-in-out"
+  class="flex mx-3 px-6 sm:m-auto max-w-3xl border-black/10 dark:border-white/10 mt-3 rounded-full sm:px-16 tems-center justify-between z-10 py-6 sticky top-3 left-0 right-0 font-lg transition duration-150 ease-in-out"
   :class="{ 'shadow-lg': atTop && !open, 'dark:shadow-black/90 backdrop-blur bg-white/5 dark:bg-black/5': atTop }"
   @scroll.window="atTop = (window.pageYOffset > 50)"
 >
-  <div class="flex lg:flex-1">
+  <div class="flex">
     <a
       href="/"
-      class="-m-1.5 font-mono font-bold text-lg text-primary-400 hover:text-primary-500 dark:hover:text-primary-400 text-shadow shadow-purple-300 dark:shadow-purple-400"
+      class="-m-1.5 font-mono font-bold text-lg text-primary-400 hover:text-primary-500 dark:hover:text-primary-300"
     >
       <div class="group relative cursor-pointer rounded">
         <div class="flex items-center relative">
+          {% set normal = ["_", "0", "0", "_", "_"] %} {% for char in normal %}
           <div
             class="origin-top transition-transform duration-150 ease-in-out group-hover:scale-y-0"
-            style="transition-delay: 0ms"
+            style="transition-delay: {{loop.index * 25}}ms"
           >
-            _
+            {{ char }}
           </div>
-          <div
-            class="origin-top transition-transform duration-150 ease-in-out group-hover:scale-y-0"
-            style="transition-delay: 25ms"
-          >
-            0
-          </div>
-          <div
-            class="origin-top transition-transform duration-150 ease-in-out group-hover:scale-y-0"
-            style="transition-delay: 50ms"
-          >
-            0
-          </div>
-          <div
-            class="origin-top transition-transform duration-150 ease-in-out group-hover:scale-y-0"
-            style="transition-delay: 75ms"
-          >
-            _
-          </div>
-          <div
-            class="origin-top transition-transform duration-150 ease-in-out group-hover:scale-y-0"
-            style="transition-delay: 100ms"
-          >
-            _
-          </div>
+          {% endfor %}
           <div class="absolute bottom-0 left-0 flex items-center">
+            {% set hovered = ["r", "0", "0", "k", "s"] %} {% for char in hovered
+            %}
             <div
               class="origin-bottom transition-transform duration-150 ease-in-out scale-y-0 group-hover:scale-y-100"
-              style="transition-delay: 0ms"
+              style="transition-delay: {{loop.index * 25}}ms"
             >
-              r
+              {{ char }}
             </div>
-            <div
-              class="origin-bottom transition-transform duration-150 ease-in-out scale-y-0 group-hover:scale-y-100"
-              style="transition-delay: 25ms"
-            >
-              0
-            </div>
-            <div
-              class="origin-bottom transition-transform duration-150 ease-in-out scale-y-0 group-hover:scale-y-100"
-              style="transition-delay: 50ms"
-            >
-              0
-            </div>
-            <div
-              class="origin-bottom transition-transform duration-150 ease-in-out scale-y-0 group-hover:scale-y-100"
-              style="transition-delay: 75ms"
-            >
-              k
-            </div>
-            <div
-              class="origin-bottom transition-transform duration-150 ease-in-out scale-y-0 group-hover:scale-y-100"
-              style="transition-delay: 100ms"
-            >
-              s
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
     </a>
+  </div>
+  <div
+    x-data="{ title: '', setTitle(title) { this.title = title } }"
+    @htmx:after-swap.window="setTitle(document.querySelector('#title')?.innerText)"
+  >
+    <span
+      x-text="title"
+      class="transition font-semibold text-black dark:text-white hidden sm:block"
+      :class="{ 'sm:hidden': !atTop }"
+    ></span>
   </div>
   <div class="flex md:hidden">
     <button
@@ -137,8 +104,7 @@
     {% for link in links %}
     <a
       href="/{{ link }}"
-      class="text-shadow-sm shadow-primary-400 dark:text-primary-400 transition text-sm font-semibold leading-6 text-primary-400 hover:text-primary-500 dark:hover:text-primary-300"
-      :class="{ 'hidden': atTop }"
+      class="transition text-sm font-semibold leading-6 text-primary-400 hover:text-primary-500 dark:hover:text-primary-300"
       >{{ link }}</a
     >
     {% endfor %}

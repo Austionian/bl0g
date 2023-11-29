@@ -1,4 +1,3 @@
-mod about;
 mod blog;
 mod handle_404;
 mod health_check;
@@ -7,7 +6,6 @@ mod projects;
 mod read_count;
 mod root;
 
-pub use about::about;
 pub use blog::blog;
 pub use handle_404::handle_404;
 pub use health_check::health_check;

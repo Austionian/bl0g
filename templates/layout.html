@@ -44,20 +44,19 @@
     </style>
     <link href="/assets/output.css" rel="stylesheet" type="text/css" />
   </head>
-  <body class="bg-primary-50 dark:bg-[#100725] dark:text-gray-100">
+  <body class="bg-primary-50/10 dark:bg-slate-950/80 dark:text-gray-100 leading-relaxed">
     <div
       class="relative inset-x-0 top-0 z-50"
       x-data="{ atTop: false, open: false }"
     >
-      {% set links = ["ab0ut", "bl0g", "pr0jects"] %} {% include
+      {% set links = ["bl0g", "pr0jects"] %} {% include
       "includes/header.html" %}
-
       <div class="relative isolate px-2 sm:px-6 pt-14 lg:px-8">
         <div
-          class="mx-auto max-w-4xl py-4 bg-purple-100/60 dark:bg-purple-950/10 p-4 sm:p-16 rounded-xl"
+          class="mx-auto max-w-3xl py-4 p-4 sm:p-8 text-slate-700 dark:text-slate-200"
           hx-boost="true"
         >
-          {% block body %} {% endblock %} {% include "includes/footer.html" %}
+        {% block body %} {% endblock %} {% include "includes/footer.html" %}
         </div>
       </div>
     </div>

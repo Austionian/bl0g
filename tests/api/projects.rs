@@ -29,5 +29,5 @@ async fn it_returns_the_blog_page_with_full_template() {
     // Text from the header.
     assert!(body.contains("_"));
     // Text from the footer.
-    assert!(body.contains("ab0ut"));
+    assert!(body.contains("©"));
 }
