@@ -11,6 +11,7 @@ struct Job {
     image: &'static str,
     tech: Vec<&'static str>,
     description: &'static str,
+    link: &'static str,
 }
 
 /// Handler to return the website's index and display
@@ -26,6 +27,7 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             image: "nm.webp",
             tech: vec!["React", "Redux", "TypeScript", "Graphql"],
             description: "Description about the job and what I did there. ",
+            link: "https://northwesternmutual.com",
         },
         Job {
             company: "Shorewood Tech",
@@ -35,6 +37,7 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             image: "st.webp",
             tech: vec!["Rust", "Actix", "TypeScript", "Qwik", "Postgres"],
             description: "Description about the job and what I did there. ",
+            link: "https://shorewood.tech",
         },
         Job {
             company: "Catholic Charities of St. Paul and Minneapolis",
@@ -44,6 +47,7 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             image: "ccspm.webp",
             tech: vec!["Python", "Django", "Flask", "Postgres"],
             description: "Description about the job and what I did there. ",
+            link: "https://cctwincities.org",
         },
     ];
 
