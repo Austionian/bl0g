@@ -26,7 +26,9 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             end_year: "Present",
             image: "nm.webp",
             tech: vec!["React", "Redux", "TypeScript", "Graphql"],
-            description: "Description about the job and what I did there. ",
+            description: "I work on the client website building new products, \
+                supporting legacy apps, and contributing to interal libraries \
+                to support easier development.",
             link: "https://northwesternmutual.com",
         },
         Job {
@@ -36,7 +38,7 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             end_year: "Present",
             image: "st.webp",
             tech: vec!["Rust", "Actix", "TypeScript", "Qwik", "Postgres"],
-            description: "Description about the job and what I did there. ",
+            description: "I built the ",
             link: "https://shorewood.tech",
         },
         Job {

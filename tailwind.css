@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   h1 {
     font-size: 2rem;
     font-weight: bolder;
@@ -10,20 +14,20 @@
   }
 
   .prose a {
-    color: theme("colors.primary.500");
+    color: theme("colors.secondary.500");
   }
 
   .prose a:hover {
-    color: theme("colors.primary.600");
+    color: theme("colors.secondary.600");
   }
 
   @media (prefers-color-scheme: dark) {
     .prose a {
-      color: theme("colors.primary.400");
+      color: theme("colors.secondary.400");
     }
 
     .prose a:hover {
-      color: theme("colors.primary.300");
+      color: theme("colors.secondary.300");
     }
   }
 

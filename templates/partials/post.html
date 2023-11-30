@@ -1,11 +1,11 @@
 <div class="max-w-2xl m-auto">
   <h1
     id="title"
-    class="text-primary-400 font-light text-shadow-lg shadow-primary-200 dark:shadow-primary-400"
+    class="text-primary-800 dark:text-primary-200 font-extralight"
   >
     {{ frontmatter.title | replace(from="_", to=" ") | title }}
   </h1>
-  <div class="flex justify-between text-gray-500">
+  <div class="flex justify-between text-primary-500">
     <h3>{{ frontmatter.date | date(format="%B %d, %Y") }}</h3>
     <h3 class="flex align-middle">
       <span hx-get="/read_c0unt/{{ frontmatter.id }}" hx-trigger="load">

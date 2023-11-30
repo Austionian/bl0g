@@ -1,5 +1,5 @@
 <div class="mt-28">
-  <h2>recent p<span class="font-mono">0</span>sts</h2>
+  <h2 class="lg:hidden">recent p<span class="font-mono">0</span>sts</h2>
   {% for post in posts %}
   <a
     href="/bl0g/{{ post.title }}#"
@@ -15,7 +15,7 @@
             >
               <div class="group relative cursor-pointer rounded">
                 <div class="flex items-center relative">
-                  <div class="group-hover:dark:text-primary-400 font-light">
+                  <div class="group-hover:dark:text-secondary-400 font-light">
               {{ post.title | replace(from="_", to=" ") }}
                   </div>
                 </div>
@@ -24,19 +24,19 @@
             </h2>
             <!-- <div class="flex flex-wrap"> -->
             <!--   <a -->
-            <!--     class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" -->
+            <!--     class="mr-3 text-sm font-medium uppercase text-secondary-500 hover:text-secondary-600 dark:hover:text-secondary-400" -->
             <!--     href="/tags/rust" -->
             <!--     >rust</a -->
             <!--   > -->
             <!-- </div> -->
           </div>
           <div class="sr-only">Published on</div>
-          <div class="text-xs text-slate-400 group-hover:dark:text-slate-100">
+          <div class="text-xs text-primary-400 group-hover:dark:text-primary-100">
             <time datetime="{{post.date}}">
               {{ post.date | date(format="%B %d, %Y") }}</time
             >
           </div>
-          <div class="mt-3 text-sm text-slate-700 dark:text-slate-300 leading-relaxed group-hover:dark:text-slate-100">
+          <div class="mt-3 text-sm text-primary-700 dark:text-primary-300 leading-relaxed group-hover:dark:text-primary-100">
             {{ post.description }}
           </div>
       </div>
@@ -47,12 +47,12 @@
       href="/bl0g#"
       hx-target="#outerReach"
       hx-swap="outerHTML transition:true show:body:top"
-      class="group-hover:text-primary-400"
+      class="group-hover:text-secondary-400"
     >
       <div class="group flex flex-row">
-        <div class="group-hover:text-primary-400">see m0re p0sts</div>
+        <div class="group-hover:text-secondary-400">see m0re p0sts</div>
         <div
-          class="ml-2 group-hover:text-primary-400 group-hover:scale-150 transition"
+          class="ml-2 group-hover:text-secondary-400 group-hover:scale-150 transition"
         >
           →
         </div>

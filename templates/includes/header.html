@@ -8,7 +8,7 @@
       {% for link in links %}
       <a
         href="/{{ link }}"
-        class="transition hover:bg-zinc-900/5 hover:font-bold dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 block rounded-md px-3 py-2 font-medium"
+        class="transition hover:bg-zinc-900/5 hover:font-bold dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-secondary-500 dark:hover:text-secondary-400 block rounded-md px-3 py-2 font-medium"
         >{{ link }}</a
       >
       {% endfor %}
@@ -16,54 +16,36 @@
   </div>
 </div>
 <nav
-  class="flex mx-3 px-6 sm:m-auto max-w-3xl border-black/10 dark:border-white/10 mt-3 rounded-full sm:px-16 tems-center justify-between z-10 py-6 sticky top-3 left-0 right-0 font-lg transition duration-150 ease-in-out"
-  :class="{ 'shadow-lg': atTop && !open, 'dark:shadow-black/90 backdrop-blur bg-white/5 dark:bg-black/5': atTop }"
+  class="flex mx-3 py-3 pl-3 pr-6 sm:m-auto lg:mx-auto max-w-6xl border-black/10 dark:border-white/10 mt-3 rounded-full sm:pl-6 sm:pr-16 items-center justify-between z-10 sticky top-3 left-0 right-0 font-lg transition duration-150 ease-in-out"
+  :class="{ 'shadow': atTop && !open, 'dark:shadow-primary-500/90 backdrop-blur bg-white/5 dark:bg-black/5': atTop }"
   @scroll.window="atTop = (window.pageYOffset > 50)"
 >
   <div class="flex">
     <a
       href="/"
-      class="-m-1.5 font-mono font-bold text-lg text-primary-400 hover:text-primary-500 dark:hover:text-primary-300"
+      class="-m-1.5 font-mono font-bold text-lg text-primary-500 dark:text-primary-400 hover:text-secondary-500"
     >
-      <div class="group relative cursor-pointer rounded">
-        <div class="flex items-center relative">
-          {% set normal = ["_", "0", "0", "_", "_"] %} {% for char in normal %}
-          <div
-            class="origin-top transition-transform duration-150 ease-in-out group-hover:scale-y-0"
-            style="transition-delay: {{loop.index * 25}}ms"
-          >
-            {{ char }}
-          </div>
-          {% endfor %}
-          <div class="absolute bottom-0 left-0 flex items-center">
-            {% set hovered = ["r", "0", "0", "k", "s"] %} {% for char in hovered
-            %}
-            <div
-              class="origin-bottom transition-transform duration-150 ease-in-out scale-y-0 group-hover:scale-y-100"
-              style="transition-delay: {{loop.index * 25}}ms"
-            >
-              {{ char }}
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
+      <img
+        src="/assets/images/mobius2.png"
+        class="sm:motion-safe:hover:scale-110 transition h-16 w-16 -p-2"
+      />
     </a>
   </div>
   <div
     x-data="{ title: '', setTitle(title) { this.title = title } }"
     @htmx:after-swap.window="setTitle(document.querySelector('#title')?.innerText)"
   >
-    <span
-      x-text="title"
-      class="transition font-semibold text-black dark:text-white hidden sm:block"
-      :class="{ 'sm:hidden': !atTop }"
-    ></span>
+    <a
+      href="#"
+      class="transition font-semibold text-lg text-primary-700 dark:text-primary-300 hidden sm:block hover:text-secondary-500"
+    >
+      <span x-text="title" :class="{ 'sm:hidden': !atTop }"></span
+    ></a>
   </div>
   <div class="flex md:hidden">
     <button
       type="button"
-      class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-primary-400 dark:text-primary-500 hover:text-primary-500 dark:hover:text-primary-400"
+      class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-primary-500 dark:text-primary-400 hover:text-secondary-500 dark:hover:text-secondary-400"
       @click="open = !open"
     >
       <span class="sr-only">Open main menu</span>
@@ -104,7 +86,7 @@
     {% for link in links %}
     <a
       href="/{{ link }}"
-      class="transition text-sm font-semibold leading-6 text-primary-400 hover:text-primary-500 dark:hover:text-primary-300"
+      class="transition text-sm font-semibold leading-6 text-primary-700 dark:text-primary-300 hover:text-secondary-500"
       >{{ link }}</a
     >
     {% endfor %}

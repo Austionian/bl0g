@@ -4,41 +4,53 @@
     <div
       class="lg:sticky lg:top-[10.5rem] lg:flex lg:h-[85vh] lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:pr-20"
     >
-        <div class="group">
-          <div class="flex flex-col">
-            <img
-              src="/assets/images/selfportrait.webp"
-              alt="The author photographing a mirror"
-              class="rounded-full h-[100px] mr-5 w-[100px]"
-            />
-            <div class="flex items-center">
-              <h2
-                class="text-4xl font-bold tracking-tight sm:text-5xl font-sans"
-              >
-                austin r<span class="font-mono">00</span>ks
-              </h2>
-            </div>
+      <div class="group">
+        <div class="flex flex-col">
+          <img
+            src="/assets/images/selfportrait.webp"
+            alt="The author photographing a mirror"
+            class="rounded-full ring-1 ring-primary-800/50 dark:ring-primary-200/50 h-[100px] mr-5 w-[100px]"
+          />
+          <div class="mt-2 flex items-center">
+            <h2 class="text-4xl font-bold tracking-tight sm:text-5xl font-sans">
+              austin r<span class="font-mono">00</span>ks
+            </h2>
           </div>
-          <p
-            class="text-lg font-medium tracking-tight sm:text-xl"
-          >
-            software engineer
-          </p>
-          <p class="mt-4 text-gray-700 dark:text-gray-300">
-            Curious and persistent, creating quality experiences.
-          </p>
         </div>
+        <p class="text-lg font-medium tracking-tight sm:text-xl">
+          software engineer
+        </p>
+        <p class="mt-4 text-primary-700 dark:text-primary-300 font-light">
+          Curious and persistent, building quality experiences.
+        </p>
+      </div>
       {% include 'includes/social.html' %}
     </div>
-    <div class="lg:w-1/2 lg:px-4 lg:overflow-hidden">
+    <div class="lg:w-1/2 lg:px-1">
       <div class="lg:mt-28">
-        <h2 class="text-black dark:text-white">ab<span class="font-mono">0</span>ut</h2>
-        <p class="mt-6">
-          Experienced software engineer passionate about building performant,
-          correct applications.
-          <br /><br />
-          Outside of programming, I enjoy reading and surfing in Lake Michigan.
-        </p>
+        <h2 class="block lg:hidden text-black dark:text-white">
+          ab<span class="font-mono">0</span>ut
+        </h2>
+        <div class="space-y-4 font-light lg:text-justify">
+          <p class="lg:mt-0">
+            I am an experienced software engineer passionate about learning and
+            building performant, correct applications. I've been recognized as a
+            individual performer and as a team player.
+          </p>
+          <p>
+            My engineering journey started on whim asking an employer for a
+            internship in a stairwell and becoming a product person for a small
+            SaaS app. From there I began building Python, JavaScript, and Rust apps.
+          </p>
+          <p>
+            Outside of programming for work, I enjoy programming (<a
+              class="hover:underline text-secondary-500"
+              href="https://github.com/search?q=owner%3AAustionian+advent+of+cod&type=repositories"
+              >:?</a
+            >), reading and surfing Lake Michigan when time and weather and
+            children allow.
+          </p>
+        </div>
       </div>
       <div class="mt-10">{% include 'includes/work.html' %}</div>
       <div class="mt-10">{% include 'includes/list_of_posts.html' %}</div>
