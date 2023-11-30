@@ -8,6 +8,13 @@ module.exports = {
     extend: {
       colors: {
         primary: colors.emerald,
+        secondary: {
+          200: "#93BEFF",
+          300: "#93BEFF",
+          400: "#2D7EF9",
+          500: "#0f6fff",
+          600: "#0f6fff",
+        },
       },
       textShadow: {
         sm: "0 1px 2px var(--tw-shadow-color)",
