@@ -1,5 +1,5 @@
 <div class="mt-28">
-  <h2 class="lg:hidden">recent p<span class="font-mono">0</span>sts</h2>
+  <h2>recent p<span class="font-mono">0</span>sts</h2>
   {% for post in posts %}
   <a
     href="/bl0g/{{ post.title }}#"
@@ -9,37 +9,49 @@
     <div
       class="group cursor-pointer mb-8 -ml-2 transition pl-2 pr-2 sm:pr-4 rounded-lg border border-transparent bg-white/10 dark:bg-transparent"
     >
-          <div>
-            <h2
-              class="flex items-center justify-between z-10 sticky top-0 left-0 right-0 font-lg transition duration-150 ease-in-out text-xl font-light leading-8 tracking-tight"
-            >
-              <div class="group relative cursor-pointer rounded">
-                <div class="flex items-center relative">
-                  <div class="group-hover:dark:text-secondary-400 font-light">
-              {{ post.title | replace(from="_", to=" ") }}
-                  </div>
-                </div>
+      <div>
+        <h2
+          class="flex items-center justify-between z-10 transition duration-150 ease-in-out text-xl font-light leading-8 tracking-tight"
+        >
+          <div class="group relative cursor-pointer rounded">
+            <div class="flex items-center relative">
+              <div class="group-hover:text-secondary-500 group-hover:dark:text-secondary-400 font-light">
+                {{ post.title | replace(from="_", to=" ") }}
               </div>
-              <!-- {{ post.title | replace(from="_", to=" ") | title }} -->
-            </h2>
-            <!-- <div class="flex flex-wrap"> -->
-            <!--   <a -->
-            <!--     class="mr-3 text-sm font-medium uppercase text-secondary-500 hover:text-secondary-600 dark:hover:text-secondary-400" -->
-            <!--     href="/tags/rust" -->
-            <!--     >rust</a -->
-            <!--   > -->
-            <!-- </div> -->
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="ml-2 fill-black dark:fill-white group-hover:fill-secondary-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition"
+              >
+                <path
+                  d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                />
+              </svg>
+            </div>
           </div>
-          <div class="sr-only">Published on</div>
-          <div class="text-xs text-primary-400 group-hover:dark:text-primary-100">
-            <time datetime="{{post.date}}">
-              {{ post.date | date(format="%B %d, %Y") }}</time
-            >
-          </div>
-          <div class="mt-3 text-sm text-primary-700 dark:text-primary-300 leading-relaxed group-hover:dark:text-primary-100">
-            {{ post.description }}
-          </div>
+          <!-- {{ post.title | replace(from="_", to=" ") | title }} -->
+        </h2>
+        <!-- <div class="flex flex-wrap"> -->
+        <!--   <a -->
+        <!--     class="mr-3 text-sm font-medium uppercase text-secondary-500 hover:text-secondary-600 dark:hover:text-secondary-400" -->
+        <!--     href="/tags/rust" -->
+        <!--     >rust</a -->
+        <!--   > -->
+        <!-- </div> -->
       </div>
+      <div class="sr-only">Published on</div>
+      <div class="text-xs text-primary-400 group-hover:dark:text-primary-100">
+        <time datetime="{{post.date}}">
+          {{ post.date | date(format="%B %d, %Y") }}</time
+        >
+      </div>
+      <div class="mt-3 text-sm text-primary-700 dark:text-primary-300">
+        {{ post.description }}
+      </div>
+    </div>
   </a>
   {% endfor %}
   <div class="flex justify-end">
@@ -49,12 +61,23 @@
       hx-swap="outerHTML transition:true show:body:top"
       class="group-hover:text-secondary-400"
     >
-      <div class="group flex flex-row">
-        <div class="group-hover:text-secondary-400">see m0re p0sts</div>
+      <div class="group flex flex-row items-center justify-center font-extralight">
+        <div class="group-hover:text-secondary-400">see m<span class="font-mono">0</span>re p<span class="font-mono">0</span>sts</div>
         <div
-          class="ml-2 group-hover:text-secondary-400 group-hover:scale-150 transition"
+          class="ml-2 group-hover:text-secondary-400"
         >
-          →
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="ml-2 fill-black dark:fill-white group-hover:fill-secondary-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition"
+          >
+            <path
+              d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+            />
+          </svg>
         </div>
       </div>
     </a>

@@ -28,7 +28,13 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             tech: vec!["React", "Redux", "TypeScript", "Graphql"],
             description: "I work on the client website building new products, \
                 supporting legacy apps, and contributing to interal libraries \
-                to support easier development.",
+                to support easier development. Helped transition the org to \
+                Graphql. Lead the team in testing and performance strategies \
+                for our React code and subgraph.<br /><br />Was recognized as \
+                the individual contributor of Q2 2023 of Northwestern Mutual’s \
+                web and mobile engineers for having decreased the entire client \
+                website’s LCP by ~500ms. Also decreased the SSI header's size \
+                by 57% (2mb).",
             link: "https://northwesternmutual.com",
         },
         Job {
@@ -38,7 +44,11 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             end_year: "Present",
             image: "st.webp",
             tech: vec!["Rust", "Actix", "TypeScript", "Qwik", "Postgres"],
-            description: "I built the ",
+            description: "I was contracted to convert a headless JS app into a \
+                Qwik/ Qwik-City frontend and an Actix backend for the web and \
+                native mobile clients to consume.<br /><br />The frontend scores perfectly on \
+                Google's Lighthouse metrics for web and mobile. The backend test \
+                coverage is over 65%.",
             link: "https://shorewood.tech",
         },
         Job {
@@ -48,7 +58,10 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             end_year: "2022",
             image: "ccspm.webp",
             tech: vec!["Python", "Django", "Flask", "Postgres"],
-            description: "Description about the job and what I did there. ",
+            description: "I built and maintained internal web apps (Flask and \
+                Django) for critical agency wide functions, e.g. critical \
+                incidents, employee management. Also administrated and built out \
+                instances of SharePoint and EHR (Credible).",
             link: "https://cctwincities.org",
         },
     ];
