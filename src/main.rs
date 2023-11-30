@@ -1,5 +1,6 @@
 use bl0g::{get_configuration, startup};
 use std::net::SocketAddr;
+use tokio::net::TcpListener;
 use tracing::Level;
 use tracing_subscriber::prelude::__tracing_subscriber_SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
@@ -29,8 +30,8 @@ async fn main() {
         .unwrap();
 
     tracing::debug!("listening on {}", address);
-    axum::Server::bind(&address)
-        .serve(app.into_make_service())
+    let listener = TcpListener::bind(address).await.unwrap();
+    axum::serve(listener, app.into_make_service())
         .await
         .unwrap();
 }

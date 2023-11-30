@@ -1,5 +1,4 @@
 use crate::helpers::start_test_app;
-use hyper::{Body, Request};
 
 // TODO: Write a test like this one that isn't relying on the
 // local filesystem.
@@ -9,23 +8,13 @@ async fn it_return_the_full_post_template() {
         .await
         .expect("Unable to start test server.");
 
-    let client = hyper::Client::new();
-
-    let (parts, body) = client
-        .request(
-            Request::builder()
-                .uri(format!("http://{}/bl0g/hello_world", &addr))
-                .body(Body::empty())
-                .unwrap(),
-        )
+    let response = reqwest::get(format!("http://{}/bl0g/hello_world", &addr))
         .await
-        .unwrap()
-        .into_parts();
+        .unwrap();
 
-    assert_eq!(parts.status.as_u16(), 200);
+    assert_eq!(response.status().as_u16(), 200);
 
-    let body = hyper::body::to_bytes(body).await.unwrap();
-    let body = String::from_utf8(body.to_vec()).unwrap();
+    let body = response.text().await.unwrap();
 
     assert!(body.contains("Hello!"));
 
@@ -41,24 +30,18 @@ async fn it_return_the_just_the_post_text() {
         .await
         .expect("Unable to start test server.");
 
-    let client = hyper::Client::new();
+    let client = reqwest::Client::new();
 
-    let (parts, body) = client
-        .request(
-            Request::builder()
-                .uri(format!("http://{}/bl0g/hello_world", &addr))
-                .header("HX-Request", "true")
-                .body(Body::empty())
-                .unwrap(),
-        )
+    let response = client
+        .get(format!("http://{}/bl0g/hello_world", &addr))
+        .header("HX-Request", "true")
+        .send()
         .await
-        .unwrap()
-        .into_parts();
+        .unwrap();
 
-    assert_eq!(parts.status.as_u16(), 200);
+    assert_eq!(response.status().as_u16(), 200);
 
-    let body = hyper::body::to_bytes(body).await.unwrap();
-    let body = String::from_utf8(body.to_vec()).unwrap();
+    let body = response.text().await.unwrap();
 
     assert!(body.contains("Hello!"));
 
