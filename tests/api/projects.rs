@@ -25,9 +25,8 @@ async fn it_returns_the_blog_page_with_full_template() {
     let body = hyper::body::to_bytes(body).await.unwrap();
     let body = String::from_utf8(body.to_vec()).unwrap();
 
-    // assert!(body.contains("ab0ut"));
     // Text from the header.
-    assert!(body.contains("_"));
+    assert!(body.contains("pr0jects"));
     // Text from the footer.
     assert!(body.contains("©"));
 }

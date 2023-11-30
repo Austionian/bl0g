@@ -27,7 +27,7 @@ async fn it_returns_the_blog_page_with_full_template() {
 
     assert!(body.contains("bl0g"));
     // Text from the header.
-    assert!(body.contains("_"));
+    assert!(body.contains("pr0jects"));
     // Text from the footer.
     assert!(body.contains("©"));
 }
