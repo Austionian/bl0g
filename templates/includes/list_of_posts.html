@@ -6,7 +6,7 @@
     hx-swap="outerHTML transition:true show:body:top"
   >
     <div
-      class="group cursor-pointer mb-8 -ml-2 transition pl-2 pr-2 sm:pr-4 rounded-lg border border-transparent bg-white/10 dark:bg-transparent"
+      class="pt-6 sm:pt-2 group cursor-pointer mb-8 -ml-2 transition pl-2 pr-2 sm:pr-4 rounded-lg border border-transparent bg-white/10 dark:bg-transparent"
     >
       <div>
         <h2
@@ -14,7 +14,9 @@
         >
           <div class="group relative cursor-pointer rounded">
             <div class="flex items-center relative">
-              <div class="group-hover:text-secondary-500 group-hover:dark:text-secondary-400 font-light">
+              <div
+                class="group-hover:text-secondary-500 group-hover:dark:text-secondary-400 font-light"
+              >
                 {{ post.title | replace(from="_", to=" ") }}
               </div>
               <svg
