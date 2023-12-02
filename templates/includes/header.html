@@ -2,13 +2,18 @@
   <div
     class="h-screen w-screen z-10 px-6 fixed bg-white/20 dark:bg-black/20 backdrop-blur-lg md:hidden mt-[72px]"
     x-show="open"
-    x-transition.scale.origin.left
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 scale-90 translate-y-[100vh]"
+    x-transition:enter-end="opacity-100 scale-100"
+    x-transition:leave="transition ease-in duration-300"
+    x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-90 translate-y-[100vh]"
   >
     <div class="space-y-1 px-2 pb-3 pt-10 font-mono text-lg">
       {% for link in links %}
       <a
         href="/{{ link }}"
-        class="transition hover:bg-zinc-900/5 dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-secondary-500 dark:hover:text-secondary-400 block rounded-md px-3 py-2 font-medium"
+        class="transition hover:bg-zinc-900/5 dark:hover:bg-black/20 text-gray-700 dark:text-gray-300 hover:text-secondary-500 dark:hover:text-secondary-400 block rounded-md py-2 font-medium"
         >{{ link }}</a
       >
       {% endfor %}
