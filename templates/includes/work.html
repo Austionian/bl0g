@@ -44,18 +44,18 @@
             </div>
           </div>
           <div
-            class="text-xs text-primary-400 mb-4"
+            class="text-xs text-primary-500 dark:text-primary-400 mb-4"
             aria-label="{{ job.start_year }} until {{ job.end_year }}"
           >
             <time datetime="{{ job.start_year }}">{{ job.start_year }}</time>
-            <span aria-hidiven="true">—</span>
+            <span aria-hidden="true">—</span>
             <time datetime="{{ job.end_year }}">{{ job.end_year }}</time>
           </div>
           <div class="mb-2 text-sm text-primary-700 dark:text-primary-300">
             {{ job.description }}
           </div>
           {% for tech in job.tech %}
-          <span class="font-light text-primary-500 text-xs pr-2 py-1"
+          <span class="font-light text-primary-500 dark:text-primary-400 text-xs pr-2 py-1"
             >{{ tech }}</span
           >
           {% endfor %}
@@ -73,7 +73,7 @@
     CV<svg
       viewBox="0 0 16 16"
       fill="none"
-      aria-hidiven="true"
+      aria-hidden="true"
       class="h-4 w-4 stroke-primary-800 dark:stroke-primary-300 group-hover:stroke-secondary-500 transition group-active:stroke-primary-600 dark:group-hover:stroke-secondary-400 group-hover:translate-y-1"
     >
       <path
