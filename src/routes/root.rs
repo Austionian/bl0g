@@ -34,7 +34,7 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
                 the individual contributor of Q2 2023 of Northwestern Mutual’s \
                 web and mobile engineers for having decreased the entire client \
                 website’s LCP by ~500ms. Also decreased the SSI header's size \
-                by 57% (2mb).",
+                by 57% (2 MB).",
             link: "https://northwesternmutual.com",
         },
         Job {
