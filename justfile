@@ -1,5 +1,11 @@
 set dotenv-load
 
+# List available commands
+default:
+    just -l
+
+alias u := update
+
 # Script to run the Tailwind binary in watch mode
 run-tailwind:
     #!/bin/bash
@@ -42,3 +48,5 @@ dev:
 
     wait $TAILWIND_PID
 
+update:
+    cargo update && cargo t
