@@ -10,6 +10,7 @@ pub async fn feed(State(state): State<Arc<AppState>>) -> impl IntoResponse {
     let rss_entries = state
         .posts
         .iter()
+        .take(10)
         .map(|post| post.to_string())
         .collect::<String>();
 
