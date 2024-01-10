@@ -78,6 +78,7 @@ pub fn startup() -> Result<Router, String> {
         .route("/bl0g/:post_name", get(routes::get_blog_post))
         .route("/pr0jects", get(routes::projects))
         .route("/read_c0unt/:post_id", get(routes::read_count))
+        .route("/feed.xml", get(routes::feed))
         .fallback(routes::handle_404)
         .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
         .layer(TraceLayer::new_for_http())

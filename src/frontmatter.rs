@@ -4,7 +4,7 @@ use serde::de::DeserializeOwned;
 #[derive(serde::Deserialize, serde::Serialize, Clone, Debug, Default)]
 pub struct FrontMatter {
     pub id: uuid::Uuid,
-    title: String,
+    pub title: String,
     pub date: DateTime<Utc>,
     description: String,
     pub draft: Option<bool>,
@@ -40,19 +40,20 @@ impl FrontMatter {
 
 impl ToString for FrontMatter {
     fn to_string(&self) -> String {
+        let url = format!("https://r00ks.io/blog/{}", self.title);
+        let readable_title = self.title.replace("_", " ");
         format!(
-            r#"---
-id: {}
-title: {}
-date: {}
-description: {}
-draft: {}
----"#,
-            self.id,
-            self.title,
-            self.date,
-            self.description,
-            self.draft.unwrap_or(true)
+            r#"<entry>
+<title>{}</title>
+<description>{}</description>
+<link rel="alternate" href="{}" type="text/html" title="{}"/>
+<published>{}</published>
+<id>{}</id>
+<author>
+<name>Austin Rooks</name>
+</author>
+</entry>"#,
+            readable_title, self.description, url, self.title, self.date, url
         )
     }
 }
