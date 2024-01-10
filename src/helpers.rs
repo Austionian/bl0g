@@ -1,4 +1,5 @@
 use axum::http::HeaderMap;
+use std::{fs, io};
 
 /// A function for  getting either a complete hypermedia response
 /// with header, footer, layout etc, or a fragment of just the
@@ -28,6 +29,10 @@ pub fn get_template(headers: &HeaderMap, template_name: &str) -> String {
     } else {
         format!("{template_name}.html")
     }
+}
+
+pub fn read_post_to_string(post_name: &str) -> Result<String, io::Error> {
+    fs::read_to_string(format!("data/posts/{post_name}.md"))
 }
 
 #[cfg(test)]

@@ -1,4 +1,6 @@
+use crate::helpers;
 use chrono::{DateTime, Utc};
+use comrak::{markdown_to_html, ComrakOptions};
 use serde::de::DeserializeOwned;
 
 #[derive(serde::Deserialize, serde::Serialize, Clone, Debug, Default)]
@@ -36,12 +38,22 @@ impl FrontMatter {
     pub fn from_file(file: String) -> Result<Self, FrontmatterError> {
         Ok(deserialize_frontmatter::<Self>(&file)?.0)
     }
+
+    fn get_content(&self) -> Result<String, FrontmatterError> {
+        let md =
+            helpers::read_post_to_string(&self.title).unwrap_or("Unable to load post.".to_string());
+        let content = deserialize_frontmatter::<Self>(&md)?.1;
+        Ok(markdown_to_html(&content, &ComrakOptions::default()))
+    }
 }
 
 impl ToString for FrontMatter {
     fn to_string(&self) -> String {
         let url = format!("https://r00ks.io/bl0g/{}", self.title);
         let readable_title = self.title.replace('_', " ");
+        let content = self
+            .get_content()
+            .unwrap_or("Unable to load post".to_string());
         format!(
             r#"<entry>
 <title>{}</title>
@@ -49,11 +61,12 @@ impl ToString for FrontMatter {
 <link rel="alternate" href="{}" type="text/html" title="{}"/>
 <published>{}</published>
 <id>{}</id>
+<content type="html" xml:base="https://r00ks.io/bl0g/{}">{}</content>
 <author>
 <name>Austin Rooks</name>
 </author>
 </entry>"#,
-            readable_title, self.description, url, self.title, self.date, url
+            readable_title, self.description, url, self.title, self.date, url, self.title, content
         )
     }
 }

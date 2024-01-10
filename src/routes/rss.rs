@@ -15,11 +15,11 @@ pub async fn feed(State(state): State<Arc<AppState>>) -> impl IntoResponse {
 
     let feed = format!(
         r#"<feed xml:lang="en">
-<generator uri="https://r00ks.io/" version="0.1.0">r00ks blog</generator>
-<link href="https://r00ks.io/feed.xml" rel="self" type="application/atom+xml"/>
+<generator uri="https://r00ks.io/" version="0.1.0">r00ks</generator>
+<link href="https://r00ks.io/feed.xml" rel="self" type="application/xml"/>
 <link href="https://r00ks.io/" rel="alternate" type="text/html"/>
 <id>https://r00ks.io/</id>
-<title>r00ks blog</title>
+<title>r00ks Blog</title>
 <subtitle>
 Learning and building in public.
 </subtitle>
