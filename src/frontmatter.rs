@@ -40,7 +40,7 @@ impl FrontMatter {
 
 impl ToString for FrontMatter {
     fn to_string(&self) -> String {
-        let url = format!("https://r00ks.io/blog/{}", self.title);
+        let url = format!("https://r00ks.io/bl0g/{}", self.title);
         let readable_title = self.title.replace('_', " ");
         format!(
             r#"<entry>
