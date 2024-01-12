@@ -39,6 +39,8 @@ impl FrontMatter {
         Ok(deserialize_frontmatter::<Self>(&file)?.0)
     }
 
+    /// Reads the source md file and gets its post content and converts that
+    /// to html.
     fn get_content(&self) -> Result<String, FrontmatterError> {
         let md =
             helpers::read_post_to_string(&self.title).unwrap_or("Unable to load post.".to_string());
@@ -47,6 +49,8 @@ impl FrontMatter {
     }
 }
 
+/// Uses the front matter to convert the post into an
+/// rss entry.
 impl ToString for FrontMatter {
     fn to_string(&self) -> String {
         let url = format!("https://r00ks.io/bl0g/{}", self.title);
