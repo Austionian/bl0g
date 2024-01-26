@@ -17,7 +17,7 @@ async fn main() {
 
     let api_token = fs::read_to_string(".env").unwrap();
 
-    match fs::metadata(format!("./data/posts/{file_name}")) {
+    match fs::metadata(format!("./content/posts/{file_name}")) {
         Ok(_) => panic!("{file_name} already exsists!"),
         Err(_) => {
             // Create the post in D1.
@@ -38,7 +38,7 @@ async fn main() {
                 println!("Post was not added to d1.");
             }
 
-            let mut file = fs::File::create(format!("./data/posts/{file_name}"))
+            let mut file = fs::File::create(format!("./content/posts/{file_name}"))
                 .expect("Unable to create new file.");
             file.write_all(frontmatter.to_string().as_bytes())
                 .expect("Unable to write to new file.");

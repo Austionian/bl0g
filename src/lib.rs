@@ -41,7 +41,7 @@ pub struct AppState {
 pub fn startup() -> Result<Router, String> {
     // Get the posts at startup since they'll never change for the life
     // of the program.
-    let posts = match fs::read_dir("data/posts") {
+    let posts = match fs::read_dir("content/posts") {
         Ok(files) => {
             let mut posts = files
                 .into_iter()
@@ -58,7 +58,7 @@ pub fn startup() -> Result<Router, String> {
 
     // Get the projects details at startup since they'll never change for the life
     // of the program.
-    let projects = match fs::read_dir("data/projects") {
+    let projects = match fs::read_dir("content/projects") {
         Ok(files) => Ok(files
             .into_iter()
             .filter_map(|file| file.ok())

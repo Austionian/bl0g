@@ -10,13 +10,13 @@ alias u := update
 run-tailwind:
     #!/bin/bash
     echo "Starting the Tailwind binary."
-    ./tailwindcss -i tailwind.css -o ./assets/output.css --watch
+    ./tailwindcss -i ./src/styles/styles.css -o ./assets/styles.css --watch
 
 # Script to build and minify the Tailwind binary
 build-tailwind:
     #!/bin/bash
     echo -e "\nMinifying css"
-    sh -c './tailwindcss -i tailwind.css -o ./assets/output.css --minify'
+    sh -c './tailwindcss -i ./src/styles/styles.css -o ./assets/styles.css --minify'
 
 # Script to run the axum server in watch mode.
 run-axum:

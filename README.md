@@ -15,7 +15,7 @@ cargo run --bin post-maker <post-title-here>
 > [!IMPORTANT]
 > You'll need an `.env` file with an api token, e.g. `API_TOKEN=123456789`, in the project's root.
 
-This will create a markdown file in the `data/posts/` directory. The file's frontmatter 
+This will create a markdown file in the `content/posts/` directory. The file's frontmatter 
 contains a `draft` key which defaults to true. For the post to appar on the website,
 that must be changed to false.
 

@@ -32,7 +32,7 @@ pub fn get_template(headers: &HeaderMap, template_name: &str) -> String {
 }
 
 pub fn read_post_to_string(post_name: &str) -> Result<String, io::Error> {
-    fs::read_to_string(format!("data/posts/{post_name}.md"))
+    fs::read_to_string(format!("content/posts/{post_name}.md"))
 }
 
 #[cfg(test)]
