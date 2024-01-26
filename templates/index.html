@@ -1,4 +1,4 @@
-{% extends "layout.html" %} {% block body %}
+{% extends "base.html" %} {% block body %}
 <div id="outerReach">
   <div class="lg:flex lg:justify-between lg:gap-4">
     <div
@@ -28,10 +28,10 @@
     </div>
     <div class="lg:w-1/2 lg:px-1">
       <div class="lg:mt-28">
-        <h2 class="block lg:hidden text-primary-700 dark:text-primary-300">
-          ab<span class="font-mono">0</span>ut
+        <h2 class="block lg:hidden text-primary-700 dark:text-primary-300 font-bold">
+          ab0ut
         </h2>
-        <div class="mt-6 lg:mt-0 space-y-4 font-extralight">
+        <div class="mt-6 lg:mt-0 space-y-4">
           <p class="lg:mt-0">
             I am an experienced software engineer passionate about learning and
             building performant, correct applications. I've been recognized as a
@@ -46,14 +46,14 @@
           <p>
             Outside of programming for work, I enjoy <a
               href="https://github.com/search?q=owner%3AAustionian+advent_of_code+OR+codecrafters&type=repositories"
-              >programming</a
-            >, reading and surfing Lake Michigan when time and weather and
+              >programming for fun</a
+            >, reading, and surfing Lake Michigan when time and weather and
             children allow.
           </p>
         </div>
       </div>
       <div class="mt-10">{% include 'includes/work.html' %}</div>
-      <h2 class="mt-28 -mb-2">recent p<span class="font-mono">0</span>sts</h2>
+      <h2 class="mt-28 -mb-2 font-bold">recent p0sts</h2>
       <div>{% include 'includes/list_of_posts.html' %}</div>
       <div class="flex justify-end pt-6">
         <a
@@ -66,9 +66,7 @@
             class="group flex flex-row items-center justify-center font-extralight"
           >
             <div class="group-hover:text-secondary-400">
-              see m<span class="font-mono">0</span>re p<span class="font-mono"
-                >0</span
-              >sts
+              see m0re p0sts
             </div>
             <div class="ml-2 group-hover:text-secondary-400">
               <svg

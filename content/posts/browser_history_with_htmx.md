@@ -48,7 +48,7 @@ That fixes the use case for someone navigating within the app itself, but not if
 
 ## Htmx's Meta Header
 
-Every request that comes from htmx (i.e. something like ```hx-get```) has a ```HTTP_HX_REQUEST``` value in the request. That gives a way into the figuring out what template I should be serving for every request. If it's htmx requesting, the fragment is all that's needed. If not we'll need to include the layout, too.
+Every request that comes from htmx (i.e. something like ```hx-get```) has a ```HTTP_HX_REQUEST``` value in the request. That gives a way into the figuring out what template I should be serving for every request. If it's htmx requesting, the fragment is all that's needed. If not we'll need to include the base, too.
 
 With that in mind I created a helper function that a view could use to determine which template to serve this request. It takes the request and template name, and gives the string to the correct template.
 
@@ -74,22 +74,22 @@ $APP_ROOT
     └── incidents
         ├── htmx
         |   └── # html fragments for htmx requests
-        └── # top level templates, like layout.html
+        └── # top level templates, like base.html
 ```
 
 That helps me think what's going to produce what. And the real beauty lies in how easy it is to create the `_full.html` templates for the fragments.
 
-For example, I have a ```layout.html``` that is the base for all other pages. All of the full templates just ```extends``` that and then I just need to ```include``` my htmx fragment and viola I have a full page:
+For example, I have a ```base.html``` that is the base for all other pages. All of the full templates just ```extends``` that and then I just need to ```include``` my htmx fragment and viola I have a full page:
 
 ```html
-{% extends 'incidents/layout.html' %}
+{% extends 'incidents/base.html' %}
 
 {% block main %}
 {% include "incidents/htmx/incident.html" %}
 {% endblock %}
 ```
 
-```Get_template``` then essentially extends my layout when I need to, otherwise just gives em the fragment.
+```Get_template``` then essentially extends my base when I need to, otherwise just gives em the fragment.
 
 So whether a user wants to navigate my app through the browser's history or travel directly to a page, I can handle it with these simple additions.
 

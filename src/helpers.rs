@@ -2,7 +2,7 @@ use axum::http::HeaderMap;
 use std::{fs, io};
 
 /// A function for  getting either a complete hypermedia response
-/// with header, footer, layout etc, or a fragment of just the
+/// with nav, footer, base etc, or a fragment of just the
 /// requested content.
 ///
 /// Allows for returning templates in an SPA

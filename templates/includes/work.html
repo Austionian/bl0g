@@ -1,6 +1,6 @@
 <div class="mt-28">
-  <h2 class="text-black dark:text-white lg:hidden">
-    w<span class="font-mono">0</span>rk experience
+  <h2 class="text-black dark:text-white lg:hidden font-bold">
+    w0rk experience
   </h2>
   <ol class="mt-6 space-y-16">
     {% for job in jobs %}
@@ -40,18 +40,18 @@
                   />
                 </svg>
               </div>
-              <div class="w-full font-light">{{ job.title }}</div>
+              <div class="w-full">{{ job.title }}</div>
             </div>
           </div>
           <div
-            class="text-xs text-primary-500 dark:text-primary-400 mb-4"
+            class="text-sm text-primary-500 dark:text-primary-400 mb-4"
             aria-label="{{ job.start_year }} until {{ job.end_year }}"
           >
             <time datetime="{{ job.start_year }}">{{ job.start_year }}</time>
             <span aria-hidden="true">—</span>
             <time datetime="{{ job.end_year }}">{{ job.end_year }}</time>
           </div>
-          <div class="mb-2 text-sm text-primary-700 dark:text-primary-300">
+          <div class="mb-2 text-primary-700 dark:text-primary-300 leading-normal">
             {{ job.description }}
           </div>
           {% for tech in job.tech %}
