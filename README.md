@@ -16,8 +16,8 @@ cargo run --bin post-maker <post-title-here>
 > You'll need an `.env` file with an api token, e.g. `API_TOKEN=123456789`, in the project's root.
 
 This will create a markdown file in the `content/posts/` directory. The file's frontmatter 
-contains a `draft` key which defaults to true. For the post to appar on the website,
-that must be changed to false.
+contains a `draft` key which defaults to true. For the post to appear on the website,
+you must change it to false.
 
 ## Developing
 - [Install and config](https://tailwindcss.com/blog/standalone-cli) the Tailwindcss cli.
@@ -49,8 +49,8 @@ to automatically compile the tailwind as you're making changes.
 ## Deploying to Fly.io
 - [Install flyctl](https://fly.io/docs/hands-on/install-flyctl/) to be able to deploy to [Fly.io](https://fly.io).
 
-After the inital `flyctl launch` the following deploys can be done with:
+After the inital `fly launch` the following deploys can be done with:
 ```shell
-flyctl deploy
+fly deploy
 ```
 
