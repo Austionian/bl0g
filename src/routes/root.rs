@@ -49,7 +49,7 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
                 native mobile clients to consume.<br /><br />The frontend scores perfectly on \
                 Google's Lighthouse metrics for web and mobile. The backend test \
                 coverage is over 65%.",
-            link: "https://shorewood.tech",
+            link: "https://shorewoodtech.com",
         },
         Job {
             company: "Catholic Charities of St. Paul and Minneapolis",
