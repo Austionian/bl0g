@@ -25,7 +25,7 @@ pub async fn root(State(state): State<Arc<AppState>>) -> Html<String> {
             start_year: "2022",
             end_year: "Present",
             image: "nm.webp",
-            tech: vec!["React", "Redux", "TypeScript", "Graphql"],
+            tech: vec!["React", "Redux", "TypeScript", "Express", "Graphql"],
             description: "I work on the client website building new products, \
                 supporting legacy apps, and contributing to interal libraries \
                 to support easier development. Helped transition the org to \
