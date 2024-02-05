@@ -9,7 +9,7 @@ default-run = "bl0g"
 [dependencies]
 axum = "0.7"
 chrono = { version = "0.4", default-features = false, features = ["serde"] }
-comrak = "0.20"
+comrak = "0.21"
 config = { version = "0.14", default-features = false, features = ["yaml"] }
 hyper = { version = "1", features = ["full"] }
 lazy_static = "1"
