@@ -1,4 +1,4 @@
-FROM lukemathwalker/cargo-chef:latest-rust-1.74.0 AS chef
+FROM lukemathwalker/cargo-chef:latest-rust-bookworm AS chef
 
 WORKDIR /app
 RUN apt update && apt install lld clang -y
@@ -13,10 +13,10 @@ RUN cargo chef cook --release --recipe-path recipe.json
 COPY . . 
 RUN cargo build --release --bin bl0g
 
-FROM debian:bullseye-slim AS runtime
+FROM debian:bookworm-slim AS runtime
 WORKDIR /app
 RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends openssl ca-certificates \
+    && apt-get install -y --no-install-recommends openssl ca-certificates pkg-config \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
