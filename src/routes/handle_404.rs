@@ -1,6 +1,7 @@
 use axum::response::{Html, IntoResponse};
 use hyper::StatusCode;
 
+/// Simple handler to return the default 404 error page.
 pub async fn handle_404() -> impl IntoResponse {
     (
         StatusCode::NOT_FOUND,
@@ -43,7 +44,10 @@ pub async fn handle_404() -> impl IntoResponse {
                         </g>
                     </svg>
                 </div>
-                404 - nothing to see here.
+                <h2>
+                    404 - nothing to see here.
+                </h2>
+                <a href="https://r00ks.io">[back to the home page]</a>
             </div>"#,
         ),
     )

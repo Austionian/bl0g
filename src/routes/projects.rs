@@ -5,8 +5,7 @@ use axum::response::Html;
 use axum::response::IntoResponse;
 use std::sync::Arc;
 
-/// Handler to return a page with information about
-/// me.
+/// Handler to return a page with information about me.
 pub async fn projects(State(state): State<Arc<AppState>>, headers: HeaderMap) -> impl IntoResponse {
     let mut context = tera::Context::new();
 
