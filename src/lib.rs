@@ -70,12 +70,15 @@ pub fn startup() -> Result<Router, String> {
 
     let state = AppState { posts, projects };
 
+    let blog_routes = Router::new()
+        .route("/", get(routes::blog))
+        .route("/:post_name", get(routes::get_blog_post));
+
     Ok(Router::new()
         .nest_service("/assets", ServeDir::new("assets"))
         .nest_service("/robots.txt", ServeFile::new("assets/robots.txt"))
         .route("/", get(routes::root))
-        .route("/bl0g", get(routes::blog))
-        .route("/bl0g/:post_name", get(routes::get_blog_post))
+        .nest("/bl0g", blog_routes)
         .route("/pr0jects", get(routes::projects))
         .route("/read_c0unt/:post_id", get(routes::read_count))
         .route("/feed.xml", get(routes::feed))

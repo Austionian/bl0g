@@ -6,10 +6,10 @@ description: Building a blog site in Rust with Axum and HTMX and hosting it on F
 draft: false
 ---
 
-## [HTMX](https://htmx.org)
+## HTMX
 I [first learned about HTMX](/bl0g/a_solo_engineer_dreams_an_mvc) when I was writing Python web apps 
 and read some article in the Django community about it. Not wanting to learn a JS framework, but also not wanting
-to write vanilla JS to perform AJAX requests, HTMX looked like the perfect solution. It was only after using 
+to write vanilla JS to perform AJAX requests, [HTMX](https://htmx.org) looked like the perfect solution. It was only after using 
 that I realized how powerfull it was an SPA tool. I didn't think too much more of it though. It was neat and 
 I enjoyed using it, but I didn't see myself using it more in the future. It felt brittle and like something I would never
 use professionally.
@@ -51,7 +51,7 @@ Enough of the ranting, the point of this acticle is to articulate how I built th
 
 ## Cloudflare
 
-I really like Cloudflare. It's been an amazing alternative to things like Vercel and Netifly for serverless JS apps,
+I really like [Cloudflare](https://dash.cloudflare.com/login). It's been an amazing alternative to things like Vercel and Netifly for serverless JS apps,
 and their Workers API has been something I've wanted to spend more time with but haven't had a reason to yet.
 
 ### Caching and Caching Pitfalls
@@ -80,5 +80,29 @@ So I turned off Cloudflare's cache and every request goes to the origin. It's st
 
 ## Fly
 
+Don't have much to say about this. [Fly](https://fly.io/) is a great service. I love that all they need is a Dockerfile, and the container gets built on your machine,
+in stead of theirs. (Digital Ocean is so slow to deploy a Rust app, because the app gets built on their machines. Easily takes 12 to 15 min for a code 
+change to make it to production because of that.) 
+
+It's also extremely reasonably priced. Even though their pricing model is difficult to grok, a low traffic site like mine is free to run even with one 
+of the two replicas always listening for traffic. I end up paying I think $2/month for the custom domain certificate.
+
 ## Axum
 
+I love [Actix](https://actix.rs/) and then I tried [Axum](https://github.com/tokio-rs/axum). I love them both. Actix feels more like Flask,
+even though they're both in that vein of bring your own tools. Axum's use of Rust's strong point of types ties really well to the language. 
+Where I felt the Actix routes' signatures are maybe a little more readable and composing the overall shape of the API was clearer in Actix,
+Axum makes it very easy to pass a shared state, get query params or request headers, and write routes that are straight forward. I will definitely
+use Axum more in the future.
+
+## All in
+
+Could this blog have been a static site built by Zola? Definitely.
+
+Would it have been as fun to make? No.
+
+Would it be faster? Probably.
+
+Would it be cheaper? Marginally.
+
+_If you're interested in creating your own blog like mine, you can [create your own repo with this blog as the template](https://github.com/new?template_name=bl0g&template_owner=Austionian)_ :).

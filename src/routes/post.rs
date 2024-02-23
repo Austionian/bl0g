@@ -36,18 +36,20 @@ pub async fn get_blog_post(headers: HeaderMap, Path(post_name): Path<String>) ->
 
     // Update the read count of the post in a different thread so the response
     // from the worker isn't blocking request to get the post.
-    tokio::spawn(async move {
-        let api_token = std::env::var("API_TOKEN").unwrap();
-        let client = Client::new();
-        let _ = client
-            .post(format!(
-                "https://worker-rust.austin-e33.workers.dev/{}",
-                frontmatter.id
-            ))
-            .header("API_TOKEN", api_token.trim())
-            .send()
-            .await;
-    });
+    if std::env::var("APP_ENVIRONMENT").unwrap_or_else(|_| "local".into()) != "local" {
+        tokio::spawn(async move {
+            let api_token = std::env::var("API_TOKEN").unwrap();
+            let client = Client::new();
+            let _ = client
+                .post(format!(
+                    "https://worker-rust.austin-e33.workers.dev/{}",
+                    frontmatter.id
+                ))
+                .header("API_TOKEN", api_token.trim())
+                .send()
+                .await;
+        });
+    }
 
     // Parse the post's markdown into an html string.
     let post_html = markdown_to_html(&body, &ComrakOptions::default());
