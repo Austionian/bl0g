@@ -2,6 +2,7 @@ use crate::helpers;
 use chrono::{DateTime, Utc};
 use comrak::{markdown_to_html, ComrakOptions};
 use serde::de::DeserializeOwned;
+use std::fmt::Display;
 
 #[derive(serde::Deserialize, serde::Serialize, Clone, Debug, Default)]
 pub struct FrontMatter {
@@ -51,25 +52,27 @@ impl FrontMatter {
 
 /// Uses the front matter to convert the post into an
 /// rss entry.
-impl ToString for FrontMatter {
-    fn to_string(&self) -> String {
+impl Display for FrontMatter {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let url = format!("https://r00ks.io/bl0g/{}", self.title);
         let readable_title = self.title.replace('_', " ");
         let content = self
             .get_content()
             .unwrap_or("Unable to load post".to_string());
-        format!(
-            r#"<entry>
-<title>{}</title>
-<description>{}</description>
-<link rel="alternate" href="{}" type="text/html" title="{}"/>
-<published>{}</published>
-<id>{}</id>
-<content type="html" xml:base="https://r00ks.io/bl0g/{}">{}</content>
-<author>
-<name>Austin Rooks</name>
-</author>
-</entry>"#,
+        write!(
+            f,
+            r#"
+            <entry>
+                <title>{}</title>
+                <description>{}</description>
+                <link rel="alternate" href="{}" type="text/html" title="{}"/>
+                <published>{}</published>
+                <id>{}</id>
+                <content type="html" xml:base="https://r00ks.io/bl0g/{}">{}</content>
+                <author>
+                <name>Austin Rooks</name>
+                </author>
+            </entry>"#,
             readable_title, self.description, url, self.title, self.date, url, self.title, content
         )
     }
