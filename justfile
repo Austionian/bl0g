@@ -50,5 +50,9 @@ dev:
 
     wait $TAILWIND_PID
 
+# Update dependencies and run the tests.
 update:
-    cargo update && cargo t
+    #!/bin/bash
+    cargo update
+    echo $'Dependencies updated!\n'
+    cargo test
