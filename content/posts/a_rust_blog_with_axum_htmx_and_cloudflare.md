@@ -105,4 +105,5 @@ Would it be faster? Probably.
 
 Would it be cheaper? Marginally.
 
-_If you're interested in creating your own blog like mine, you can [create your own repo with this blog as the template](https://github.com/new?template_name=bl0g&template_owner=Austionian)_ :).
+_If you're interested in creating your own blog like mine, I created a template you can use 
+to [create your own site with Axum and Tailwind already configured.](https://github.com/new?template_name=axum_tailwind_template&template_owner=Austionian)_ :).
