@@ -15,8 +15,8 @@ async fn it_returns_the_blog_page_with_full_template() {
     let body = response.text().await.unwrap();
 
     assert!(body.contains("bl0g"));
-    // Text from the header.
-    assert!(body.contains("pr0jects"));
+    // More than just a snippet of HTML is returned.
+    assert!(body.contains("<!doctype html>"));
     // Text from the footer.
     assert!(body.contains("©"));
 }

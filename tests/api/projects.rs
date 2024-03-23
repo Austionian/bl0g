@@ -1,7 +1,7 @@
 use crate::helpers::start_test_app;
 
 #[tokio::test]
-async fn it_returns_the_blog_page_with_full_template() {
+async fn it_returns_the_projects_page_with_full_template() {
     let addr = start_test_app()
         .await
         .expect("Unable to start test server.");
@@ -14,8 +14,8 @@ async fn it_returns_the_blog_page_with_full_template() {
 
     let body = response.text().await.unwrap();
 
-    // Text from the header.
-    assert!(body.contains("pr0jects"));
+    // More than just a snippet is returned
+    assert!(body.contains("<!doctype html>"));
     // Text from the footer.
     assert!(body.contains("©"));
 }
