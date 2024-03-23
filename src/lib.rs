@@ -1,6 +1,7 @@
 mod configuration;
 mod frontmatter;
 mod helpers;
+mod job;
 mod project;
 mod routes;
 
@@ -15,6 +16,7 @@ use tower_http::trace::TraceLayer;
 
 pub use configuration::get_configuration;
 pub use frontmatter::FrontMatter;
+use job::{Job, JOBS};
 pub use project::Project;
 
 lazy_static! {
@@ -36,6 +38,7 @@ lazy_static! {
 pub struct AppState {
     posts: Vec<FrontMatter>,
     projects: Vec<Project>,
+    jobs: &'static [Job; 3],
 }
 
 pub fn startup() -> Result<Router, String> {
@@ -68,7 +71,11 @@ pub fn startup() -> Result<Router, String> {
         Err(e) => Err(format!("Unable to read files in projects directory, {}", e)),
     }?;
 
-    let state = AppState { posts, projects };
+    let state = AppState {
+        posts,
+        projects,
+        jobs: &JOBS,
+    };
 
     let blog_routes = Router::new()
         .route("/", get(routes::blog))
