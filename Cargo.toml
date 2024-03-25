@@ -13,7 +13,7 @@ comrak = "0.21"
 config = { version = "0.14", default-features = false, features = ["yaml"] }
 hyper = { version = "1", features = ["full"] }
 lazy_static = "1"
-reqwest = { version = "0.11", features = ["json"] }
+reqwest = { version = "0.12", features = ["json"] }
 serde = { version = "1", features = ["derive"] }
 serde-aux = "4"
 serde_json = "1"
