@@ -2,8 +2,8 @@
   <div class="max-w-2xl m-auto mb-[-44px] min-h-screen">
     <div
       x-data="{offset: '0%'}"
-      class="w-2 md:w-4 fixed top-0 left-0 bg-gradient-to-b from-secondary-500 via-teal-500 to-emerald-500"
-      :style="{ height: offset}"
+      class="h-2 sm:h-3 fixed top-0 left-0 bg-gradient-to-r from-secondary-500 via-teal-500 to-emerald-500"
+      :style="{ width: offset}"
       @scroll.window="offset = (window.pageYOffset / (document.body.scrollHeight - window.innerHeight) * 100).toString() + '%'"
     ></div>
     <h1
