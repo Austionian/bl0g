@@ -9,8 +9,8 @@ default-run = "bl0g"
 [dependencies]
 axum = "0.7"
 chrono = { version = "0.4", default-features = false, features = ["serde"] }
-comrak = "0.21"
-config = { version = "0.14", default-features = false, features = ["yaml"] }
+comrak = "0.22"
+config = { git = "https://github.com/mehcode/config-rs.git", rev = "e3c1d0b452639478662a44f15ef6d5b6d969bf9b", default-features = false, features = ["yaml"] }
 hyper = { version = "1", features = ["full"] }
 lazy_static = "1"
 reqwest = { version = "0.12", features = ["json"] }
