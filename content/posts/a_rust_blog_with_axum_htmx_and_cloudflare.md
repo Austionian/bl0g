@@ -26,9 +26,7 @@ __HATEOAS (**H**ypermedia **a**s **t**he **E**ngine **o**f **A**pplication **S**
 
 __REST is not JSON APIs.__
 
-If I said either of those things out loud at my current job, any cred I'd have would be gone. 
-
-But it's _FUCKING_ true! There is no reason to use Redux anymore. There's no reason for all the state to be on the client. We are constantly 
+There's no reason for state to be on the client. We are constantly 
 creating subpar user experiences because we don't want to deal with all the different possibilities of the client's state. We want to give
 them a SPA and make them step through it serially. 
 
