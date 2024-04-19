@@ -5,7 +5,7 @@ use crate::{
 use axum::extract::Path;
 use axum::http::HeaderMap;
 use axum::response::{Html, IntoResponse};
-use comrak::{markdown_to_html, ComrakOptions};
+use comrak::{markdown_to_html_with_plugins, plugins::syntect::SyntectAdapter, Options, Plugins};
 use reqwest::Client;
 
 /// A handler function that will load a post, convert it to HTML, and
@@ -51,8 +51,12 @@ pub async fn get_blog_post(headers: HeaderMap, Path(post_name): Path<String>) ->
         });
     }
 
+    let s = SyntectAdapter::new(Some("base16-ocean.dark"));
+    let mut plugins = Plugins::default();
+    plugins.render.codefence_syntax_highlighter = Some(&s);
+
     // Parse the post's markdown into an html string.
-    let post_html = markdown_to_html(&body, &ComrakOptions::default());
+    let post_html = markdown_to_html_with_plugins(&body, &Options::default(), &plugins);
 
     // Add data to the template's context.
     context.insert("frontmatter", &frontmatter);
