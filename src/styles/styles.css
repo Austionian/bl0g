@@ -18,7 +18,7 @@
   }
 
   .prose a:hover {
-    color: theme("colors.secondary.600");
+    color: theme("colors.secondary.400");
   }
 
   @media (prefers-color-scheme: dark) {
@@ -27,7 +27,7 @@
     }
 
     .prose a:hover {
-      color: theme("colors.secondary.300");
+      color: theme("colors.secondary.500");
     }
   }
 

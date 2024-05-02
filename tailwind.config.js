@@ -9,11 +9,8 @@ module.exports = {
       colors: {
         primary: colors.slate,
         secondary: {
-          200: "#93BEFF",
-          300: "#93BEFF",
-          400: "#2D7EF9",
-          500: "#0f6fff",
-          600: "#0f6fff",
+          400: "#ffa86a",
+          500: "#ffa86a",
         },
       },
       textShadow: {
