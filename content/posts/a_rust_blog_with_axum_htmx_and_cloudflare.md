@@ -9,14 +9,14 @@ draft: false
 ## HTMX
 I [first learned about HTMX](/bl0g/a_solo_engineer_dreams_an_mvc) when I was writing Python web apps 
 and read some article in the Django community about it. Not wanting to learn a JS framework, but also not wanting
-to write vanilla JS to perform AJAX requests, [HTMX](https://htmx.org) looked like the perfect solution. It was only after using 
-that I realized how powerfull it was an SPA tool. I didn't think too much more of it though. It was neat and 
+to write vanilla JS to perform AJAX requests, [HTMX](https://htmx.org) looked like nice middle ground. It was only after using it
+that I realized how powerfull it was an SPA tool. After finishing that project, though, I didn't think much more of it. HTMX was neat and 
 I enjoyed using it, but I didn't see myself using it more in the future. It felt brittle and like something I would never
 use professionally.
 
 Then last August I noticed HTMX trending a lot on tech Twitter, especially among 'influential' JS developers. I had moved on from 
-Python, Django, and Flask, have been in the trite Node, React SPA job. Seeing HTMX again made me curious to give another go. I essentially
-am surrounded by people who only think in SPA, client side everything. What would I think of HTMX now?
+Python, Django, and Flask, had been working in a Node, React SPA job. Seeing HTMX again made me want to give it another go. I'm essentially
+stuck in a JS-SPA-client-side-everything job. What would I think of HTMX now?
 
 ... And wow! Has my thinking changed. I read [_Hypermedia Systems_](https://hypermedia.systems) and what HTMX has set out to solve
 makes incredibly good sense. Simplify state, embrace REST in its original sense. The fact that HTMX empowers backend developers to create
@@ -30,7 +30,7 @@ There's no reason for state to be on the client. We are constantly
 creating subpar user experiences because we don't want to deal with all the different possibilities of the client's state. We want to give
 them a SPA and make them step through it serially. 
 
-And to do that we have to send all JS to the client, the client has to parse and execute the JS, the JS can then get the fucking state, and render
+And to do that we have to send all JS to the client, the client has to parse and execute the JS, the JS can then get the state, and render
 the page.
 
 The performance you can get out of that model is capped, no matter the JS framework, no matter how much you want to make it appear like that site is performant it never will be. 
