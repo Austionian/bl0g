@@ -13,6 +13,18 @@
     margin-bottom: 2rem;
   }
 
+  .prose {
+    h2 {
+      color: theme("colors.secondary.500");
+    }
+    h3 {
+      color: theme("colors.secondary.400");
+    }
+    p {
+      line-height: 2rem;
+    }
+  }
+
   .prose a {
     color: theme("colors.secondary.500");
   }

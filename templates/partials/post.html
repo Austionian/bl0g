@@ -1,47 +1,46 @@
 <div id="#outerReach">
+  <!-- scroll spy progress bar -->
+  <!-- <div -->
+  <!--   x-data="{offset: '0%'}" -->
+  <!--   class="transition h-2 sm:h-3 fixed top-0 left-0 bg-secondary-500 rounded" -->
+  <!--   :style="{ width: offset}" -->
+  <!--   :class="{ 'sm:hidden': !atTop }" -->
+  <!--   @scroll.window="offset = (window.pageYOffset / (document.body.scrollHeight - window.innerHeight) * 100).toString() + '%'" -->
+  <!-- ></div> -->
   <div class="max-w-2xl m-auto mb-[-44px] min-h-screen">
+    {% include "partials/innerPost.html" %}
+  </div>
+  <div
+    style="width: 40rem; position: fixed; top: 0; right: -30rem; z-index: 999"
+  >
     <div
-      x-data="{offset: '0%'}"
-      class="transition h-2 sm:h-3 fixed top-0 left-0 bg-secondary-500 rounded"
-      :style="{ width: offset}"
-      :class="{ 'sm:hidden': !atTop }"
-      @scroll.window="offset = (window.pageYOffset / (document.body.scrollHeight - window.innerHeight) * 100).toString() + '%'"
-    ></div>
-    <h1
-      id="title"
-      class="font-mono text-primary-800 dark:text-primary-200 font-extralight"
+      id="miniview"
+      style="
+        transform: scale(0.25);
+        top: 0px;
+        width: 667.524%;
+        height: 667.524%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        transform-origin: 0 0;
+        border: 0;
+      "
+      class="hidden lg:block lg:mt-20 2xl:mt-0 scrollbar-hide pt-10"
+      x-data="{miniOffset: 0, scrollNeeded: window.innerHeight < document.querySelectorAll('.content')[1].getBoundingClientRect().height + 100}"
+      @scroll.window="miniOffset = scrollNeeded ? window.pageYOffset * .05 + 'px' : '0px'"
+      x-effect="$el.style.top = '-' + miniOffset"
     >
-      {{ frontmatter.title | replace(from="_", to=" ") | title }}
-    </h1>
-    <div class="flex justify-between text-primary-500">
-      <h3>{{ frontmatter.date | date(format="%B %d, %Y") }}</h3>
-      <h3 class="flex align-middle">
-        <span hx-get="/read_c0unt/{{ frontmatter.id }}" hx-trigger="load">
-          <svg
-            class="htmx-indicator animate-spin -ml-1 mr-3 h-4 w-4 text-black dark:text-white"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              class="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              stroke-width="4"
-            ></circle>
-            <path
-              class="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-            ></path>
-          </svg> </span
-        >&nbsp;views
-      </h3>
-    </div>
-    <div class="font-sans prose dark:prose-invert">
-      {% include "partials/post.content" %}
+      <div
+        x-data="{ viewOffset: 0 }"
+        :style="{ top: viewOffset }"
+        @scroll.window="viewOffset = window.pageYOffset + 'px'"
+        class="bg-black/10 dark:bg-secondary-300/20 w-full absolute left-0 mx-auto pt-[187%]"
+      ></div>
+      {% include "partials/innerPost.html" %}
     </div>
   </div>
 </div>

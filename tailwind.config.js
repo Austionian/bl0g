@@ -8,10 +8,11 @@ module.exports = {
     extend: {
       colors: {
         primary: colors.slate,
-        secondary: {
-          400: "#ffa86a",
-          500: "#ffa86a",
-        },
+        secondary: colors.indigo,
+        //   {
+        //   400: "#ffa86a",
+        //   500: "#ffa86a",
+        // },
       },
       textShadow: {
         sm: "0 1px 2px var(--tw-shadow-color)",
@@ -31,6 +32,22 @@ module.exports = {
         },
         { values: theme("textShadow") },
       );
+    }),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".scrollbar-hide": {
+          /* IE and Edge */
+          "-ms-overflow-style": "none",
+
+          /* Firefox */
+          "scrollbar-width": "none",
+
+          /* Safari and Chrome */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+      });
     }),
   ],
 };
