@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block body %}
+<style>
+  canvas {
+    z-index: 999;
+    display: flex;
+    align-self: center;
+    margin: auto;
+    margin-top: auto;
+    justify-content: center;
+    flex-direction: row;
+    align-content: center;
+    position: relative;
+    margin-top: -20rem;
+  }
+</style>
+<script type="module">
+  import init from "/assets/game/my_bevy.js";
+
+  init();
+</script>
+{% endblock %}

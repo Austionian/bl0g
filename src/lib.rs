@@ -87,6 +87,7 @@ pub fn startup() -> Result<Router, String> {
         .route("/", get(routes::root))
         .nest("/bl0g", blog_routes)
         .route("/pr0jects", get(routes::projects))
+        .route("/game", get(routes::game))
         .route("/read_c0unt/:post_id", get(routes::read_count))
         .route("/feed.xml", get(routes::feed))
         .fallback(routes::handle_404)
