@@ -6,6 +6,7 @@ use axum::extract::Path;
 use axum::http::HeaderMap;
 use axum::response::{Html, IntoResponse};
 use comrak::{markdown_to_html_with_plugins, plugins::syntect::SyntectAdapter, Options, Plugins};
+use hyper::header;
 use reqwest::Client;
 
 /// A handler function that will load a post, convert it to HTML, and
@@ -66,10 +67,13 @@ pub async fn get_blog_post(headers: HeaderMap, Path(post_name): Path<String>) ->
 
     // Return the response.
     match TEMPLATES.render(&template, &context) {
-        Ok(s) => Html(s),
+        Ok(s) => ([(header::VARY, "HX-Request")], Html(s)),
         Err(e) => {
             tracing::error!("Failed rendering the template: {}", e);
-            Html("<html><body>Error</body></html>".to_string())
+            (
+                [(header::VARY, "HX-Request")],
+                Html("<html><body>Error</body></html>".to_string()),
+            )
         }
     }
 }

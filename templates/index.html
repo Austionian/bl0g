@@ -1,90 +1,92 @@
 {% extends "base.html" %} {% block body %}
-<div id="outerReach">
-  <div class="lg:flex lg:justify-between lg:gap-4">
-    <div
-      class="lg:sticky lg:top-[10.5rem] lg:flex lg:h-[85vh] lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:pr-20"
-    >
-      <div class="group">
-        <div class="flex flex-col">
-          <img
-            src="/assets/images/selfportrait.webp"
-            alt="The author photographing a mirror"
-            class="rounded-full ring-1 ring-primary-800/50 dark:ring-primary-200/50 h-[100px] mr-5 w-[100px]"
-          />
-          <div class="mt-2 flex items-center">
-            <h2 class="text-4xl font-bold tracking-tight sm:text-5xl font-sans">
-              austin r<span class="font-mono text-secondary-400 dark:text-secondary-500 italic">00</span>ks
-            </h2>
-          </div>
+<div class="lg:flex lg:justify-between lg:gap-4">
+  <div
+    class="lg:sticky lg:top-[10.5rem] lg:flex lg:h-[85vh] lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:pr-20"
+  >
+    <div class="group">
+      <div class="flex flex-col">
+        <img
+          src="/assets/images/selfportrait.webp"
+          alt="The author photographing a mirror"
+          class="rounded-full ring-1 ring-primary-800/50 dark:ring-primary-200/50 h-[100px] mr-5 w-[100px]"
+        />
+        <div class="mt-2 flex items-center">
+          <h2 class="text-4xl font-bold tracking-tight sm:text-5xl font-sans">
+            austin r<span
+              class="font-mono text-secondary-400 dark:text-secondary-500 italic"
+              >00</span
+            >ks
+          </h2>
         </div>
-        <p class="text-lg font-medium tracking-tight sm:text-xl">
-          software engineer
-        </p>
-        <p class="mt-4 text-primary-700 dark:text-primary-300 font-light">
-          Curious and persistent, building quality experiences.
-        </p>
       </div>
-      {% include 'includes/social.html' %}
+      <p class="text-lg font-medium tracking-tight sm:text-xl">
+        software engineer
+      </p>
+      <p class="mt-4 text-primary-700 dark:text-primary-300 font-light">
+        Curious and persistent, building quality experiences.
+      </p>
     </div>
-    <div class="lg:w-1/2 lg:px-1">
-      <div class="lg:mt-28">
-        <h2 class="block lg:hidden text-primary-700 dark:text-primary-300 font-bold">
-          ab0ut
-        </h2>
-        <div class="mt-6 lg:mt-0 space-y-4">
-          <p class="lg:mt-0">
-            I am an experienced software engineer passionate about learning and
-            building performant, correct applications. I've been recognized as a
-            individual performer and as a team player.
-          </p>
-          <p>
-            My engineering journey started on whim asking an employer for a
-            internship in a stairwell and becoming a product person for a small
-            SaaS app. From there I began building Python, JavaScript, and Rust
-            apps.
-          </p>
-          <p>
-            Outside of programming for work, I enjoy <a
-              href="https://github.com/search?q=owner%3AAustionian+advent_of_code+OR+codecrafters&type=repositories"
-              >programming for fun</a
-            >, reading, and surfing Lake Michigan when time and weather and
-            children allow.
-          </p>
-        </div>
+    {% include 'includes/social.html' %}
+  </div>
+  <div class="lg:w-1/2 lg:px-1">
+    <div class="lg:mt-28">
+      <h2
+        class="block lg:hidden text-primary-700 dark:text-primary-300 font-bold"
+      >
+        ab0ut
+      </h2>
+      <div class="mt-6 lg:mt-0 space-y-4">
+        <p class="lg:mt-0">
+          I am an experienced software engineer passionate about learning and
+          building performant, correct applications. I've been recognized as a
+          individual performer and as a team player.
+        </p>
+        <p>
+          My engineering journey started on whim asking an employer for a
+          internship in a stairwell and becoming a product person for a small
+          SaaS app. From there I began building Python, JavaScript, and Rust
+          apps.
+        </p>
+        <p>
+          Outside of programming for work, I enjoy
+          <a
+            href="https://github.com/search?q=owner%3AAustionian+advent_of_code+OR+codecrafters&type=repositories"
+            >programming for fun</a
+          >, reading, and surfing Lake Michigan when time and weather and
+          children allow.
+        </p>
       </div>
-      <div class="mt-10">{% include 'includes/work.html' %}</div>
-      <h2 class="mt-28 -mb-2 font-bold">recent p0sts</h2>
-      <div>{% include 'includes/list_of_posts.html' %}</div>
-      <div class="flex justify-end pt-6">
-        <a
-          href="/bl0g#"
-          hx-target="#outerReach"
-          hx-swap="outerHTML transition:true show:body:top"
-          class="group-hover:text-secondary-400"
+    </div>
+    <div class="mt-10">{% include 'includes/work.html' %}</div>
+    <h2 class="mt-28 -mb-2 font-bold">recent p0sts</h2>
+    <div>{% include 'includes/list_of_posts.html' %}</div>
+    <div class="flex justify-end pt-6">
+      <a
+        href="/bl0g#"
+        hx-target="#content"
+        hx-swap="innerHTML transition:true show:body:top"
+        class="group-hover:text-secondary-400"
+      >
+        <div
+          class="group flex flex-row items-center justify-center font-extralight"
         >
-          <div
-            class="group flex flex-row items-center justify-center font-extralight"
-          >
-            <div class="group-hover:text-secondary-400">
-              see m0re p0sts
-            </div>
-            <div class="ml-2 group-hover:text-secondary-400">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                class="ml-2 fill-black dark:fill-white group-hover:fill-secondary-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition"
-              >
-                <path
-                  d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                />
-              </svg>
-            </div>
+          <div class="group-hover:text-secondary-400">see m0re p0sts</div>
+          <div class="ml-2 group-hover:text-secondary-400">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="ml-2 fill-black dark:fill-white group-hover:fill-secondary-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition"
+            >
+              <path
+                d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+              />
+            </svg>
           </div>
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
   </div>
 </div>

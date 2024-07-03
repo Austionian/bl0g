@@ -6,6 +6,7 @@ use axum::{
     extract::{Query, State},
     response::Html,
 };
+use hyper::header;
 use std::sync::Arc;
 
 #[derive(serde::Deserialize)]
@@ -63,10 +64,13 @@ pub async fn blog(
 
     // Return the response.
     match TEMPLATES.render(&template, &context) {
-        Ok(s) => Html(s),
+        Ok(s) => ([(header::VARY, "HX-Request")], Html(s)),
         Err(e) => {
             tracing::error!("Unable to load blog: {}", e);
-            Html("<html><body>Error</body></html>".to_string())
+            (
+                [(header::VARY, "HX-Request")],
+                Html("<html><body>Error</body></html>".to_string()),
+            )
         }
     }
 }

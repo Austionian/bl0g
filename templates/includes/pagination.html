@@ -6,8 +6,8 @@
     <a
       class="group inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-slate-500 hover:border-secondary-400 dark:hover:border-secondary-500 hover:text-secondary-500 cursor-pointer"
       href="{{ pagination.previous }}#"
-      hx-target="#outerReach"
-      hx-swap="outerHTML transition:true show:body:top"
+      hx-target="#content"
+      hx-swap="innerHTML transition:true show:body:top"
     >
       <svg
         class="mr-3 h-5 w-5 text-slate-500 group-hover:fill-secondary-500 group-hover:translate-x-1 transition"
@@ -30,8 +30,8 @@
     <a
       class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-slate-500 hover:border-secondary-400 dark:hover:border-secondary-500 hover:text-secondary-500 dark:hover:text-secondary-400 {% if pagination.current == page %} text-primary-400{% endif %} cursor-pointer"
       href="/bl0g?page={{ page }}#"
-      hx-target="#outerReach"
-      hx-swap="outerHTML transition:true show:body:top"
+      hx-target="#content"
+      hx-swap="innerHTML transition:true show:body:top"
       >{{ page }}</a
     >
     {% endfor %}
@@ -41,8 +41,8 @@
     <a
       class="group inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-slate-500 hover:border-secondary-400 dark:hover:border-secondary-500 hover:text-secondary-500 dark:hover:text-secondary-400 cursor-pointer"
       href="{{ pagination.next }}#"
-      hx-target="#outerReach"
-      hx-swap="outerHTML transition:true show:body:top"
+      hx-target="#content"
+      hx-swap="innerHTML transition:true show:body:top"
     >
       Next
       <svg

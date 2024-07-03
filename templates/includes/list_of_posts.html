@@ -2,8 +2,8 @@
   {% for post in posts %}
   <a
     href="/bl0g/{{ post.title }}#"
-    hx-target="#outerReach"
-    hx-swap="outerHTML transition:true show:body:top"
+    hx-target="#content"
+    hx-swap="innerHTML transition:true show:body:top"
   >
     <div
       class="pt-6 sm:pt-2 group cursor-pointer mb-8 -ml-2 transition pl-2 pr-2 sm:pr-4 rounded-lg border border-transparent bg-white/10 dark:bg-transparent"

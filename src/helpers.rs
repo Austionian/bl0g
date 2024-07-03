@@ -24,7 +24,9 @@ use std::{fs, io};
 /// *value = "false".parse().unwrap();
 /// assert_eq!(get_template(&headers, "test"), "test_full.html".to_string());
 pub fn get_template(headers: &HeaderMap, template_name: &str) -> String {
-    if headers.get("HX-Request").is_some_and(|v| v == "true") {
+    if headers.get("HX-Request").is_some_and(|v| v == "true")
+        && headers.get("HX-History-Restore-Request").is_none()
+    {
         format!("partials/{template_name}.html")
     } else {
         format!("{template_name}.html")
