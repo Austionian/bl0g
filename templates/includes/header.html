@@ -1,5 +1,5 @@
 <!-- Mobile nav -->
-<div x-cloak >
+<div x-cloak>
   <div
     class="h-screen w-screen z-10 px-6 fixed bg-white/20 dark:bg-black/20 backdrop-blur-lg md:hidden pt-32"
     x-show="open"
@@ -47,16 +47,17 @@
     </a>
   </div>
   <div
-    x-data="{ title: '', setTitle(title) { this.title = title } }"
+    x-data="{ title: '', setTitle(title) { this.title = title; } }"
     @htmx:after-swap.window="setTitle(document.querySelector('#title')?.innerText)"
+    @htmx:history-restore.window="setTitle(document.querySelector('#title')?.innerText)"
   >
-    <a
-      href="#"
+    <p
+      onclick="window.scrollTo(0,0)"
       aria-label="Return to the top of the page"
-      class="transition font-semibold text-lg text-primary-700 dark:text-primary-300 hidden sm:block hover:text-secondary-500"
+      class="transition font-semibold text-lg text-primary-700 dark:text-primary-300 hidden sm:block hover:text-secondary-500 cursor-pointer"
     >
-      <span x-text="title" :class="{ 'sm:hidden': !atTop }"></span
-    ></a>
+      <span x-text="title" :class="{ 'sm:hidden': !atTop }"></span>
+    </p>
   </div>
   <div class="flex md:hidden">
     <button
