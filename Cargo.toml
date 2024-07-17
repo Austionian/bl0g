@@ -9,7 +9,7 @@ default-run = "bl0g"
 [dependencies]
 axum = "0.7"
 chrono = { version = "0.4", default-features = false, features = ["serde"] }
-comrak = "0.24"
+comrak = "0.26"
 config = { git = "https://github.com/mehcode/config-rs.git", rev = "e3c1d0b452639478662a44f15ef6d5b6d969bf9b", default-features = false, features = ["yaml"] }
 hyper = { version = "1", features = ["full"] }
 lazy_static = "1"
