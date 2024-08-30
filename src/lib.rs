@@ -6,9 +6,9 @@ mod project;
 mod routes;
 
 use axum::{routing::get, Router};
-use lazy_static::lazy_static;
 use std::fs;
 use std::sync::Arc;
+use std::sync::LazyLock;
 use tower::ServiceBuilder;
 use tower_http::compression::CompressionLayer;
 use tower_http::services::{ServeDir, ServeFile};
@@ -19,20 +19,18 @@ pub use frontmatter::FrontMatter;
 use job::{Job, JOBS};
 pub use project::Project;
 
-lazy_static! {
-    pub static ref TEMPLATES: tera::Tera = {
-        let mut tera = match tera::Tera::new("templates/**/*") {
-            Ok(t) => t,
-            Err(e) => {
-                println!("Parsing error(s): {}", e);
-                ::std::process::exit(1);
-            }
-        };
-        // Do not escape files ending in .content (the generated html from md posts)
-        tera.autoescape_on(vec![".content"]);
-        tera
+static TEMPLATES: LazyLock<tera::Tera> = LazyLock::new(|| {
+    let mut tera = match tera::Tera::new("templates/**/*") {
+        Ok(t) => t,
+        Err(e) => {
+            println!("Parsing error(s): {}", e);
+            ::std::process::exit(1);
+        }
     };
-}
+    // Do not escape files ending in .content (the generated html from md posts)
+    tera.autoescape_on(vec![".content"]);
+    tera
+});
 
 #[derive(Clone)]
 pub struct AppState {

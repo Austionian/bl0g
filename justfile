@@ -26,7 +26,7 @@ run-axum:
     export API_TOKEN=$API_TOKEN
 
     # Start cargo watch in the background
-    sh -c 'cargo watch -x run &'
+    sh -c 'cargo watch -w src -w templates -w content -x run'
 
 # Script to run the axum server and tailwind binary in watch mode so updates
 # will automatically be reflected. On exit, will minify tailwind's css.
@@ -43,9 +43,7 @@ dev:
 
     open 'http://127.0.0.1:8080'
 
-    just run-axum
-
-    just run-tailwind
+    just run-axum & just run-tailwind
     TAILWIND_PID=$!
 
     wait $TAILWIND_PID
