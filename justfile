@@ -41,7 +41,7 @@ dev:
     # Add a trap to run the minify function before exiting
     trap "minify; kill 0" SIGINT
 
-    open 'http://127.0.0.1:8080'
+    open 'http://127.0.0.1:1111'
 
     just run-axum & just run-tailwind
     TAILWIND_PID=$!
@@ -54,3 +54,11 @@ update:
     cargo update
     echo $'Dependencies updated!\n'
     cargo test
+
+# Builds the docker image
+docker-build:
+    docker build --tag bl0g --file Dockerfile .
+
+# Transfers the docker image to the pi
+deploy:
+     just docker-build && docker save bl0g | bzip2 | ssh austin@raspberrypi.local docker load

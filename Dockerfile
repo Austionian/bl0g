@@ -25,5 +25,5 @@ COPY config config
 COPY assets assets
 COPY templates templates
 COPY content content
-ENV APP_ENVIRONMENT production 
+ENV APP_ENVIRONMENT=production 
 ENTRYPOINT ["./bl0g"]
