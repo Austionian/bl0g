@@ -61,4 +61,4 @@ docker-build:
 
 # Transfers the docker image to the pi
 deploy:
-     just docker-build && docker save bl0g | bzip2 | ssh austin@raspberrypi.local docker load
+     just docker-build && docker save bl0g | bzip2 | ssh austin@raspberrypi.local docker load && ssh austin@raspberrypi.local ./deploy_blog.sh
