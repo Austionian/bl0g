@@ -1,25 +1,11 @@
-FROM lukemathwalker/cargo-chef:latest-rust-bookworm AS chef
+FROM rust:1.81 AS builder
 
 WORKDIR /app
-RUN apt update && apt install lld clang -y
-
-FROM chef AS planner
-COPY . .
-RUN cargo chef prepare --recipe-path recipe.json
-
-FROM chef AS builder
-COPY --from=planner /app/recipe.json recipe.json
-RUN cargo chef cook --release --recipe-path recipe.json
 COPY . . 
 RUN cargo build --release --bin bl0g
 
-FROM debian:bookworm-slim AS runtime
+FROM gcr.io/distroless/cc-debian12 AS runtime
 WORKDIR /app
-RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends openssl ca-certificates pkg-config \
-    && apt-get autoremove -y \
-    && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/*
 COPY --from=builder /app/target/release/bl0g bl0g
 COPY config config
 COPY assets assets
