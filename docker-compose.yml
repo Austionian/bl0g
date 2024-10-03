@@ -1,0 +1,7 @@
+services:
+  web:
+    image: bl0g:latest
+    ports:
+      - "1111:1111"
+    environment:
+      API_TOKEN: ${API_TOKEN}

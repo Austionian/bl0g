@@ -39,7 +39,7 @@ pub static JOBS: [Job; 3] = [
         description: "Previous work includes converting a headless JS app into a \
                 Qwik/ Qwik-City (TypeScript) frontend and an Actix (Rust) backend \
                 for web and native mobile clients to consume.<br /><br />The \
-                frontend scores <image src=\"assets/images/100.png\" style=\"height: 2rem; display: inline\"/> \
+                frontend scores <image alt=\"100 performance score\" src=\"assets/images/100.png\" style=\"height: 2rem; display: inline\"/> \
                 across every Lighthouse metric on <span style=\"font-weight: bold\">both</span> web and mobile. \
                 The backend test coverage is over 65%.",
         link: "https://oxidized.systems",

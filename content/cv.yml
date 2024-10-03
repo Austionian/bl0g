@@ -1,0 +1,103 @@
+basics:
+  name: Austin Rooks
+  label: Software Engineer
+  email: austin@r00ks.io
+  url: r00ks.io
+  about: Experienced Software Engineer with a demonstrated history of working in
+    full stack web development. Skilled in TypeScript (React, Qwik), Rust (Actix,
+    Axum), CSS, and SQL (Postrgesql). Gumptious and curious. Interested in distributed systems.
+  profiles:
+    - network: GitHub
+      username: austionian
+      url: https://github.com/austionian
+    - network: LinkedIn
+      username: /in/austinrooks
+      url: https://www.linkedin.com/in/austinrooks
+    - network: Mastodon
+      username: r00ks
+      url: https://fosstodon.org/@r00ks
+
+work:
+  - name: Northwestern Mutual
+    position: Software Engineer, III
+    startDate: 2024-03-01
+    highlights:
+  - name: Northwestern Mutual
+    position: Software Engineer, II
+    startDate: 2022-04-01
+    endDate: 2024-03-01
+    highlights:
+      - Helped implement an initial subgraph for an entire business vertical in the web and mobile transition to graphql.
+      - Reduced the entire client website’s LCP by 500ms on average and an almost a full second for p90 requests.
+      - Mentored junior developers and helped teach test engineers how to write e2e test.
+      - Created a shared module that wrapped a standard express instance that provides easier testing and mocking for front end BFFs.
+  - name: Oxidized Systems
+    position: Owner, Software Engineer
+    startDate: 2021-01-01
+    highlights:
+      - Previous work includes converting a headless JS app into a Qwik/
+        Qwik-City (TypeScript) frontend and an Actix (Rust) backend for web and native mobile clients to consume.
+      - The frontend scores 100 across every Lighthouse metric on both web and mobile. The backend test coverage is over 65%.
+
+projects:
+  - name: r00ks.io
+    url: https://github.com/austionian/bl0g
+    description: A personal website and blog, written in Rust.
+    startDate: 2023-07-26
+    keywords:
+      - Rust
+      - Tailwind CSS
+      - HTMX
+      - Markdown
+      - Typst
+    highlights:
+      - Minimal JS, uses HTMX for simple and efficient page transitions.
+
+  - name: Gathering Surf
+    url: https://gathering.surf
+    description: A surf forecast for lake surfers
+    keywords:
+      - Rust
+      - Tailwind CSS
+    highlights:
+      - Streams API responses to the client as they are resolved and parsed.
+
+skills:
+  - name: Programming Languages
+    keywords:
+      - Rust
+      - JavaScript
+      - TypeScript
+      - Python
+      - Bash
+      - HTML
+      - CSS
+      - SQL
+
+  - name: Frameworks/Databases
+    keywords:
+      - React/ Redux
+      - Graphql/ Apollo
+      - Tailwind CSS
+      - PostgreSQL
+      - MongoDB
+      - HTMX
+      - Express
+      - Axum
+      - Actix
+      - Flask
+      - Django
+      - Qwik
+
+  - name: Tools
+    keywords:
+      - Docker
+      - Git
+
+education:
+  - institution: University of Hawaii at Manoa
+    studyType: Bachelor of Arts
+    area: English, cum laude
+    startDate: 2009-08-01
+    endDate: 2013-05-01
+    score: "3.69"

@@ -18,6 +18,12 @@ build-tailwind:
     echo -e "\nMinifying css"
     sh -c './tailwindcss -i ./src/styles/styles.css -o ./assets/styles.css --minify'
 
+build-cv:
+    #!/bin/bash
+    echo -e "\nBuilding resume"
+    typst compile ./content/cv.typ ./assets/austin_rooks_cv.pdf
+    echo -e "\nDone :)"
+
 # Script to run the axum server in watch mode.
 run-axum:
     #!/bin/bash
@@ -59,6 +65,9 @@ update:
 docker-build:
     docker build --tag bl0g --file Dockerfile .
 
-# Transfers the docker image to the pi
+docker-deploy:
+    DOCKER_HOST="ssh://austin@raspberrypi.local" docker compose up -d
+
+# Builds the new images, saves it to the pi, remotely starts it up with docker compose
 deploy:
-     just docker-build && docker save bl0g | bzip2 | ssh austin@raspberrypi.local docker load && ssh austin@raspberrypi.local ./deploy_blog.sh
+     just docker-build && docker save bl0g | bzip2 | ssh austin@raspberrypi.local docker load && just docker-deploy
