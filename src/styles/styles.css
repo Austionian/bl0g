@@ -5,6 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scrollbar-color: theme("colors.secondary.500") #000;
   }
 
   h1 {
