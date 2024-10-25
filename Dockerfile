@@ -1,6 +1,13 @@
-FROM rust:1.81 AS chef
+FROM --platform=$BUILDPLATFORM rust:latest AS chef
 
 WORKDIR /app
+
+USER root:root
+
+RUN apt update && apt upgrade
+RUN apt install -y gcc-aarch64-linux-gnu
+
+RUN rustup target add aarch64-unknown-linux-musl
 
 RUN cargo install --locked cargo-chef sccache
 ENV RUSTC_WRAPPER=sccache SCCACHE_DIR=/sccache
@@ -19,11 +26,11 @@ COPY . .
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=/usr/local/cargo/git \
     --mount=type=cache,target=$SCCACHE_DIR,sharing=locked \
-    cargo build --release
+    cargo build --release --target aarch64-unknown-linux-musl
 
-FROM gcr.io/distroless/cc-debian12 AS runtime
+FROM --platform=$BUILDPLATFORM alpine:3.14 AS runtime
 WORKDIR /app
-COPY --from=builder /app/target/release/bl0g bl0g
+COPY --from=builder /app/target/aarch64-unknown-linux-musl/release/bl0g bl0g
 COPY config config
 COPY assets assets
 COPY templates templates

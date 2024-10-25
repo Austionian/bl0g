@@ -63,7 +63,7 @@ update:
 
 # Builds the docker image
 docker-build:
-    docker build --tag bl0g --file Dockerfile .
+    docker buildx build --platform linux/arm64/v8 --tag bl0g --file Dockerfile .
 
 docker-deploy:
     DOCKER_HOST="ssh://austin@raspberrypi.local" docker compose up -d
