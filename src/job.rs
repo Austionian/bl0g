@@ -25,8 +25,7 @@ pub static JOBS: [Job; 3] = [
                 for our React code and subgraph.<br /><br />Was recognized as \
                 the individual contributor of Q2 2023 of Northwestern Mutual’s \
                 web and mobile engineers for having decreased the entire client \
-                website’s LCP by ~500ms. Also decreased the SSI header's size \
-                by 57% (2 MB).",
+                website’s LCP by ~500ms.",
         link: "https://northwesternmutual.com",
     },
     Job {
