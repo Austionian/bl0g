@@ -41,7 +41,7 @@ work:
 
 projects:
   - name: r00ks.io
-    url: https://github.com/austionian/bl0g
+    url: https://r00ks.io
     description: A personal website and blog, written in Rust.
     startDate: 2023-07-26
     keywords:
