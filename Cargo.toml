@@ -8,9 +8,9 @@ license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-axum = "0.7"
+axum = "0.8"
 chrono = { version = "0.4", default-features = false, features = ["serde"] }
-comrak = "0.28"
+comrak = "0.32"
 config = { git = "https://github.com/mehcode/config-rs.git", rev = "e3c1d0b452639478662a44f15ef6d5b6d969bf9b", default-features = false, features = [
   "yaml",
 ] }

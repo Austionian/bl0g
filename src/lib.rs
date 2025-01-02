@@ -77,7 +77,7 @@ pub fn startup() -> Result<Router, String> {
 
     let blog_routes = Router::new()
         .route("/", get(routes::blog))
-        .route("/:post_name", get(routes::get_blog_post));
+        .route("/{post_name}", get(routes::get_blog_post));
 
     Ok(Router::new()
         .nest_service("/assets", ServeDir::new("assets"))
@@ -86,7 +86,7 @@ pub fn startup() -> Result<Router, String> {
         .nest("/bl0g", blog_routes)
         .route("/pr0jects", get(routes::projects))
         .route("/game", get(routes::game))
-        .route("/read_c0unt/:post_id", get(routes::read_count))
+        .route("/read_c0unt/{post_id}", get(routes::read_count))
         .route("/feed.xml", get(routes::feed))
         .fallback(routes::handle_404)
         .layer(ServiceBuilder::new().layer(CompressionLayer::new()))
