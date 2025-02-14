@@ -4,7 +4,7 @@ WORKDIR /app
 
 USER root:root
 
-RUN apt update && apt upgrade
+RUN apt update && apt upgrade -y
 RUN apt install -y gcc-aarch64-linux-gnu
 
 RUN rustup target add aarch64-unknown-linux-musl
