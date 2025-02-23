@@ -1,6 +1,6 @@
 use crate::helpers;
 use chrono::{DateTime, Utc};
-use comrak::{markdown_to_html, ComrakOptions};
+use comrak::{ComrakOptions, markdown_to_html};
 use serde::de::DeserializeOwned;
 use std::fmt::Display;
 
