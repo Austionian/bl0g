@@ -5,7 +5,7 @@ mod job;
 mod project;
 mod routes;
 
-use axum::{Router, routing::get};
+use axum::{routing::get, Router};
 use std::fs;
 use std::sync::Arc;
 use std::sync::LazyLock;
@@ -16,7 +16,7 @@ use tower_http::trace::TraceLayer;
 
 pub use configuration::get_configuration;
 pub use frontmatter::FrontMatter;
-use job::{JOBS, Job};
+use job::{Job, JOBS};
 pub use project::Project;
 
 static TEMPLATES: LazyLock<tera::Tera> = LazyLock::new(|| {
@@ -49,7 +49,12 @@ pub fn startup() -> Result<Router, String> {
                 .filter_map(|file| file.ok())
                 .filter_map(|file| fs::read_to_string(file.path()).ok())
                 .filter_map(|file| FrontMatter::from_file(file).ok())
-                .filter(|frontmatter| !frontmatter.draft.unwrap_or(false))
+                .filter(|frontmatter| {
+                    // If developing locally, always show draft posts
+                    std::env::var("APP_ENVIRONMENT").unwrap_or_else(|_| "production".into())
+                        == "local"
+                        || !frontmatter.draft.unwrap_or(false)
+                })
                 .collect::<Vec<_>>();
             posts.sort_by(|a, b| b.date.cmp(&a.date));
             Ok(posts)

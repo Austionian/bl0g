@@ -17,10 +17,18 @@ pub fn get_configuration() -> Result<Settings, config::ConfigError> {
     let base_path = std::env::current_dir().expect("Failed to determine the current directory.");
     let config_directory = base_path.join("config");
 
-    let env: Environment = std::env::var("APP_ENVIRONMENT")
-        .unwrap_or_else(|_| "local".into())
-        .try_into()
-        .expect("Failed to parse APP_ENVIRONMENT.");
+    let env: Environment = if let Ok(env) = std::env::var("APP_ENVIRONMENT") {
+        env.try_into().expect("Failed to parse APP_ENVIRONMENT.")
+    } else {
+        // If no APP_ENVIRONMENT found set to local and set the env
+        unsafe {
+            std::env::set_var("APP_ENVIRONMENT", "local");
+        }
+        "local"
+            .to_string()
+            .try_into()
+            .expect("Failed to parse 'local' to env.")
+    };
 
     let environment_filename = format!("{}.yml", env.as_str());
     let settings = config::Config::builder()

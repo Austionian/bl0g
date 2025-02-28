@@ -48,6 +48,23 @@ impl FrontMatter {
         let content = deserialize_frontmatter::<Self>(&md)?.1;
         Ok(markdown_to_html(&content, &ComrakOptions::default()))
     }
+
+    pub fn to_file(&self) -> String {
+        format!(
+            r#"---
+id: {}
+title: {}
+date: {}
+description: {}
+draft: {}
+---"#,
+            self.id,
+            self.title,
+            self.date,
+            self.description,
+            self.draft.unwrap_or(true)
+        )
+    }
 }
 
 /// Uses the front matter to convert the post into an

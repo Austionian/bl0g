@@ -15,7 +15,11 @@ async fn main() {
     let file_name = format!("{title}.md");
     let frontmatter = FrontMatter::new(title.to_string());
 
-    let api_token = fs::read_to_string(".env").unwrap();
+    let api_token = if let Ok(file) = fs::read_to_string(".env") {
+        file.strip_prefix("API_TOKEN=").unwrap().to_owned()
+    } else {
+        panic!("No .env file found.");
+    };
 
     match fs::metadata(format!("./content/posts/{file_name}")) {
         Ok(_) => panic!("{file_name} already exsists!"),
@@ -40,7 +44,7 @@ async fn main() {
 
             let mut file = fs::File::create(format!("./content/posts/{file_name}"))
                 .expect("Unable to create new file.");
-            file.write_all(frontmatter.to_string().as_bytes())
+            file.write_all(frontmatter.to_file().as_bytes())
                 .expect("Unable to write to new file.");
 
             println!("{title}.md successfully created!");
