@@ -5,7 +5,7 @@ mod job;
 mod project;
 mod routes;
 
-use axum::{routing::get, Router};
+use axum::{Router, routing::get};
 use std::fs;
 use std::sync::Arc;
 use std::sync::LazyLock;
@@ -16,7 +16,7 @@ use tower_http::trace::TraceLayer;
 
 pub use configuration::get_configuration;
 pub use frontmatter::FrontMatter;
-use job::{Job, JOBS};
+use job::{JOBS, Job};
 pub use project::Project;
 
 static TEMPLATES: LazyLock<tera::Tera> = LazyLock::new(|| {
