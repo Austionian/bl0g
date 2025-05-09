@@ -25,7 +25,10 @@ pub static JOBS: [Job; 3] = [
                 for our React code and subgraph.<br /><br />Was recognized as \
                 the individual contributor of Q2 2023 of Northwestern Mutual’s \
                 web and mobile engineers for having decreased the entire client \
-                website’s LCP by ~500ms.",
+                website’s LCP by ~500ms.<br /><br />Built a custom SSG framework \
+                to be used with vanilla vite configs for prerendering static \
+                apps to improve apps' performance in the org's transition to \
+                React frontends served from S3.",
         link: "https://northwesternmutual.com",
     },
     Job {

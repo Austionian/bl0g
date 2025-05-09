@@ -1,0 +1,5 @@
+title: Monkey (Compiler/VM)
+description: My implementation of the Monkey Language, in Rust.
+href: https://austionian.github.io/monkey/
+display_link: austionain.github.io
+image: favicon-32x32.png
