@@ -28,10 +28,9 @@ Learning and building in public.
 <name>Austin Rooks</name>
 <uri>https://github.com/Austionian</uri>
 </author>
-{}
+{rss_entries}
 </feed>
 "#,
-        rss_entries
     );
 
     let mut headers = HeaderMap::new();

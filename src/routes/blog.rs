@@ -52,8 +52,8 @@ pub async fn blog(
 
     let pagination_data = BlogPagination {
         current: page,
-        previous: format!("/bl0g?page={}", previous),
-        next: format!("/bl0g?page={}", next),
+        previous: format!("/bl0g?page={previous}"),
+        next: format!("/bl0g?page={next}"),
         pages_len: pages.len() - 1,
         pages,
     };

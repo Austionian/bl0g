@@ -23,7 +23,7 @@ static TEMPLATES: LazyLock<tera::Tera> = LazyLock::new(|| {
     let mut tera = match tera::Tera::new("templates/**/*") {
         Ok(t) => t,
         Err(e) => {
-            println!("Parsing error(s): {}", e);
+            println!("Parsing error(s): {e}");
             ::std::process::exit(1);
         }
     };
@@ -59,7 +59,7 @@ pub fn startup() -> Result<Router, String> {
             posts.sort_by(|a, b| b.date.cmp(&a.date));
             Ok(posts)
         }
-        Err(e) => Err(format!("Unable to read files in posts directory, {}", e)),
+        Err(e) => Err(format!("Unable to read files in posts directory, {e}")),
     }?;
 
     // Get the projects details at startup since they'll never change for the life
@@ -71,7 +71,7 @@ pub fn startup() -> Result<Router, String> {
             .filter_map(|file| fs::read_to_string(file.path()).ok())
             .filter_map(|file| Project::from_file(file).ok())
             .collect::<Vec<_>>()),
-        Err(e) => Err(format!("Unable to read files in projects directory, {}", e)),
+        Err(e) => Err(format!("Unable to read files in projects directory, {e}")),
     }?;
 
     let state = AppState {

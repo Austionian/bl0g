@@ -5,7 +5,7 @@ on:
     branches:
       - main
   pull_request:
-    types: [ opened, synchronize, reopened ]
+    types: [opened, synchronize, reopened]
     branches:
       - main
 
@@ -16,16 +16,16 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: taiki-e/install-action@protoc
-    - uses: dtolnay/rust-toolchain@beta
-      with:
-        components: clippy, rustfmt
-    - uses: Swatinem/rust-cache@v2
-    - name: Check
-      run: cargo clippy -- -D warnings
-    - name: rustfmt
-      run: cargo fmt --check
+      - uses: actions/checkout@v3
+      - uses: taiki-e/install-action@protoc
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@v2
+      - name: Check
+        run: cargo clippy -- -D warnings
+      - name: rustfmt
+        run: cargo fmt --check
 
   test:
     needs: check
@@ -51,4 +51,3 @@ jobs:
         run: cargo install cargo-tarpaulin
       - name: Generate code coverage
         run: cargo tarpaulin --verbose --workspace
-

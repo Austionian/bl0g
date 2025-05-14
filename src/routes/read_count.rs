@@ -11,8 +11,7 @@ struct D1Post {
 /// protected proxy in the future. Would need to update the worker to only return the number.
 pub async fn read_count(Path(post_id): Path<String>) -> impl IntoResponse {
     let response = reqwest::get(format!(
-        "https://worker-rust.austin-e33.workers.dev/{}",
-        post_id
+        "https://worker-rust.austin-e33.workers.dev/{post_id}",
     ))
     .await
     .unwrap()
