@@ -10,7 +10,11 @@ license = "MIT"
 [dependencies]
 axum = "0.8"
 chrono = { version = "0.4", default-features = false, features = ["serde"] }
-comrak = "0.35"
+comrak = { version = "0.35", default-features = false, features = [
+  "bon",
+  "syntect",
+  "xdg",
+] }
 config = { version = "0.15", default-features = false, features = ["yaml"] }
 features = "0.10.0"
 hyper = { version = "1", features = ["full"] }
