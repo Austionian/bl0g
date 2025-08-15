@@ -22,15 +22,21 @@ work:
     position: Software Engineer, III
     startDate: 2024-03-01
     highlights:
+      - Wrote a custom, low-level SSG Vite framework for prerendering static React apps served from
+        S3.
+      - Implemented and configured the full stack (cloudfront -> rp proxy -> proxy -> service) of a
+        new mTLS service for uploading/downloading documents for static frontends.
+      - Won engineering department wide hackathon with a frontend toolbar that took advantage of
+        frontends' new architecture to easier collaborate with product and design, and make testing easier.
+      - Mentored junior developers, and made contributions to internal engineering blog.
   - name: Northwestern Mutual
     position: Software Engineer, II
     startDate: 2022-04-01
     endDate: 2024-03-01
     highlights:
-      - Helped implement an initial subgraph for an entire business vertical in the web and mobile transition to graphql.
+      - Implemented an initial subgraph for an entire business vertical in the web and mobile transition to graphql.
       - Reduced the entire client website’s LCP by 500ms on average and an almost a full second for p90 requests.
-      - Mentored junior developers and helped teach test engineers how to write e2e test.
-      - Created a shared module that wrapped a standard express instance that provides easier testing and mocking for front end BFFs.
+      - Created an internal library that wrapped an express instance providing easier testing and mocking for front end BFFs.
   - name: Oxidized Systems
     position: Owner, Software Engineer
     startDate: 2021-01-01
@@ -52,6 +58,7 @@ projects:
       - Typst
     highlights:
       - Minimal JS, uses HTMX for simple and efficient page transitions.
+      - Self hosted on a Raspberry Pi
 
   - name: Gathering Surf
     url: https://gathering.surf
@@ -59,8 +66,19 @@ projects:
     keywords:
       - Rust
       - Tailwind CSS
+      - Redis
     highlights:
       - Streams API responses to the client as they are resolved and parsed.
+      - Self hosted on a Raspberry Pi
+
+  - name: Monkey Lang
+    url: https://austionian.github.io/monkey/
+    description: A Rust implementation of the Monkey language
+    keywords:
+      - Rust
+    highlights:
+      - The compiler and VM are compiled to WASM and exectued in the playground by the
+        client's browser.
 
 skills:
   - name: Programming Languages
@@ -93,6 +111,7 @@ skills:
     keywords:
       - Docker
       - Git
+      - Linux
 
 education:
   - institution: University of Hawaii at Manoa
