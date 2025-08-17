@@ -19,15 +19,13 @@ pub static JOBS: [Job; 3] = [
         image: "nm.webp",
         tech: ["React", "Redux", "TypeScript", "Express", "Graphql"],
         description: "I work on the client website building new products, \
-                supporting legacy apps, and contributing to interal libraries \
-                to support easier development. Helped transition the org to \
-                Graphql. Lead the team in testing and performance strategies \
-                for our React code and subgraph.<br /><br />Was recognized as \
+                supporting legacy systems, and contributing to interal libraries \
+                to support and enhance product development.<br /><br /> I was recognized as \
                 the individual contributor of Q2 2023 of Northwestern Mutual’s \
                 web and mobile engineers for having decreased the entire client \
-                website’s LCP by ~500ms.<br /><br />Built a custom SSG framework \
+                website’s LCP by ~500ms.<br /><br />Individually built a custom SSG framework \
                 to be used with vanilla vite configs for prerendering static \
-                apps to improve apps' performance in the org's transition to \
+                apps to improve apps' performance as the org transitioned to \
                 React frontends served from S3.",
         link: "https://northwesternmutual.com",
     },
@@ -55,8 +53,7 @@ pub static JOBS: [Job; 3] = [
         tech: ["Python", "Django", "Flask", "Postgres", "HTMX"],
         description: "I built and maintained internal web apps (Flask and \
                 Django) for critical agency wide functions, e.g. critical \
-                incidents, employee management. Also administrated and built out \
-                instances of SharePoint and EHR (Credible).",
+                incidents, employee management.",
         link: "https://cctwincities.org",
     },
 ];
