@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM rust:latest AS chef
+FROM --platform=$BUILDPLATFORM rust:1.87.0 AS chef
 
 WORKDIR /app
 
