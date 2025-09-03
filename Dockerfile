@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM rust:1.87.0 AS chef
+FROM --platform=$BUILDPLATFORM rust:1-bullseye AS chef
 
 WORKDIR /app
 
@@ -28,7 +28,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=$SCCACHE_DIR,sharing=locked \
     cargo build --release --target aarch64-unknown-linux-musl
 
-FROM --platform=$BUILDPLATFORM alpine:3.14 AS runtime
+FROM --platform=$BUILDPLATFORM gcr.io/distroless/cc-debian12 AS runtime
 WORKDIR /app
 COPY --from=builder /app/target/aarch64-unknown-linux-musl/release/bl0g bl0g
 COPY config config
