@@ -10,7 +10,7 @@ pub struct Job {
     link: &'static str,
 }
 
-pub static JOBS: [Job; 3] = [
+pub const JOBS: [Job; 3] = [
     Job {
         company: "Northwestern Mutual",
         title: "Software Engineer",
@@ -30,7 +30,7 @@ pub static JOBS: [Job; 3] = [
         link: "https://northwesternmutual.com",
     },
     Job {
-        company: "Oxidized Systems",
+        company: "The Peach Software Company",
         title: "Owner, Software Engineer",
         start_year: "2021",
         end_year: "Present",
@@ -42,7 +42,7 @@ pub static JOBS: [Job; 3] = [
                 frontend scores <image alt=\"100 performance score\" src=\"assets/images/100.png\" style=\"height: 2rem; display: inline\"/> \
                 across every Lighthouse metric on <span style=\"font-weight: bold\">both</span> web and mobile. \
                 The backend test coverage is over 65%.",
-        link: "https://oxidized.systems",
+        link: "https://peach.software",
     },
     Job {
         company: "Catholic Charities of St. Paul and Minneapolis",

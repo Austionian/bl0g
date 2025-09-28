@@ -13,11 +13,23 @@
               <div
                 class="flex justify-start items-center font-bold group-hover:text-secondary-400 mb-2"
               >
+                {% if job.company == "The Peach Software Company"%}
+                <div
+                  class="rounded-full bg-secondary-400 dark:bg-secondary-500 group-hover:bg-white group-hover:dark:bg-black h-4 w-4 mr-2 group-hover:before:content-['🍑'] group-hover:before:w-4 group-hover:before:h-4"
+                >
+                  <div
+                    class="rounded-full bg-white dark:bg-black h-2 w-2 m-1"
+                  ></div>
+                </div>
+                {% else %}
                 <div
                   class="rounded-full bg-secondary-400 dark:bg-secondary-500 h-4 w-4 mr-2"
                 >
-                  <div class="rounded-full bg-white dark:bg-black group-hover:bg-secondary-400 dark:group-hover:bg-secondary-500 h-2 w-2 m-1"></div>
+                  <div
+                    class="rounded-full bg-white dark:bg-black group-hover:bg-secondary-400 dark:group-hover:bg-secondary-500 h-2 w-2 m-1"
+                  ></div>
                 </div>
+                {% endif %}
                 <div>{{ job.company }}</div>
                 <div>
                   <svg
