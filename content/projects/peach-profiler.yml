@@ -1,0 +1,5 @@
+title: Peach Profiler
+description: A stack-allocated, instrumentation-based profiler.
+href: https://docs.rs/peach_profiler/latest/peach_profiler/
+display_link: docs.rs
+image: ferris.svg
