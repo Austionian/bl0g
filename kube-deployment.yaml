@@ -1,0 +1,89 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bl0g
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 30%
+      maxSurge: 50%
+  selector:
+    matchLabels:
+      app: bl0g
+  template:
+    metadata:
+      labels:
+        app: bl0g
+    spec:
+      containers:
+        - env:
+            - name: API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: bl0g-d1-api-token
+                  key: api-token
+          image: 10.108.202.38:5000/bl0g:0.1.1
+          name: bl0g
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "64Mi"
+              cpu: "50m"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bl0g
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: bl0g
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bl0g-ingress
+  annotations:
+    # Use the cert-manager issuer in the same namespace - default.
+    cert-manager.io/issuer: "letsencrypt-prod"
+    # Rate limiting - 10 requests per second per IP
+    nginx.ingress.kubernetes.io/limit-rps: "10"
+    # Connection limiting - max 5 concurrent connections per IP
+    nginx.ingress.kubernetes.io/limit-connections: "5"
+    # Burst allowance (temporary spike allowance)
+    nginx.ingress.kubernetes.io/limit-burst-multiplier: "2"
+    # Custom backend timeout
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "5"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    # SSL redirect
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - r00ks.io
+      secretName: bl0g-tls
+  rules:
+    - host: r00ks.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bl0g
+                port:
+                  number: 8080
