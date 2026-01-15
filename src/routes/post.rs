@@ -1,12 +1,13 @@
 use crate::{
-    frontmatter::{deserialize_frontmatter, FrontMatter},
-    helpers, TEMPLATES,
+    TEMPLATES,
+    frontmatter::{FrontMatter, deserialize_frontmatter},
+    helpers,
 };
 use axum::extract::Path;
 use axum::http::HeaderMap;
 use axum::response::{Html, IntoResponse};
 use comrak::{
-    markdown_to_html_with_plugins, options::Plugins, plugins::syntect::SyntectAdapter, Options,
+    Options, markdown_to_html_with_plugins, options::Plugins, plugins::syntect::SyntectAdapter,
 };
 use hyper::header;
 use reqwest::Client;
