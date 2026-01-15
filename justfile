@@ -50,7 +50,7 @@ dev:
     # Add a trap to run the minify function before exiting
     trap "minify; kill 0" SIGINT
 
-    open 'http://127.0.0.1:1111'
+    open 'http://127.0.0.1:8080'
 
     just run-axum & just run-tailwind
     TAILWIND_PID=$!

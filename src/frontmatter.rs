@@ -1,6 +1,6 @@
 use crate::helpers;
 use chrono::{DateTime, Utc};
-use comrak::{ComrakOptions, markdown_to_html};
+use comrak::{markdown_to_html, Options};
 use serde::de::DeserializeOwned;
 use std::fmt::Display;
 
@@ -46,7 +46,7 @@ impl FrontMatter {
         let md =
             helpers::read_post_to_string(&self.title).unwrap_or("Unable to load post.".to_string());
         let content = deserialize_frontmatter::<Self>(&md)?.1;
-        Ok(markdown_to_html(&content, &ComrakOptions::default()))
+        Ok(markdown_to_html(&content, &Options::default()))
     }
 
     pub fn to_file(&self) -> String {
