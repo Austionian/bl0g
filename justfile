@@ -22,6 +22,7 @@ build-tailwind:
     echo -e "\nMinifying css"
     sh -c './tailwindcss -i ./src/styles/styles.css -o ./assets/styles.css --minify'
 
+# Builds a new version of my CV
 build-cv:
     #!/bin/bash
     echo -e "\nBuilding resume"

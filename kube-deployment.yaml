@@ -25,7 +25,7 @@ spec:
                 secretKeyRef:
                   name: bl0g-d1-api-token
                   key: api-token
-          image: 10.108.202.38:5000/bl0g:0.1.5
+          image: 10.108.202.38:5000/bl0g:0.1.6
           name: bl0g
           resources:
             requests:

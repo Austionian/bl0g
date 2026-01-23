@@ -69,7 +69,7 @@ projects:
       - Self hosted on a Raspberry Pi
 
   - name: Monkey Lang
-    url: https://austionian.github.io/monkey/
+    url: https://monkey.r00ks.io
     description: A Rust implementation of the Monkey language
     keywords:
       - Rust
