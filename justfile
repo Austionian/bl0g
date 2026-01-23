@@ -5,6 +5,7 @@ default:
     just -l
 
 alias u := update
+alias d := dev
 
 HOST := "austin@192.168.1.121"
 PORT := "222"
