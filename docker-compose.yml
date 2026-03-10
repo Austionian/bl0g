@@ -1,8 +1,0 @@
-services:
-  web:
-    image: bl0g:latest
-    ports:
-      - "8080:8080"
-    environment:
-      API_TOKEN: ${API_TOKEN}
-    platform: linux/arm64
